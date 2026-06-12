@@ -1,0 +1,9 @@
+node_modules
+.env
+package-lock.json
+.DS_Store
+npm-debug.log
+public/uploads/blogs/*
+public/uploads/reviews/*
+!public/uploads/blogs/.gitkeep
+!public/uploads/reviews/.gitkeep

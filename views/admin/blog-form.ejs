@@ -1,0 +1,33 @@
+<%- include('../partials/admin-top') %>
+
+<main class="admin-main container">
+  <section class="admin-panel">
+    <div class="panel-title"><h1><%= blog ? 'Editează articol' : 'Articol nou' %></h1><a class="btn btn-secondary" href="/dashboard#bloguri">Înapoi</a></div>
+    <form class="admin-form" method="POST" enctype="multipart/form-data" action="<%= blog ? '/dashboard/blogs/' + blog._id + '/update' : '/dashboard/blogs' %>">
+      <div class="form-grid two">
+        <input name="title" placeholder="Titlu" value="<%= blog ? blog.title : '' %>" required>
+        <input name="slug" placeholder="Slug SEO" value="<%= blog ? blog.slug : '' %>">
+      </div>
+      <div class="upload-box">
+        <label>Încarcă imagine articol</label>
+        <% if (blog && blog.coverImage) { %>
+          <img class="upload-preview" src="<%= blog.coverImage %>" alt="Imagine curentă blog">
+        <% } %>
+        <input type="file" name="coverImageFile" accept="image/*">
+        <small>JPG, PNG, WEBP sau GIF. Maxim 8MB.</small>
+      </div>
+      <input name="coverImage" placeholder="Opțional: link imagine în loc de upload" value="<%= blog ? blog.coverImage || '' : '' %>">
+      <input name="coverAlt" placeholder="Alt text imagine pentru SEO" value="<%= blog ? blog.coverAlt || '' : '' %>">
+      <input name="metaTitle" placeholder="Meta title SEO" value="<%= blog ? blog.metaTitle || '' : '' %>">
+      <input name="metaDescription" placeholder="Meta description SEO" value="<%= blog ? blog.metaDescription || '' : '' %>">
+      <input name="keywords" placeholder="Keywords SEO" value="<%= blog ? blog.keywords || '' : '' %>">
+      <input name="tags" placeholder="Tag-uri separate prin virgulă" value="<%= blog ? blog.tags.join(', ') : '' %>">
+      <textarea name="excerpt" placeholder="Scurt rezumat" required><%= blog ? blog.excerpt : '' %></textarea>
+      <textarea name="content" class="large-textarea" placeholder="Conținut articol" required><%= blog ? blog.content : '' %></textarea>
+      <label class="check"><input type="checkbox" name="published" <%= !blog || blog.published ? 'checked' : '' %>> Publicat</label>
+      <button class="btn btn-primary" type="submit">Salvează articolul</button>
+    </form>
+  </section>
+</main>
+
+<%- include('../partials/footer') %>

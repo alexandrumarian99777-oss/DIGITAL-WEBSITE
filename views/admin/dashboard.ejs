@@ -1,0 +1,416 @@
+<%- include('../partials/admin-top') %>
+
+<main class="admin-main container">
+  <section class="admin-hero">
+    <div>
+      <p class="eyebrow">Admin</p>
+      <h1>Dashboard</h1>
+      <p>Gestionează lead-uri, review-uri video, bloguri și programări. Nu face haos în WhatsApp.</p>
+    </div>
+
+    <div class="admin-stats">
+      <span><strong><%= leads.length %></strong> lead-uri</span>
+      <span><strong><%= reviews.length %></strong> review-uri</span>
+      <span><strong><%= posts.length %></strong> bloguri</span>
+      <span><strong><%= appointments.length %></strong> programări</span>
+    </div>
+  </section>
+
+  <section id="leaduri" class="admin-panel">
+    <div class="panel-title">
+      <h2>Lead-uri</h2>
+      <p>Creează lead-uri, apoi editează sau șterge lead-urile existente.</p>
+    </div>
+
+    <form class="admin-form" method="POST" action="/dashboard/leads">
+      <div class="form-grid three">
+        <input name="name" placeholder="Nume" required>
+        <input name="email" type="email" placeholder="Email" required>
+        <input name="phone" placeholder="Telefon" required>
+        <input name="businessName" placeholder="Afacere">
+        <input name="businessType" placeholder="Tip afacere">
+        <input name="website" placeholder="Website / social media">
+        <input name="packageInterest" placeholder="Pachet interesat">
+      </div>
+
+      <textarea name="message" placeholder="Mesaj" required></textarea>
+
+      <button class="btn btn-primary" type="submit">Adaugă lead</button>
+    </form>
+
+    <div class="admin-list">
+      <% if (leads.length === 0) { %>
+      <article class="admin-item">
+        <p>Nu există lead-uri momentan.</p>
+      </article>
+      <% } %>
+
+      <% leads.forEach((lead) => { %>
+      <article class="admin-item">
+        <div class="lead-summary">
+          <h3><%= lead.name %></h3>
+
+          <p>
+            <strong>Email:</strong> <%= lead.email %><br>
+            <strong>Telefon:</strong> <%= lead.phone %><br>
+            <strong>Status:</strong> <%= lead.status %>
+          </p>
+
+          <% if (lead.businessName) { %>
+          <p><strong>Afacere:</strong> <%= lead.businessName %></p>
+          <% } %>
+
+          <% if (lead.businessType) { %>
+          <p><strong>Tip afacere:</strong> <%= lead.businessType %></p>
+          <% } %>
+
+          <% if (lead.website) { %>
+          <p><strong>Website / social:</strong> <%= lead.website %></p>
+          <% } %>
+
+          <% if (lead.packageInterest) { %>
+          <p><strong>Pachet interesat:</strong> <%= lead.packageInterest %></p>
+          <% } %>
+
+          <% if (lead.message) { %>
+          <p><strong>Mesaj:</strong> <%= lead.message %></p>
+          <% } %>
+        </div>
+
+        <details class="edit-box">
+          <summary class="btn btn-secondary">Editează lead-ul</summary>
+
+          <form method="POST" action="/dashboard/leads/<%= lead._id %>/update" class="admin-form compact">
+            <div class="form-grid three">
+              <input name="name" placeholder="Nume lead" value="<%= lead.name || '' %>" required>
+              <input name="email" type="email" placeholder="Email lead" value="<%= lead.email || '' %>" required>
+              <input name="phone" placeholder="Telefon lead" value="<%= lead.phone || '' %>" required>
+              <input name="businessName" placeholder="Nume afacere" value="<%= lead.businessName || '' %>">
+              <input name="businessType" placeholder="Tip afacere" value="<%= lead.businessType || '' %>">
+
+              <select name="status" required>
+                <% ['nou','contactat','calificat','câștigat','pierdut'].forEach((status) => { %>
+                <option value="<%= status %>" <%= lead.status === status ? 'selected' : '' %>>
+                  <%= status %>
+                </option>
+                <% }) %>
+              </select>
+
+              <input name="website" placeholder="Website / social media" value="<%= lead.website || '' %>">
+              <input name="packageInterest" placeholder="Pachet interesat" value="<%= lead.packageInterest || '' %>">
+            </div>
+
+            <textarea name="message" placeholder="Mesaj lead"><%= lead.message || '' %></textarea>
+
+            <button class="btn btn-secondary" type="submit">Salvează modificările</button>
+          </form>
+        </details>
+
+        <form method="POST" action="/dashboard/leads/<%= lead._id %>/delete"
+          onsubmit="return confirm('Ștergi lead-ul?')">
+          <button class="danger-btn" type="submit">Șterge</button>
+        </form>
+      </article>
+      <% }) %>
+    </div>
+  </section>
+
+  <section id="reviewuri" class="admin-panel">
+    <div class="panel-title">
+      <h2>Review-uri video</h2>
+      <p>Creează review-uri, apoi editează sau șterge review-urile existente.</p>
+    </div>
+
+    <form class="admin-form" method="POST" action="/dashboard/reviews" enctype="multipart/form-data">
+      <div class="form-grid three">
+        <input name="customerName" placeholder="Nume client" required>
+        <input name="businessName" placeholder="Afacere">
+        <input name="rating" type="number" min="1" max="5" value="5" placeholder="Rating 1-5">
+      </div>
+
+      <textarea name="quote" placeholder="Text testimonial" required></textarea>
+
+      <div class="upload-box">
+        <label>Încarcă video testimonial</label>
+        <input type="file" name="videoFile" accept="video/*">
+        <small>MP4, WEBM sau MOV. Maxim 150MB.</small>
+      </div>
+
+      <input name="videoUrl" placeholder="Opțional: link video în loc de upload">
+      <input name="thumbnail" placeholder="Opțional: link thumbnail pentru video extern">
+
+      <label class="check">
+        <input type="checkbox" name="approved"> Aprobat public
+      </label>
+
+      <button class="btn btn-primary" type="submit">Adaugă review</button>
+    </form>
+
+    <div class="admin-list">
+      <% if (reviews.length === 0) { %>
+      <article class="admin-item">
+        <p>Nu există review-uri momentan.</p>
+      </article>
+      <% } %>
+
+      <% reviews.forEach((review) => { %>
+      <article class="admin-item">
+        <div class="review-summary">
+          <h3><%= review.customerName %></h3>
+
+          <p>
+            <strong>Afacere:</strong> <%= review.businessName || '-' %><br>
+            <strong>Rating:</strong> <%= review.rating %>/5<br>
+            <strong>Status:</strong> <%= review.approved ? 'Aprobat public' : 'Neaprobat' %>
+          </p>
+
+          <% if (review.quote) { %>
+          <p>
+            <strong>Testimonial:</strong><br>
+            <%= review.quote %>
+          </p>
+          <% } %>
+
+          <% if (review.videoUrl) { %>
+          <p>
+            <strong>Video:</strong>
+            <a href="<%= review.videoUrl %>" target="_blank">Vezi video</a>
+          </p>
+          <% } %>
+
+          <% if (review.thumbnail) { %>
+          <p>
+            <strong>Thumbnail:</strong>
+            <a href="<%= review.thumbnail %>" target="_blank">Vezi thumbnail</a>
+          </p>
+          <% } %>
+        </div>
+
+        <details class="edit-box">
+          <summary class="btn btn-secondary">Editează review-ul</summary>
+
+          <form method="POST" action="/dashboard/reviews/<%= review._id %>/update" class="admin-form compact"
+            enctype="multipart/form-data">
+            <div class="form-grid three">
+              <input name="customerName" placeholder="Nume client" value="<%= review.customerName || '' %>" required>
+              <input name="businessName" placeholder="Afacere" value="<%= review.businessName || '' %>">
+              <input name="rating" type="number" min="1" max="5" placeholder="Rating 1-5"
+                value="<%= review.rating || 5 %>">
+            </div>
+
+            <textarea name="quote" placeholder="Text testimonial"><%= review.quote || '' %></textarea>
+
+            <div class="upload-box">
+              <label>Încarcă video nou</label>
+
+              <% if (review.videoUrl) { %>
+              <small>Video curent: <%= review.videoUrl %></small>
+              <% } %>
+
+              <input type="file" name="videoFile" accept="video/*">
+              <small>Dacă nu alegi un fișier nou, video-ul actual rămâne.</small>
+            </div>
+
+            <input name="videoUrl" placeholder="Link video" value="<%= review.videoUrl || '' %>">
+            <input name="thumbnail" placeholder="Thumbnail" value="<%= review.thumbnail || '' %>">
+
+            <label class="check">
+              <input type="checkbox" name="approved" <%= review.approved ? 'checked' : '' %>> Aprobat public
+            </label>
+
+            <button class="btn btn-secondary" type="submit">Salvează modificările</button>
+          </form>
+        </details>
+
+        <form method="POST" action="/dashboard/reviews/<%= review._id %>/delete"
+          onsubmit="return confirm('Ștergi review-ul?')">
+          <button class="danger-btn" type="submit">Șterge</button>
+        </form>
+      </article>
+      <% }) %>
+    </div>
+  </section>
+
+  <section id="bloguri" class="admin-panel">
+    <div id="blogs"></div>
+
+    <div class="panel-title">
+      <h2>Bloguri</h2>
+      <p>Creează, editează, vezi sau șterge articolele de blog.</p>
+      <a class="btn btn-primary" href="/dashboard/blogs/new">Articol nou</a>
+    </div>
+
+    <div class="admin-list">
+      <% if (posts.length === 0) { %>
+      <article class="admin-item">
+        <p>Nu există articole de blog momentan.</p>
+      </article>
+      <% } %>
+
+      <% posts.forEach((post) => { %>
+      <article class="admin-item">
+        <div class="blog-summary">
+          <h3><%= post.title %></h3>
+
+          <p>
+            <strong>Slug:</strong> /<%= post.slug %><br>
+            <strong>Status:</strong> <%= post.published ? 'Publicat' : 'Draft' %>
+          </p>
+
+          <% if (post.excerpt) { %>
+          <p><strong>Rezumat:</strong> <%= post.excerpt %></p>
+          <% } %>
+        </div>
+
+        <div class="admin-actions">
+          <a class="btn btn-secondary" href="/blog/<%= post.slug %>" target="_blank">Vezi articolul</a>
+          <a class="btn btn-secondary" href="/dashboard/blogs/<%= post._id %>/edit">Editează articolul</a>
+        </div>
+
+        <form method="POST" action="/dashboard/blogs/<%= post._id %>/delete"
+          onsubmit="return confirm('Ștergi articolul?')">
+          <button class="danger-btn" type="submit">Șterge</button>
+        </form>
+      </article>
+      <% }) %>
+    </div>
+  </section>
+
+  <section id="programari" class="admin-panel">
+    <div class="panel-title">
+      <h2>Programări</h2>
+      <p>Creează programări, apoi editează sau șterge programările existente.</p>
+    </div>
+
+    <% const timeSlots = [
+      '09:00', '09:30',
+      '10:00', '10:30',
+      '11:00', '11:30',
+      '12:00', '12:30',
+      '13:00', '13:30',
+      '14:00', '14:30',
+      '15:00', '15:30',
+      '16:00', '16:30',
+      '17:00', '17:30',
+      '18:00', '18:30'
+    ]; %>
+
+    <form class="admin-form" method="POST" action="/dashboard/appointments">
+      <div class="form-grid three">
+        <input name="customerName" placeholder="Nume client" required>
+        <input name="customerEmail" type="email" placeholder="Email client" required>
+        <input name="customerPhone" placeholder="Telefon client" required>
+        <input name="businessName" placeholder="Afacere">
+        <input name="service" placeholder="Serviciu" required>
+
+        <select name="status" required>
+          <option value="programat">programat</option>
+          <option value="confirmat">confirmat</option>
+          <option value="anulat">anulat</option>
+          <option value="finalizat">finalizat</option>
+        </select>
+
+        <input name="date" type="date" required>
+
+        <select name="time" required>
+          <option value="">Alege ora</option>
+
+          <% timeSlots.forEach((slot) => { %>
+          <option value="<%= slot %>"><%= slot %></option>
+          <% }) %>
+        </select>
+      </div>
+
+      <textarea name="notes" placeholder="Note interne"></textarea>
+
+      <textarea name="customEmailMessage"
+        placeholder="Mesaj personalizat pentru emailul clientului">Bună! Programarea ta a fost creată. Mai jos ai toate detaliile.</textarea>
+
+      <button class="btn btn-primary" type="submit">Creează programare și trimite email</button>
+    </form>
+
+    <div class="admin-list">
+      <% if (appointments.length === 0) { %>
+      <article class="admin-item">
+        <p>Nu există programări momentan.</p>
+      </article>
+      <% } %>
+
+      <% appointments.forEach((appointment) => { %>
+      <article class="admin-item">
+        <div class="appointment-summary">
+          <h3><%= appointment.customerName || 'Client fără nume' %></h3>
+
+          <p>
+            <strong>Serviciu:</strong> <%= appointment.service %><br>
+            <strong>Dată:</strong> <%= appointment.date %><br>
+            <strong>Oră:</strong> <%= appointment.time %><br>
+            <strong>Status:</strong> <%= appointment.status %><br>
+            <strong>Email:</strong> <%= appointment.customerEmail %><br>
+            <strong>Telefon:</strong> <%= appointment.customerPhone %>
+          </p>
+
+          <% if (appointment.businessName) { %>
+          <p><strong>Afacere:</strong> <%= appointment.businessName %></p>
+          <% } %>
+
+          <% if (appointment.notes) { %>
+          <p><strong>Note:</strong> <%= appointment.notes %></p>
+          <% } %>
+        </div>
+
+        <details class="edit-box">
+          <summary class="btn btn-secondary">Editează programarea</summary>
+
+          <form method="POST" action="/dashboard/appointments/<%= appointment._id %>/update" class="admin-form compact">
+            <div class="form-grid three">
+              <input name="customerName" placeholder="Nume client" value="<%= appointment.customerName || '' %>"
+                required>
+              <input name="customerEmail" type="email" placeholder="Email client"
+                value="<%= appointment.customerEmail || '' %>" required>
+              <input name="customerPhone" placeholder="Telefon client" value="<%= appointment.customerPhone || '' %>"
+                required>
+              <input name="businessName" placeholder="Afacere" value="<%= appointment.businessName || '' %>">
+              <input name="service" placeholder="Serviciu" value="<%= appointment.service || '' %>" required>
+
+              <select name="status" required>
+                <% ['programat','confirmat','anulat','finalizat'].forEach((status) => { %>
+                <option value="<%= status %>" <%= appointment.status === status ? 'selected' : '' %>>
+                  <%= status %>
+                </option>
+                <% }) %>
+              </select>
+
+              <input name="date" type="date" value="<%= appointment.date || '' %>" required>
+
+              <select name="time" required>
+                <option value="">Alege ora</option>
+
+                <% timeSlots.forEach((slot) => { %>
+                <option value="<%= slot %>" <%= appointment.time === slot ? 'selected' : '' %>>
+                  <%= slot %>
+                </option>
+                <% }) %>
+              </select>
+            </div>
+
+            <textarea name="notes" placeholder="Note interne"><%= appointment.notes || '' %></textarea>
+
+            <textarea name="customEmailMessage"
+              placeholder="Mesaj personalizat pentru emailul clientului"><%= appointment.customEmailMessage || '' %></textarea>
+
+            <button class="btn btn-secondary" type="submit">Salvează modificările</button>
+          </form>
+        </details>
+
+        <form method="POST" action="/dashboard/appointments/<%= appointment._id %>/delete"
+          onsubmit="return confirm('Ștergi programarea?')">
+          <button class="danger-btn" type="submit">Șterge</button>
+        </form>
+      </article>
+      <% }) %>
+    </div>
+  </section>
+</main>
+
+<%- include('../partials/footer') %>

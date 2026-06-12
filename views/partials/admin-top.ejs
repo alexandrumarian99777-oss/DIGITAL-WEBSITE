@@ -1,0 +1,18 @@
+<%- include('head') %>
+<header class="admin-header">
+  <div class="container admin-nav">
+    <a class="brand" href="/dashboard">
+      <img src="/images/logooo.png" alt="Logo AM Digital Growth" width="42" height="42">
+      <span>Dashboard</span>
+    </a>
+    <nav>
+      <a href="/" target="_blank">Vezi site-ul</a>
+      <a href="/dashboard#leaduri">Lead-uri</a>
+      <a href="/dashboard#reviewuri">Review-uri</a>
+      <a href="/dashboard#bloguri">Blog</a>
+      <a href="/dashboard#programari">Programări</a>
+      <form method="POST" action="/logout"><button class="link-button" type="submit">Logout</button></form>
+    </nav>
+  </div>
+</header>
+<%- include('flash') %>

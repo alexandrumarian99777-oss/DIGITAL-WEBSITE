@@ -1,0 +1,39 @@
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="/" aria-label="AM Digital Growth acasă">
+      <img src="/images/logooo.png" alt="Logo AM Digital Growth" width="150" height="100">
+      <span><%= content.business.shortName %></span>
+    </a>
+
+    <nav class="nav-links" aria-label="Navigație principală">
+      <% content.nav.forEach((item) => { %>
+      <a href="<%= item.href %>" class="<%= currentPath === item.href ? 'active' : '' %>">
+        <%= item.label %>
+      </a>
+      <% }) %>
+
+      <div id="google_translate_element" style="display: none;"></div>
+
+      <div id="google_translate_element" style="display: none;"></div>
+
+      <div id="google_translate_element" style="display: none;"></div>
+
+      <a href="/login">Login</a>
+
+
+
+    </nav>
+
+    <a class="btn btn-primary nav-cta" href="/contact#formular">Demo gratuit</a>
+    <div class="language-switcher notranslate" translate="no">
+      <select id="languageSelect" onchange="changeLanguage(this.value)" aria-label="Schimbă limba">
+        <option value="ro">RO</option>
+        <option value="en">EN</option>
+        <option value="it">IT</option>
+        <option value="fr">FR</option>
+        <option value="de">DE</option>
+        <option value="es">ES</option>
+      </select>
+    </div>
+  </div>
+</header>

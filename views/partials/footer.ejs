@@ -1,0 +1,146 @@
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="/" class="footer-logo" aria-label="AM Digital">
+        <img src="/images/logo2.png" alt="AM Digital logo">
+      </a>
+
+      <p>
+        Construim site-uri care prezintă clar serviciile, colectează lead-uri,
+        afișează testimoniale video și ajută afacerile locale să pară serioase online.
+      </p>
+
+      <div class="socials">
+        <a href="<%= content.business.facebook %>" aria-label="Facebook">Facebook</a>
+        <a href="<%= content.business.instagram %>" aria-label="Instagram">Instagram</a>
+        <a href="<%= content.business.linkedin %>" aria-label="LinkedIn">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="footer-column">
+      <h3>Linkuri rapide</h3>
+      <a href="/">Acasă</a>
+      <a href="/despre">Despre</a>
+      <a href="/#pachete">Pachete</a>
+      <a href="/blog">Blog</a>
+      <a href="/contact">Contact</a>
+    </div>
+
+    <div class="footer-column">
+      <h3>Produse</h3>
+
+      <% content.footerProducts.forEach((product) => { %>
+      <a href="/#sistem"><%= product %></a>
+      <% }) %>
+    </div>
+
+    <div class="footer-column">
+      <h3>Legal</h3>
+      <a href="/termeni-si-conditii">Termeni & condiții</a>
+      <a href="/politica-de-confidentialitate">Privacy Policy</a>
+      <a href="/cerere-confidentialitate">Privacy Request</a>
+      <a href="/setari-cookie">Cookie Settings</a>
+
+      <p class="footer-contact">
+        <%= content.business.phone %><br>
+        <%= content.business.email %>
+      </p>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <span>© <%= new Date().getFullYear() %> <%= content.business.name %>. Toate drepturile rezervate.</span>
+    <span>Domeniul se achită separat de client. Setup domeniu inclus.</span>
+  </div>
+</footer>
+
+
+<script>
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'ro',
+      includedLanguages: 'ro,en,it,fr,de,es',
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+
+  function removeGoogleTranslateCookies() {
+    const cookiesToDelete = [
+      'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;',
+      'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' + window.location.hostname + ';',
+      'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.' + window.location.hostname + ';'
+    ];
+
+    cookiesToDelete.forEach(function (cookie) {
+      document.cookie = cookie;
+    });
+  }
+
+  function getGoogleTranslateCookie() {
+    const match = document.cookie.match(/googtrans=\/ro\/([a-z]+)/);
+
+    if (!match) {
+      return 'ro';
+    }
+
+    return match[1];
+  }
+
+  function setDropdownValue(languageCode) {
+    const languageSelect = document.getElementById('languageSelect');
+
+    if (languageSelect) {
+      languageSelect.value = languageCode;
+    }
+  }
+
+  function changeLanguage(languageCode) {
+    localStorage.setItem('selectedLanguage', languageCode);
+    setDropdownValue(languageCode);
+
+    if (languageCode === 'ro') {
+      removeGoogleTranslateCookies();
+      localStorage.setItem('selectedLanguage', 'ro');
+
+      setTimeout(function () {
+        window.location.reload();
+      }, 100);
+
+      return;
+    }
+
+    const googleSelect = document.querySelector('.goog-te-combo');
+
+    if (!googleSelect) {
+      setTimeout(function () {
+        changeLanguage(languageCode);
+      }, 500);
+      return;
+    }
+
+    googleSelect.value = languageCode;
+    googleSelect.dispatchEvent(new Event('change'));
+
+    setTimeout(function () {
+      setDropdownValue(languageCode);
+    }, 500);
+  }
+
+  window.addEventListener('load', function () {
+    const savedLanguage = localStorage.getItem('selectedLanguage') || getGoogleTranslateCookie() || 'ro';
+
+    setDropdownValue(savedLanguage);
+
+    if (savedLanguage !== 'ro') {
+      setTimeout(function () {
+        changeLanguage(savedLanguage);
+      }, 1000);
+    }
+  });
+</script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+
+</html>

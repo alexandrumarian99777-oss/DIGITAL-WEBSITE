@@ -1,0 +1,17 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<%- include('partials/flash') %>
+
+<main>
+  <section class="section login-section">
+    <form class="login-card" method="POST" action="/login">
+      <h1>Login admin</h1>
+      <p>Acces privat pentru lead-uri, review-uri video, bloguri și programări.</p>
+      <input name="email" type="email" placeholder="Email" required>
+      <input name="password" type="password" placeholder="Parolă" required>
+      <button class="btn btn-primary full" type="submit">Intră în dashboard</button>
+    </form>
+  </section>
+</main>
+
+<%- include('partials/footer') %>

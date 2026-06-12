@@ -1,0 +1,35 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<%- include('partials/flash') %>
+
+<main>
+  <section class="page-hero section">
+    <div class="container narrow">
+      <p class="eyebrow">Blog</p>
+      <h1>Idei despre site-uri, SEO local, booking și lead-uri pentru afaceri locale.</h1>
+      <p>Articole create pentru antreprenori care vor să înțeleagă ce transformă un site într-un instrument de vânzare.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container blog-grid">
+      <% if (posts.length === 0) { %>
+        <p class="empty-state">Nu există articole publicate încă.</p>
+      <% } %>
+      <% posts.forEach((post) => { %>
+        <article class="blog-card equal-card">
+          <% if (post.coverImage) { %>
+            <img src="<%= post.coverImage %>" alt="<%= post.coverAlt || post.title %>" loading="lazy">
+          <% } %>
+          <div>
+            <h2><%= post.title %></h2>
+            <p><%= post.excerpt %></p>
+          </div>
+          <a class="card-link" href="/blog/<%= post.slug %>">Citește articolul</a>
+        </article>
+      <% }) %>
+    </div>
+  </section>
+</main>
+
+<%- include('partials/footer') %>

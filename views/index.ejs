@@ -1,0 +1,232 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<%- include('partials/flash') %>
+
+<main>
+  <section class="hero section">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow"><%= content.hero.eyebrow %></p>
+        <h1><%= content.hero.title %></h1>
+        <p class="hero-text"><%= content.hero.text %></p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/contact#formular"><%= content.hero.primary %></a>
+          <a class="btn btn-secondary" href="#pachete"><%= content.hero.secondary %></a>
+        </div>
+        <p class="domain-note">Domeniul se plătește separat de client. Configurarea domeniului este inclusă.</p>
+      </div>
+      <div class="hero-card" aria-label="Previzualizare dashboard lead-uri">
+        <div class="mini-bar"><span></span><span></span><span></span></div>
+        <h2>Dashboard privat</h2>
+        <div class="lead-row"><strong>Lead nou</strong><span>Contactat</span></div>
+        <div class="lead-row"><strong>Review video</strong><span>Aprobat</span></div>
+        <div class="lead-row"><strong>Programare</strong><span>10:30</span></div>
+        <div class="pulse-card">+ cereri salvate direct în sistem</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-section">
+    <div class="container stats-grid">
+      <% content.trustStats.forEach((stat) => { %>
+      <div class="stat-card">
+        <strong><%= stat.value %></strong>
+        <span><%= stat.label %></span>
+      </div>
+      <% }) %>
+    </div>
+  </section>
+
+  <section id="ce-rezolam" class="section">
+    <div class="container section-heading">
+      <p class="eyebrow">Ce reparăm și ce facem</p>
+      <h2>Problemele reale care opresc clienții din a te contacta</h2>
+      <p>Un site bun nu este doar design. Este un sistem care explică, convinge, colectează cereri și transmite
+        încredere.</p>
+    </div>
+    <div class="container cards-grid three">
+      <% content.fixes.forEach((item) => { %>
+      <article class="service-card equal-card">
+        <h3><%= item.title %></h3>
+        <p><%= item.text %></p>
+        <a class="card-link" href="/contact#formular">Vreau asta pe site</a>
+      </article>
+      <% }) %>
+    </div>
+  </section>
+
+  <section id="sistem" class="section dark-section">
+    <div class="container split-grid">
+      <div>
+        <p class="eyebrow orange">Prezentarea sistemului</p>
+        <h2>Nu vindem doar un site. Construim un traseu clar de la vizitator la cumparator .</h2>
+        <p>Fiecare secțiune are un rol: să explice oferta, să crească încrederea, să colecteze date și să te ajute să
+          urmărești oportunitățile din dashboard.</p>
+      </div>
+      <div class="system-list">
+        <% content.system.forEach((item) => { %>
+        <div class="system-item">
+          <h3><%= item.title %></h3>
+          <p><%= item.text %></p>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container section-heading">
+      <p class="eyebrow">Cum lucrăm</p>
+      <h2>What working with us looks like</h2>
+      <p>Proces scurt, clar și ușor de urmărit. Fără întâlniri inutile și fără haos.</p>
+    </div>
+    <div class="container cards-grid three">
+      <% content.process.forEach((item) => { %>
+      <article class="process-card equal-card">
+        <span class="step"><%= item.step %></span>
+        <h3><%= item.title %></h3>
+        <p><%= item.text %></p>
+      </article>
+      <% }) %>
+    </div>
+  </section>
+
+  <section id="pachete" class="section soft-section">
+    <div class="container section-heading">
+      <p class="eyebrow">Pachete lunare</p>
+      <h2>Fără taxă de setup. Plătești lunar pentru site, mentenanță și suport.</h2>
+      <p>Alege nivelul potrivit. Pachetele au limite clare, ca să nu transformăm proiectul într-o gaură de timp.</p>
+    </div>
+    <div class="container pricing-grid">
+      <% content.packages.forEach((pkg) => { %>
+      <article class="pricing-card equal-card <%= pkg.featured ? 'featured' : '' %>">
+        <span class="pricing-tag"><%= pkg.tag %></span>
+        <h3><%= pkg.name %></h3>
+        <div class="price"><%= pkg.price %></div>
+        <p class="intro-price"><%= pkg.introPrice %></p>
+        <p><%= pkg.bestFor %></p>
+        <p class="pages"><%= pkg.pages %></p>
+        <h4>Inclus</h4>
+        <ul>
+          <% pkg.included.forEach((feature) => { %><li><%= feature %></li><% }) %>
+        </ul>
+        <h4>Nu este inclus</h4>
+        <ul class="muted-list">
+          <% pkg.notIncluded.forEach((feature) => { %><li><%= feature %></li><% }) %>
+        </ul>
+        <a class="btn btn-primary full" href="/contact#formular">Book a demo call</a>
+      </article>
+      <% }) %>
+    </div>
+    <div class="container contract-note"><%= content.contractNote %></div>
+  </section>
+  <section id="testimoniale" class="section">
+    <div class="container section-heading">
+      <p class="eyebrow">Review-uri video</p>
+      <h2>Testimoniale care arată mai real decât citatele perfecte</h2>
+      <p>
+        Video-ul construiește încredere mai repede. Clienții pot trimite review-uri direct de pe homepage,
+        iar tu le aprobi din dashboard înainte să apară public.
+      </p>
+    </div>
+
+    <div class="container cards-grid three">
+      <% if (reviews.length === 0) { %>
+      <p class="empty-state">Primele testimoniale vor apărea aici în curând.</p>
+      <% } %>
+
+      <% reviews.forEach((review) => { %>
+      <article class="review-card equal-card">
+        <% if (review.videoUrl) { %>
+        <% if (review.videoUrl.startsWith('/uploads/')) { %>
+        <video class="video-box" controls preload="metadata" aria-label="Review video de la <%= review.customerName %>">
+          <source src="<%= review.videoUrl %>">
+        </video>
+        <% } else { %>
+        <a class="video-box video-link" href="<%= review.videoUrl %>" target="_blank" rel="noopener"
+          aria-label="Deschide review video">
+          <% if (review.thumbnail) { %>
+          <img src="<%= review.thumbnail %>" alt="Review video de la <%= review.customerName %>" loading="lazy">
+          <% } else { %>
+          <span>▶</span>
+          <% } %>
+        </a>
+        <% } %>
+        <% } %>
+
+        <div class="stars"><%= '★'.repeat(review.rating) %></div>
+        <p>“<%= review.quote %>”</p>
+        <strong><%= review.customerName %></strong>
+
+        <% if (review.businessName) { %>
+        <span><%= review.businessName %></span>
+        <% } %>
+      </article>
+      <% }) %>
+    </div>
+
+    <div class="container">
+      <div class="review-submit-box">
+        <h3>Lasă un review</h3>
+        <p>Scrie un testimonial scurt. Review-ul va fi verificat înainte să apară public.</p>
+
+        <form class="review-form" method="POST" action="/reviews">
+          <div class="form-grid two">
+            <input name="customerName" type="text" placeholder="Numele tău" required>
+
+            <input name="businessName" type="text" placeholder="Afacerea ta, opțional">
+          </div>
+
+          <select name="rating" required>
+            <option value="">Alege rating</option>
+            <option value="5">5 stele</option>
+            <option value="4">4 stele</option>
+            <option value="3">3 stele</option>
+            <option value="2">2 stele</option>
+            <option value="1">1 stea</option>
+          </select>
+
+          <textarea name="quote" placeholder="Scrie review-ul tău aici..." required></textarea>
+
+          <button class="btn btn-primary" type="submit">
+            Trimite review
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft-section">
+    <div class="container section-heading">
+      <p class="eyebrow">Blog SEO</p>
+      <h2>Articole care educă piața și ajută Google să înțeleagă ce faci</h2>
+    </div>
+    <div class="container blog-grid">
+      <% posts.forEach((post) => { %>
+      <article class="blog-card equal-card">
+        <% if (post.coverImage) { %>
+        <img src="<%= post.coverImage %>" alt="<%= post.coverAlt || post.title %>" loading="lazy">
+        <% } %>
+        <div>
+          <h3><%= post.title %></h3>
+          <p><%= post.excerpt %></p>
+        </div>
+        <a class="card-link" href="/blog/<%= post.slug %>">Citește articolul</a>
+      </article>
+      <% }) %>
+    </div>
+    <div class="container center-button">
+      <a class="btn btn-secondary" href="/blog">Vezi toate articolele</a>
+    </div>
+  </section>
+
+  <section class="section final-cta">
+    <div class="container final-card">
+      <h2>Vrei un site care colectează cereri, nu doar complimente?</h2>
+      <p>Trimite detaliile afacerii tale și îți arătăm cum ar putea arăta sistemul tău.</p>
+      <a class="btn btn-primary" href="/contact#formular">Programează demo gratuit</a>
+    </div>
+  </section>
+</main>
+
+<%- include('partials/footer') %>
