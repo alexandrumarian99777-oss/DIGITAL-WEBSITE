@@ -19,7 +19,7 @@
   <section id="leaduri" class="admin-panel">
     <div class="panel-title">
       <h2>Lead-uri</h2>
-      <p>Creează lead-uri, apoi editează sau șterge lead-urile existente.</p>
+      <p>Creează lead-uri, apoi editează, șterge sau actualizează statusurile.</p>
     </div>
 
     <form class="admin-form" method="POST" action="/dashboard/leads">
@@ -53,8 +53,58 @@
           <p>
             <strong>Email:</strong> <%= lead.email %><br>
             <strong>Telefon:</strong> <%= lead.phone %><br>
-            <strong>Status:</strong> <%= lead.status %>
+            <strong>Status vânzare:</strong> <%= lead.status || 'nou' %>
           </p>
+
+          <div class="lead-status-box">
+            <div class="status-badges">
+              <span class="status-badge <%= lead.completionStatus || 'uncompleted' %>">
+                <%= lead.completionStatus === 'completed' ? 'Completed' : 'Uncompleted' %>
+              </span>
+
+              <span class="status-badge <%= lead.callStatus || 'uncalled' %>">
+                <%= lead.callStatus === 'called' ? 'Called' : 'Uncalled' %>
+              </span>
+
+              <span class="status-badge <%= lead.paymentStatus || 'unpaid' %>">
+                <%= lead.paymentStatus === 'paid' ? 'Paid' : 'Unpaid' %>
+              </span>
+            </div>
+
+            <form class="admin-form compact status-form" method="POST" action="/dashboard/leads/<%= lead._id %>/status">
+              <select name="completionStatus">
+                <option value="uncompleted"
+                  <%= lead.completionStatus === 'uncompleted' || !lead.completionStatus ? 'selected' : '' %>>
+                  Uncompleted
+                </option>
+                <option value="completed" <%= lead.completionStatus === 'completed' ? 'selected' : '' %>>
+                  Completed
+                </option>
+              </select>
+
+              <select name="callStatus">
+                <option value="uncalled" <%= lead.callStatus === 'uncalled' || !lead.callStatus ? 'selected' : '' %>>
+                  Uncalled
+                </option>
+                <option value="called" <%= lead.callStatus === 'called' ? 'selected' : '' %>>
+                  Called
+                </option>
+              </select>
+
+              <select name="paymentStatus">
+                <option value="unpaid" <%= lead.paymentStatus === 'unpaid' || !lead.paymentStatus ? 'selected' : '' %>>
+                  Unpaid
+                </option>
+                <option value="paid" <%= lead.paymentStatus === 'paid' ? 'selected' : '' %>>
+                  Paid
+                </option>
+              </select>
+
+              <button class="btn btn-primary mini" type="submit">
+                Salvează status
+              </button>
+            </form>
+          </div>
 
           <% if (lead.businessName) { %>
           <p><strong>Afacere:</strong> <%= lead.businessName %></p>

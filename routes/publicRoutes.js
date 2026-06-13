@@ -3,8 +3,53 @@
   const Review = require('../models/Review');
   const Blog = require('../models/Blog');
   const buildTimeSlots = require("../utils/timeSlots");
-  const router = express.Router();
   const sendTelegramLead = require('../utils/sendTelegramLead');
+  const multer = require('multer');
+  const path = require('path');
+  const fs = require('fs');
+
+  const router = express.Router();
+  const reviewUploadDir = path.join(__dirname, '..', 'public', 'uploads', 'reviews');
+
+  if (!fs.existsSync(reviewUploadDir)) {
+    fs.mkdirSync(reviewUploadDir, {
+      recursive: true
+    });
+  }
+
+  const reviewStorage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, reviewUploadDir);
+    },
+    filename: function (req, file, cb) {
+      const cleanName = file.originalname
+        .toLowerCase()
+        .replace(/\s+/g, '-')
+        .replace(/[^a-z0-9.-]/g, '');
+
+      cb(null, Date.now() + '-' + cleanName);
+    }
+  });
+
+  const uploadReviewVideo = multer({
+    storage: reviewStorage,
+    limits: {
+      fileSize: 150 * 1024 * 1024
+    },
+    fileFilter: function (req, file, cb) {
+      if (!file.mimetype.startsWith('video/')) {
+        return cb(new Error('Poți încărca doar fișiere video.'));
+      }
+
+      cb(null, true);
+    }
+  });
+
+  function deleteUploadedFile(file) {
+    if (file && file.path) {
+      fs.unlink(file.path, function () {});
+    }
+  }
 
   function pageMeta(req, res, title, description, path = req.path, extra = {}) {
     return {
@@ -259,18 +304,35 @@
       next(error);
     }
   });
-  router.post('/reviews', async (req, res, next) => {
+  router.post('/reviews', uploadReviewVideo.single('videoFile'), async (req, res, next) => {
     try {
       const rating = Number(req.body.rating);
 
+      const consentDataProcessing = req.body.consentDataProcessing === 'yes';
+      const consentPublicDisplay = req.body.consentPublicDisplay === 'yes';
+
       if (!req.body.customerName || !req.body.quote || !rating) {
+        deleteUploadedFile(req.file);
         req.flash('error', 'Completează numele, rating-ul și mesajul review-ului.');
-        return res.redirect('/#reviewuri');
+        return res.redirect('/#testimoniale');
       }
 
       if (rating < 1 || rating > 5) {
+        deleteUploadedFile(req.file);
         req.flash('error', 'Rating-ul trebuie să fie între 1 și 5.');
-        return res.redirect('/#reviewuri');
+        return res.redirect('/#testimoniale');
+      }
+
+      if (!consentDataProcessing) {
+        deleteUploadedFile(req.file);
+        req.flash('error', 'Trebuie să accepți prelucrarea datelor pentru a trimite review-ul.');
+        return res.redirect('/#testimoniale');
+      }
+
+      if (!consentPublicDisplay) {
+        deleteUploadedFile(req.file);
+        req.flash('error', 'Trebuie să accepți afișarea publică a numelui și review-ului pentru ca testimonialul să poată fi publicat.');
+        return res.redirect('/#testimoniale');
       }
 
       await Review.create({
@@ -278,12 +340,17 @@
         businessName: req.body.businessName,
         rating,
         quote: req.body.quote,
-        approved: false
+        videoUrl: req.file ? `/uploads/reviews/${req.file.filename}` : '',
+        approved: false,
+        consentDataProcessing,
+        consentPublicDisplay,
+        consentDate: new Date()
       });
 
       req.flash('success', 'Review-ul a fost trimis. Va apărea pe site după aprobare.');
-      res.redirect('/#reviewuri');
+      res.redirect('/#testimoniale');
     } catch (error) {
+      deleteUploadedFile(req.file);
       next(error);
     }
   });

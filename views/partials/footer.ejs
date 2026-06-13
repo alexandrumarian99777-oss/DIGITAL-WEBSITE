@@ -13,7 +13,6 @@
       <div class="socials">
         <a href="<%= content.business.facebook %>" aria-label="Facebook">Facebook</a>
         <a href="<%= content.business.instagram %>" aria-label="Instagram">Instagram</a>
-        <a href="<%= content.business.linkedin %>" aria-label="LinkedIn">LinkedIn</a>
       </div>
     </div>
 
@@ -37,9 +36,9 @@
     <div class="footer-column">
       <h3>Legal</h3>
       <a href="/termeni-si-conditii">Termeni & condiții</a>
-      <a href="/politica-de-confidentialitate">Privacy Policy</a>
-      <a href="/cerere-confidentialitate">Privacy Request</a>
-      <a href="/setari-cookie">Cookie Settings</a>
+      <a href="/politica-de-confidentialitate">Politica de confidențialitate</a>
+      <a href="/cerere-confidentialitate">Cerere de confidențialitate</a>
+      <a href="/setari-cookie">Setari Cookies</a>
 
       <p class="footer-contact">
         <%= content.business.phone %><br>
@@ -53,7 +52,6 @@
     <span>Domeniul se achită separat de client. Setup domeniu inclus.</span>
   </div>
 </footer>
-
 
 <script>
   function googleTranslateElementInit() {
@@ -140,7 +138,8 @@
 </script>
 
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+<%- include('./cookie-banner') %>
+<script src="/js/cookie-consent.js"></script>
 </body>
 
 </html>

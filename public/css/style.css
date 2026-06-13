@@ -1039,6 +1039,122 @@ textarea {
   line-height: 1.75;
 }
 
+.lead-status-box {
+  margin: 18px 0;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: #ffffff;
+}
+
+.status-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 11px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 900;
+  border: 1px solid transparent;
+}
+
+.status-badge.completed,
+.status-badge.called,
+.status-badge.paid {
+  background: #ecfdf5;
+  color: #047857;
+  border-color: #a7f3d0;
+}
+
+.status-badge.uncompleted,
+.status-badge.uncalled,
+.status-badge.unpaid {
+  background: #fef2f2;
+  color: #b91c1c;
+  border-color: #fecaca;
+}
+
+.status-form {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  align-items: center;
+}
+
+.status-form select {
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+}
+
+.public-upload-box {
+  box-shadow: none;
+}
+
+.consent-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: #ffffff;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.consent-check input {
+  width: auto;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.consent-check span {
+  display: block;
+}
+
+.btn,
+.btn-secondary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.legal-button-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.legal-button-center .btn {
+  width: fit-content;
+}
+
+.nav-cta {
+  position: relative;
+  top: -12px;
+}
+
+@media (max-width: 900px) {
+  .status-form {
+    grid-template-columns: 1fr;
+  }
+
+  .status-badges {
+    justify-content: center;
+  }
+}
+
 /* Responsive */
 
 @media (max-width: 960px) {
@@ -1145,6 +1261,13 @@ textarea {
 @media (max-width: 700px) {
   .form-grid.two {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 621px) {
+  .nav-cta {
+    position: relative;
+    top: -6px;
   }
 }
 

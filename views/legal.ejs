@@ -1,30 +1,58 @@
 <%- include('partials/head') %>
 <%- include('partials/header') %>
+<%- include('partials/flash') %>
 
 <main>
-  <section class="page-hero section">
-    <div class="container narrow">
-      <p class="eyebrow">Legal</p>
-      <h1><%= page.title %></h1>
-      <p><%= page.description %></p>
-    </div>
-  </section>
-  <section class="section">
-    <div class="container narrow legal-content">
-      <% page.sections.forEach((section) => { %>
-      <p><%= section %></p>
-      <% }) %>
+  <section class="section legal-section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Legal</p>
+        <h1><%= page.title %></h1>
+
+        <% if (page.updatedAt) { %>
+        <p><%= page.updatedAt %></p>
+        <% } %>
+
+        <% if (page.description) { %>
+        <p><%= page.description %></p>
+        <% } %>
+
+        <% if (page.intro) { %>
+        <p><%= page.intro %></p>
+        <% } %>
+      </div>
+
+      <div class="legal-content">
+        <% page.sections.forEach((section) => { %>
+        <article class="legal-block">
+          <% if (section.title && section.text) { %>
+          <h2><%= section.title %></h2>
+          <p><%= section.text %></p>
+          <% } else { %>
+          <p><%= section %></p>
+          <% } %>
+        </article>
+        <% }) %>
+
+        <% if (page.title === 'Politica de cookie-uri' || page.title === 'Setări cookie' || page.title === 'Cookie Settings') { %>
+        <article class="legal-block">
+          <h2>Schimbă preferințele cookie</h2>
+          <p>
+            Apasă butonul de mai jos pentru a șterge preferințele salvate și pentru a afișa din nou bannerul de cookies.
+          </p>
+
+          <div class="legal-button-center">
+            <button class="btn btn-secondary" type="button" id="openCookieSettingsBtn">
+              Schimbă preferințele cookie
+            </button>
+          </div>
+        </article>
+
+
+        <% } %>
+      </div>
     </div>
   </section>
 </main>
-<button class="btn btn-secondary" type="button" onclick="resetCookieConsent()">
-  Schimbă preferințele cookie
-</button>
 
-<script>
-  function resetCookieConsent() {
-    localStorage.removeItem("cookieConsent");
-    window.location.href = "/";
-  }
-</script>
 <%- include('partials/footer') %>

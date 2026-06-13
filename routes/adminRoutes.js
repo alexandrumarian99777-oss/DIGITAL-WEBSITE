@@ -8,14 +8,20 @@ const Lead = require('../models/Lead');
 const Review = require('../models/Review');
 const Blog = require('../models/Blog');
 const Appointment = require('../models/Appointment');
-const { sendAppointmentEmail } = require('../services/emailService');
+const {
+  sendAppointmentEmail
+} = require('../services/emailService');
 
 const router = express.Router();
 
 const blogUploadDir = path.join(__dirname, '..', 'public', 'uploads', 'blogs');
 const reviewUploadDir = path.join(__dirname, '..', 'public', 'uploads', 'reviews');
-fs.mkdirSync(blogUploadDir, { recursive: true });
-fs.mkdirSync(reviewUploadDir, { recursive: true });
+fs.mkdirSync(blogUploadDir, {
+  recursive: true
+});
+fs.mkdirSync(reviewUploadDir, {
+  recursive: true
+});
 
 function safeFileName(originalName, fallback) {
   const extension = path.extname(originalName).toLowerCase();
@@ -34,7 +40,9 @@ const blogImageUpload = multer({
     destination: (req, file, cb) => cb(null, blogUploadDir),
     filename: (req, file, cb) => cb(null, safeFileName(file.originalname, 'blog-image'))
   }),
-  limits: { fileSize: 8 * 1024 * 1024 },
+  limits: {
+    fileSize: 8 * 1024 * 1024
+  },
   fileFilter: (req, file, cb) => {
     if (!file.mimetype.startsWith('image/')) {
       return cb(new Error('Sunt permise doar fișiere imagine.'));
@@ -48,7 +56,9 @@ const reviewVideoUpload = multer({
     destination: (req, file, cb) => cb(null, reviewUploadDir),
     filename: (req, file, cb) => cb(null, safeFileName(file.originalname, 'review-video'))
   }),
-  limits: { fileSize: 150 * 1024 * 1024 },
+  limits: {
+    fileSize: 150 * 1024 * 1024
+  },
   fileFilter: (req, file, cb) => {
     if (!file.mimetype.startsWith('video/')) {
       return cb(new Error('Sunt permise doar fișiere video.'));
@@ -70,7 +80,11 @@ function isValidHalfHour(time) {
 }
 
 function makeSlug(input) {
-  return slugify(input || '', { lower: true, strict: true, locale: 'ro' });
+  return slugify(input || '', {
+    lower: true,
+    strict: true,
+    locale: 'ro'
+  });
 }
 
 function parseTags(tags) {
@@ -97,10 +111,19 @@ router.use(requireAdmin);
 router.get('/', async (req, res, next) => {
   try {
     const [leads, reviews, posts, appointments] = await Promise.all([
-      Lead.find().sort({ createdAt: -1 }),
-      Review.find().sort({ createdAt: -1 }),
-      Blog.find().sort({ createdAt: -1 }),
-      Appointment.find().sort({ date: 1, time: 1 })
+      Lead.find().sort({
+        createdAt: -1
+      }),
+      Review.find().sort({
+        createdAt: -1
+      }),
+      Blog.find().sort({
+        createdAt: -1
+      }),
+      Appointment.find().sort({
+        date: 1,
+        time: 1
+      })
     ]);
 
     res.render('admin/dashboard', {
@@ -129,7 +152,9 @@ router.post('/leads', async (req, res, next) => {
 
 router.post('/leads/:id/update', async (req, res, next) => {
   try {
-    await Lead.findByIdAndUpdate(req.params.id, req.body, { runValidators: true });
+    await Lead.findByIdAndUpdate(req.params.id, req.body, {
+      runValidators: true
+    });
     req.flash('success', 'Lead actualizat.');
     res.redirect('/dashboard#leaduri');
   } catch (error) {
@@ -182,7 +207,9 @@ router.post('/reviews/:id/update', reviewVideoUpload.single('videoFile'), async 
       videoUrl: getReviewVideo(req, current.videoUrl),
       thumbnail: req.body.thumbnail,
       approved: Boolean(req.body.approved)
-    }, { runValidators: true });
+    }, {
+      runValidators: true
+    });
 
     req.flash('success', 'Review actualizat.');
     res.redirect('/dashboard#reviewuri');
@@ -274,7 +301,9 @@ router.post('/blogs/:id/update', blogImageUpload.single('coverImageFile'), async
       keywords: req.body.keywords,
       tags: parseTags(req.body.tags),
       published: Boolean(req.body.published)
-    }, { runValidators: true });
+    }, {
+      runValidators: true
+    });
 
     req.flash('success', 'Articol actualizat.');
     res.redirect('/dashboard#bloguri');
@@ -300,7 +329,10 @@ router.post('/appointments', async (req, res, next) => {
       return res.redirect('/dashboard#programari');
     }
 
-    const exists = await Appointment.findOne({ date: req.body.date, time: req.body.time });
+    const exists = await Appointment.findOne({
+      date: req.body.date,
+      time: req.body.time
+    });
     if (exists) {
       req.flash('error', 'Există deja o programare pentru această dată și oră.');
       return res.redirect('/dashboard#programari');
@@ -337,7 +369,13 @@ router.post('/appointments/:id/update', async (req, res, next) => {
       return res.redirect('/dashboard#programari');
     }
 
-    const conflict = await Appointment.findOne({ date: req.body.date, time: req.body.time, _id: { $ne: req.params.id } });
+    const conflict = await Appointment.findOne({
+      date: req.body.date,
+      time: req.body.time,
+      _id: {
+        $ne: req.params.id
+      }
+    });
     if (conflict) {
       req.flash('error', 'Există deja o altă programare pentru această dată și oră.');
       return res.redirect('/dashboard#programari');
@@ -354,7 +392,9 @@ router.post('/appointments/:id/update', async (req, res, next) => {
       notes: req.body.notes,
       customEmailMessage: req.body.customEmailMessage,
       status: req.body.status
-    }, { runValidators: true });
+    }, {
+      runValidators: true
+    });
 
     req.flash('success', 'Programare actualizată.');
     res.redirect('/dashboard#programari');
@@ -372,5 +412,22 @@ router.post('/appointments/:id/delete', async (req, res, next) => {
     next(error);
   }
 });
+router.post('/leads/:id/status', async (req, res, next) => {
+  try {
+    await Lead.findByIdAndUpdate(
+      req.params.id, {
+        completionStatus: req.body.completionStatus,
+        callStatus: req.body.callStatus,
+        paymentStatus: req.body.paymentStatus
+      }, {
+        runValidators: true
+      }
+    );
 
+    req.flash('success', 'Statusul lead-ului a fost actualizat.');
+    res.redirect('/dashboard#leaduri');
+  } catch (error) {
+    next(error);
+  }
+});
 module.exports = router;
