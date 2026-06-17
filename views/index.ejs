@@ -104,7 +104,7 @@
       <p>Alege nivelul potrivit. Pachetele au limite clare, ca să nu transformăm proiectul într-o gaură de timp.</p>
     </div>
 
-    <div class="container pricing-grid">
+    <div class="container-bgg pricing-grid">
       <% content.packages.forEach((pkg) => { %>
       <article class="pricing-card equal-card <%= pkg.featured ? 'featured' : '' %>">
         <span class="pricing-tag"><%= pkg.tag %></span>
@@ -225,7 +225,7 @@
             </span>
           </label>
 
-          <button class="btn btn-primary" type="submit">
+          <button class="btn btn-primary review-small-btn" type="submit">
             Trimite review
           </button>
         </form>
@@ -265,7 +265,9 @@
     <div class="container final-card">
       <h2>Vrei un site care colectează cereri, nu doar complimente?</h2>
       <p>Trimite detaliile afacerii tale și îți arătăm cum ar putea arăta sistemul tău.</p>
-      <a class="btn btn-primary" href="/contact#formular">Programează demo gratuit</a>
+      <a class="btn btn-primary cta-small-btn" href="/contact#formular">
+        Programează demo gratuit
+      </a>
     </div>
   </section>
 </main>

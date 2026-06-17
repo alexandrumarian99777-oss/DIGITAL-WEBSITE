@@ -439,10 +439,18 @@ p {
 }
 
 /* Pricing */
+.container-bgg {
+  width: 100%;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
 
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   align-items: stretch;
 }
@@ -1143,6 +1151,215 @@ textarea {
 .nav-cta {
   position: relative;
   top: -12px;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-actions .btn {
+  white-space: nowrap;
+}
+
+.nav-call {
+  border: 1px solid rgba(15, 23, 42, 0.14);
+}
+
+.nav-call {
+  position: relative;
+  top: -6px;
+}
+
+.form-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 14px 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.form-consent input {
+  width: auto;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.form-consent a {
+  color: var(--primary);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.form-consent a:hover {
+  text-decoration: underline;
+}
+
+.cta-small-btn {
+  width: fit-content;
+  min-width: 260px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 16px 34px;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.review-small-btn {
+  width: fit-content !important;
+  min-width: 220px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 14px 28px;
+  display: inline-flex;
+  justify-content: center;
+}
+
+/* Dashboard buttons - smaller and not full width */
+.admin-main .btn,
+.admin-main button.btn,
+.admin-main a.btn,
+.admin-main summary.btn {
+  width: fit-content !important;
+  min-width: auto !important;
+  max-width: 100%;
+  padding: 10px 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+
+/* Smaller buttons inside compact forms */
+.admin-main .btn.mini,
+.admin-main .status-form .btn {
+  padding: 8px 12px;
+  font-size: 0.82rem;
+}
+
+/* Danger delete buttons */
+.admin-main .danger-btn {
+  width: fit-content !important;
+  min-width: auto !important;
+  max-width: 100%;
+  padding: 9px 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  white-space: nowrap;
+  font-size: 0.85rem;
+  line-height: 1.2;
+}
+
+/* Keep action buttons aligned nicely */
+.admin-main .admin-actions,
+.admin-main .form-actions,
+.admin-main .card-actions,
+.admin-main .table-actions,
+.admin-main .lead-actions,
+.admin-main .review-actions,
+.admin-main .appointment-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Forms inside dashboard */
+.admin-main .admin-form button,
+.admin-main form button,
+.admin-main form .btn {
+  width: fit-content !important;
+}
+
+/* Details edit button */
+.admin-main details summary.btn {
+  cursor: pointer;
+  list-style: none;
+}
+
+.admin-main details summary.btn::-webkit-details-marker {
+  display: none;
+}
+
+/* Space between edit and delete buttons */
+.admin-main .edit-box {
+  margin-top: 18px;
+  margin-bottom: 12px;
+}
+
+.admin-main article.admin-item>form {
+  margin-top: 10px;
+}
+
+/* Status form button alignment */
+.admin-main .status-form {
+  align-items: center;
+}
+
+.admin-main .status-form .btn {
+  margin-top: 0;
+}
+
+/* Mobile dashboard buttons */
+@media (max-width: 768px) {
+
+  .admin-main .btn,
+  .admin-main button.btn,
+  .admin-main a.btn,
+  .admin-main summary.btn,
+  .admin-main .danger-btn {
+    width: fit-content !important;
+    max-width: 100%;
+  }
+
+  .admin-main .admin-actions,
+  .admin-main .form-actions,
+  .admin-main .card-actions,
+  .admin-main .table-actions,
+  .admin-main .lead-actions,
+  .admin-main .review-actions,
+  .admin-main .appointment-actions {
+    justify-content: center;
+  }
+
+  .admin-main article.admin-item>form {
+    display: flex;
+    justify-content: center;
+  }
+
+  .admin-main .edit-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-actions {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .nav-actions .btn {
+    width: fit-content;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-bgg {
+    max-width: 100%;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
 }
 
 @media (max-width: 900px) {

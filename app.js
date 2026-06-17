@@ -11,6 +11,8 @@ const content = require('./data/content');
 const publicRoutes = require('./routes/publicRoutes');
 const authRoutes = require('./routes/authRoutes');
 const adminRoutes = require('./routes/adminRoutes');
+const startReviewReminderJob = require('./jobs/reviewReminderJob');
+
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -23,7 +25,9 @@ app.use(express.static(path.join(__dirname, 'public'), {
   etag: true
 }));
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({
+  extended: true
+}));
 app.use(express.json());
 app.use(methodOverride('_method'));
 
@@ -77,6 +81,8 @@ connectDB()
     app.listen(PORT, () => {
       console.log(`Server pornit pe http://localhost:${PORT}`);
       console.log(`Login admin: http://localhost:${PORT}/login`);
+      startReviewReminderJob();
+
     });
   })
   .catch((error) => {

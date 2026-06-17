@@ -61,6 +61,19 @@ const leadSchema = new mongoose.Schema({
     type: String,
     enum: ['unpaid', 'paid'],
     default: 'unpaid'
+  },
+
+  reviewReminderDueAt: {
+    type: Date
+  },
+
+  reviewReminderSent: {
+    type: Boolean,
+    default: false
+  },
+
+  reviewReminderSentAt: {
+    type: Date
   }
 }, {
   timestamps: true

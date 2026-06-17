@@ -24,7 +24,15 @@
 
     </nav>
 
-    <a class="btn btn-primary nav-cta" href="/contact#formular">Demo gratuit</a>
+    <div class="nav-actions">
+      <a class="btn btn-primary nav-cta" href="/contact#formular">
+        Demo gratuit
+      </a>
+
+      <a class="btn btn-secondary nav-call" href="tel:<%= content.business.phone.replace(/\s+/g, '') %>">
+        Sună acum
+      </a>
+    </div>
     <div class="language-switcher notranslate" translate="no">
       <select id="languageSelect" onchange="changeLanguage(this.value)" aria-label="Schimbă limba">
         <option value="ro">RO</option>

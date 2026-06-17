@@ -414,17 +414,42 @@ router.post('/appointments/:id/delete', async (req, res, next) => {
 });
 router.post('/leads/:id/status', async (req, res, next) => {
   try {
-    await Lead.findByIdAndUpdate(
-      req.params.id, {
-        completionStatus: req.body.completionStatus,
-        callStatus: req.body.callStatus,
-        paymentStatus: req.body.paymentStatus
-      }, {
-        runValidators: true
-      }
-    );
+    const lead = await Lead.findById(req.params.id);
 
-    req.flash('success', 'Statusul lead-ului a fost actualizat.');
+    if (!lead) {
+      req.flash('error', 'Lead-ul nu a fost găsit.');
+      return res.redirect('/dashboard#leaduri');
+    }
+
+    lead.completionStatus = req.body.completionStatus;
+    lead.callStatus = req.body.callStatus;
+    lead.paymentStatus = req.body.paymentStatus;
+
+    const isReadyForReviewReminder =
+      lead.completionStatus === 'completed' &&
+      lead.paymentStatus === 'paid' &&
+      lead.email &&
+      !lead.reviewReminderSent;
+
+    if (isReadyForReviewReminder && !lead.reviewReminderDueAt) {
+      const threeDaysFromNow = new Date();
+      threeDaysFromNow.setDate(threeDaysFromNow.getDate() + 3);
+
+      lead.reviewReminderDueAt = threeDaysFromNow;
+    }
+
+    if (!isReadyForReviewReminder && !lead.reviewReminderSent) {
+      lead.reviewReminderDueAt = undefined;
+    }
+
+    await lead.save();
+
+    if (isReadyForReviewReminder) {
+      req.flash('success', 'Statusul lead-ului a fost actualizat. Reminder-ul pentru review este programat peste 3 zile.');
+    } else {
+      req.flash('success', 'Statusul lead-ului a fost actualizat.');
+    }
+
     res.redirect('/dashboard#leaduri');
   } catch (error) {
     next(error);
