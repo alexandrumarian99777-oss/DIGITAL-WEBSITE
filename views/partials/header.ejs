@@ -5,43 +5,45 @@
       <span><%= content.business.shortName %></span>
     </a>
 
-    <nav class="nav-links" aria-label="Navigație principală">
-      <% content.nav.forEach((item) => { %>
-      <a href="<%= item.href %>" class="<%= currentPath === item.href ? 'active' : '' %>">
-        <%= item.label %>
-      </a>
-      <% }) %>
+    <button class="hamburger" type="button" id="hamburgerBtn" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
-      <div id="google_translate_element" style="display: none;"></div>
+    <div class="nav-menu" id="navMenu">
+      <nav class="nav-links" aria-label="Navigație principală">
+        <% content.nav.forEach((item) => { %>
+        <a href="<%= item.href %>" class="<%= currentPath === item.href ? 'active' : '' %>">
+          <%= item.label %>
+        </a>
+        <% }) %>
 
-      <div id="google_translate_element" style="display: none;"></div>
+        <a href="/login">Login</a>
+      </nav>
 
-      <div id="google_translate_element" style="display: none;"></div>
+      <div class="nav-actions">
+        <a class="btn btn-primary nav-cta" href="/contact#formular">
+          Demo gratuit
+        </a>
 
-      <a href="/login">Login</a>
+        <a class="btn btn-secondary nav-call" href="tel:<%= content.business.phone.replace(/\s+/g, '') %>">
+          Sună acum
+        </a>
+      </div>
 
-
-
-    </nav>
-
-    <div class="nav-actions">
-      <a class="btn btn-primary nav-cta" href="/contact#formular">
-        Demo gratuit
-      </a>
-
-      <a class="btn btn-secondary nav-call" href="tel:<%= content.business.phone.replace(/\s+/g, '') %>">
-        Sună acum
-      </a>
+      <div class="language-switcher notranslate" translate="no">
+        <select id="languageSelect" onchange="changeLanguage(this.value)" aria-label="Schimbă limba">
+          <option value="ro">RO</option>
+          <option value="en">EN</option>
+          <option value="it">IT</option>
+          <option value="fr">FR</option>
+          <option value="de">DE</option>
+          <option value="es">ES</option>
+        </select>
+      </div>
     </div>
-    <div class="language-switcher notranslate" translate="no">
-      <select id="languageSelect" onchange="changeLanguage(this.value)" aria-label="Schimbă limba">
-        <option value="ro">RO</option>
-        <option value="en">EN</option>
-        <option value="it">IT</option>
-        <option value="fr">FR</option>
-        <option value="de">DE</option>
-        <option value="es">ES</option>
-      </select>
-    </div>
+
+    <div id="google_translate_element" style="display: none;"></div>
   </div>
 </header>
