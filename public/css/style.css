@@ -1398,9 +1398,41 @@ textarea {
   width: fit-content;
 }
 
-/* ============================= */
-/* Responsive Header Menu */
-/* ============================= */
+/* Hamburger menu buttons + language switcher */
+@media (max-width: 1250px) {
+  .site-header .nav-actions {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .site-header .nav-actions .btn,
+  .site-header .nav-cta,
+  .site-header .nav-call {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    padding: 14px 18px !important;
+    font-size: 0.95rem !important;
+    white-space: normal !important;
+    text-align: center !important;
+    justify-content: center !important;
+    line-height: 1.2 !important;
+  }
+
+  .site-header .language-switcher {
+    width: 100% !important;
+    display: flex !important;
+  }
+
+  .site-header .language-switcher select {
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+  }
+}
 
 @media (max-width: 1250px) {
   .site-header .hamburger {
