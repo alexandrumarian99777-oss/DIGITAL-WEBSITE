@@ -15,12 +15,11 @@ const content = {
                 address: 'Galați, România',
                 facebook: 'https://facebook.com/',
                 instagram: 'https://instagram.com/',
-                linkedin: 'https://linkedin.com/'
         },
 
         seo: {
                 homeTitle: 'Site-uri Web și Sisteme de Programări pentru Afaceri Locale | AM Digital Growth',
-                homeDescription: 'Construim site-uri web, formulare de lead-uri, sisteme de programări, testimoniale video și dashboard-uri pentru afaceri locale din România.',
+                homeDescription: 'Construim site-uri web, formulare de cereri, sisteme de programări, testimoniale video și dashboard-uri pentru afaceri locale din România.',
                 keywords: 'site web Galați, creare site România, sistem de programări, site prezentare, website pentru afaceri locale, dashboard vânzări, testimoniale video, marketing local'
         },
 
@@ -51,10 +50,10 @@ const content = {
         ],
 
         hero: {
-                eyebrow: 'Website-uri clare, rapide și pregătite să aducă lead-uri',
+                eyebrow: 'Website-uri clare, rapide și pregătite să aducă cereri',
                 title: 'Transformăm afacerea ta locală într-o prezență online profesionistă, clară și pregătită să aducă vânzări.',
                 text: 'Îți transformăm prezența online într-un sistem simplu: pagini clare, cereri de ofertă, testimoniale video, blog SEO și dashboard privat unde vezi vânzările, recenziile și programările.',
-                primary: 'Programează un demo gratuit',
+                primary: 'Programează o consultație gratuită',
                 secondary: 'Vezi pachetele'
         },
 
@@ -63,12 +62,12 @@ const content = {
                         label: 'apel de consultanță'
                 },
                 {
-                        value: '10-14 zile',
+                        value: '14-21 zile',
                         label: 'până la lansare'
                 },
                 {
-                        value: '50%',
-                        label: 'avans înainte de începerea lucrului'
+                        value: 'Fără cost',
+                        label: 'analiză inițială a prezenței online'
                 }
         ],
 
@@ -123,7 +122,7 @@ const content = {
                 },
                 {
                         step: '02',
-                        title: 'Construim site-ul în 10-14 zile',
+                        title: 'Construim site-ul în 14-21 zile',
                         text: 'Pregătim structura, textele, paginile, formularul de contact, blogul, dashboard-ul și secțiunile care cresc încrederea.'
                 },
                 {
@@ -134,7 +133,7 @@ const content = {
         ],
 
         packages: [{
-                        name: 'One-Page Website',
+                        name: 'Website cu o singură pagină',
                         price: 'De la €299',
                         tag: 'Start rapid online',
                         bestFor: 'Afaceri mici care au nevoie rapid de o prezență online profesională.',
@@ -149,7 +148,7 @@ const content = {
                                 'Google Maps embed',
                                 'Design responsive pentru mobil',
                                 'SEO de bază',
-                                'Conectare domeniu, dacă este necesar'
+                                'Domeniu standard inclus și conectare domeniu'
                         ],
                         notIncluded: [
                                 'Pagini suplimentare',
@@ -160,11 +159,12 @@ const content = {
                                 'Automatizări',
                                 'Google Ads',
                                 'SEO avansat',
+                                'Mentenanță lunară',
                                 'Modificări nelimitate'
                         ]
                 },
                 {
-                        name: 'Starter Website',
+                        name: 'Website Starter',
                         price: 'De la €499',
                         tag: 'Site complet de prezentare',
                         bestFor: 'Afaceri care vor un site profesional, clar și credibil, nu doar o singură pagină.',
@@ -178,7 +178,7 @@ const content = {
                                 'Structură SEO de bază',
                                 'Meta titluri și descrieri de bază',
                                 'Optimizare de bază pentru viteză',
-                                'Conectare domeniu, dacă este necesar',
+                                'Domeniu standard inclus și conectare domeniu',
                                 'Testare înainte de lansare'
                         ],
                         notIncluded: [
@@ -190,24 +190,25 @@ const content = {
                                 'Campanie SEO avansată',
                                 'Branding complet',
                                 'Pagini extra',
+                                'Mentenanță lunară',
                                 'Schimbări nelimitate'
                         ]
                 },
                 {
-                        name: 'Booking Website',
+                        name: 'Website cu Programări',
                         price: 'De la €799',
-                        tag: 'Cel mai bun pentru lead-uri',
+                        tag: 'Cel mai bun pentru clienți',
                         featured: true,
-                        bestFor: 'Afaceri care vor să primească programări, cereri de ofertă sau lead-uri direct din website.',
+                        bestFor: 'Afaceri care vor să primească programări, cereri de ofertă  direct din website.',
                         pages: 'Până la 5-7 pagini: Acasă, Despre, Servicii, Programări/Cerere Ofertă, Recenzii, Contact.',
                         included: [
-                                'Tot ce include Starter Website',
+                                'Tot ce include Website Starter',
                                 'Pagină de programări sau cerere ofertă',
                                 'Formular cu selectare serviciu',
                                 'Câmpuri personalizate în formular',
                                 'Notificări prin email sau Telegram',
                                 'Dashboard admin simplu',
-                                'Gestionare lead-uri / cereri / programări',
+                                'Gestionare cereri / programări',
                                 'Statusuri: nou, contactat, confirmat, anulat',
                                 'Recenzii/testimoniale cu aprobare',
                                 'Testare formular și notificări înainte de lansare'
@@ -221,18 +222,19 @@ const content = {
                                 'Campanie SEO avansată',
                                 'Reclame plătite',
                                 'Redesign complet',
+                                'Mentenanță lunară',
                                 'Funcții custom neincluse în ofertă'
                         ]
                 },
                 {
-                        name: 'Growth System',
-                        price: 'De la €1.500',
+                        name: 'Sistem de creștere',
+                        price: 'De la €1.200',
                         tag: 'Sistem complet pentru afaceri',
-                        bestFor: 'Afaceri care vor website, lead-uri, programări, dashboard, blog, recenzii și plăți online.',
-                        pages: 'Până la 8-10 pagini, inclusiv pagini individuale pentru servicii importante.',
+                        bestFor: 'Afaceri care vor website, cereri, programări, dashboard, blog, recenzii și plăți online.',
+                        pages: 'Până la 8-12 pagini, inclusiv pagini individuale pentru servicii importante.',
                         included: [
-                                'Tot ce include Booking Website',
-                                'Până la 8-10 pagini',
+                                'Tot ce include Website cu Programări',
+                                'Până la 8-12 pagini',
                                 'Pagini individuale pentru servicii importante',
                                 'Dashboard admin mai complet',
                                 'Blog administrabil',
@@ -241,7 +243,7 @@ const content = {
                                 'Pagini succes/anulare plată',
                                 'Structură SEO locală mai puternică',
                                 'Verificări de bază pentru backup și performanță',
-                                'Organizare mai clară pentru lead-uri și programări'
+                                'Organizare mai clară pentru cereri și programări'
                         ],
                         notIncluded: [
                                 'Administrare reclame',
@@ -251,8 +253,9 @@ const content = {
                                 'Automatizări SMS complexe',
                                 'SEO lunar avansat',
                                 'Pagini nelimitate',
+                                'Mentenanță lunară',
                                 'Funcții neincluse în oferta inițială',
-                                'Costuri Stripe, domeniu, hosting premium sau aplicații terțe'
+                                'Costuri Stripe, domenii premium, hosting premium sau aplicații terțe'
                         ]
                 }
         ],
@@ -275,7 +278,7 @@ const content = {
                         tag: 'Mentenanță standard',
                         included: [
                                 'Tot ce include Basic Care',
-                                '2 modificări mici de conținut pe lună',
+                                '5 modificări mici de conținut pe lună',
                                 'Mici ajustări vizuale',
                                 'Verificare formulare și notificări',
                                 'Suport mai rapid'
@@ -287,7 +290,7 @@ const content = {
                         tag: 'Suport prioritar',
                         included: [
                                 'Tot ce include Standard Care',
-                                '4 modificări mici de conținut pe lună',
+                                '10 modificări mici de conținut pe lună',
                                 'Prioritate la suport',
                                 'Verificări backup/performance',
                                 'Mici ajustări în dashboard, formulare sau pagini existente'
@@ -295,7 +298,7 @@ const content = {
                 }
         ],
 
-        contractNote: 'Prețurile sunt orientative și reprezintă puncte de pornire. Prețul final se stabilește prin ofertă personalizată, în funcție de complexitatea proiectului. Plata se face integral la semnarea contractului, acceptarea ofertei sau înainte de începerea lucrului, dacă părțile nu stabilesc altfel în scris. Domeniul, hostingul, mentenanța, funcțiile extra, paginile suplimentare, reclamele, SEO avansat și automatizările complexe se taxează separat, dacă nu sunt menționate expres ca fiind incluse.',
+        contractNote: 'Prețurile sunt orientative și reprezintă puncte de pornire. Prețul final se stabilește prin ofertă personalizată, în funcție de complexitatea proiectului. Plata se face integral înainte de începerea lucrului, la semnarea contractului, acceptarea ofertei sau emiterea facturii, dacă părțile nu stabilesc altfel în scris. Un domeniu standard este inclus în prețul pachetului. Domeniile premium, domeniile foarte scumpe, hostingul premium, emailul profesional, mentenanța lunară, funcțiile extra, paginile suplimentare, reclamele, SEO avansat și automatizările complexe se taxează separat, dacă nu sunt menționate expres ca fiind incluse.',
 
         footerProducts: [
                 'Site de prezentare',
@@ -335,16 +338,16 @@ Acești termeni pot fi rezumați astfel:
 - Serviciile exacte, prețul, termenul de livrare și ce este inclus se stabilesc prin ofertă, contract, email, factură sau alt document agreat.
 - Prețurile afișate pe website sunt orientative și reprezintă puncte de pornire pentru proiecte standard.
 - Prețul final se stabilește prin ofertă personalizată, în funcție de complexitatea proiectului.
-- Avansul se poate plăti înainte de începerea lucrului.
-- Pentru proiectele standard, plata poate fi împărțită în 50% avans și 50% înainte de lansare.
-- Domeniul se achită separat de Client, cu excepția cazului în care oferta spune expres altceva.
-- Domeniul este achiziționat de preferat pe numele Clientului.
-- Hostingul poate fi achiziționat de Client sau gestionat de Prestator dacă este inclus în ofertă sau într-un pachet separat de mentenanță.
+- Plata se face integral înainte de începerea lucrului, dacă părțile nu stabilesc altfel în scris.
+- Nu lucrăm cu sistem de avans 50%, decât dacă acest lucru este agreat expres în scris pentru un proiect special.
+- Un domeniu standard este inclus în prețul pachetului.
+- Domeniile premium, domeniile foarte scumpe, hostingul premium, emailul profesional, aplicațiile terțe și licențele externe se taxează separat, dacă nu sunt menționate expres ca fiind incluse.
+- Domeniul este achiziționat de preferat pe numele Clientului, pentru ca afacerea să păstreze controlul asupra acestuia.
+- Mentenanța lunară nu este inclusă automat și se plătește separat, dacă este nevoie sau dacă este solicitată de Client.
 - Accesul la dashboard, hosting, fișiere sau alte conturi se acordă conform pachetului, ofertei sau contractului.
-- La încetarea colaborării, transferul website-ului sau exportul fișierelor se face conform ofertei/contractului și doar după achitarea sumelor restante.
 - Schimbările mari, funcțiile noi, paginile extra, redesignul complet, reclamele, SEO avansat și automatizările complexe se taxează separat.
 - Clientul trebuie să trimită materiale corecte și să aibă dreptul legal de a folosi textele, imaginile, logo-urile și celelalte materiale transmise.
-- Prestatorul nu garantează un anumit număr de clienți, vânzări, lead-uri, programări sau poziții în Google.
+- Prestatorul nu garantează un anumit număr de clienți, vânzări, cereri, programări sau poziții în Google.
 - Datele personale sunt explicate separat în Politica de Confidențialitate.
 - Cookie-urile sunt explicate separat în Politica de Cookie-uri.
 - Pentru consumatori se pot aplica drepturi speciale, inclusiv reguli privind retragerea din contract, dacă legea permite.
@@ -374,7 +377,7 @@ Această secțiune trebuie completată cu datele reale ale PFA/SRL-ului înainte
 
                                 `2. Scopul website-ului
 
-Website-ul AM Digital Growth prezintă servicii digitale pentru afaceri locale, inclusiv creare website-uri, web design, sisteme de programări, formulare de lead-uri, dashboard-uri, testimoniale video, blog SEO, mentenanță website și alte servicii digitale conexe.
+Website-ul AM Digital Growth prezintă servicii digitale pentru afaceri locale, inclusiv creare website-uri, web design, sisteme de programări, formulare de cereri, dashboard-uri, testimoniale video, blog SEO, mentenanță website și alte servicii digitale conexe.
 
 Website-ul are scop informativ și comercial.
 
@@ -395,7 +398,7 @@ Acceptarea poate avea loc prin:
 - solicitarea unui demo gratuit;
 - transmiterea unui mesaj prin email, telefon sau WhatsApp;
 - acceptarea unei oferte;
-- plata unui avans;
+- plata integrală a ofertei înainte de începerea lucrului;
 - semnarea unui contract de prestări servicii.
 
 Dacă utilizați website-ul în numele unei firme, PFA, asociații sau alte entități, declarați că aveți dreptul să reprezentați acea entitate.`,
@@ -423,7 +426,7 @@ Prestatorul poate oferi, în funcție de pachetul ales și de oferta acceptată 
 - creare website-uri de prezentare;
 - creare landing page-uri;
 - web design și design grafic pentru pagini web;
-- formulare de contact și formulare de generare lead-uri;
+- formulare de contact și formulare de generare cereri;
 - sisteme de programări;
 - dashboard-uri administrative;
 - integrare butoane WhatsApp, click-to-call și Google Maps;
@@ -437,7 +440,7 @@ Prestatorul poate oferi, în funcție de pachetul ales și de oferta acceptată 
 
 Serviciile exacte, prețul, termenul de livrare, numărul de pagini, funcționalitățile incluse, condițiile de plată și limitele serviciului se stabilesc prin ofertă, contract, factură, email sau alt document agreat între părți.`,
 
-                                `6. Pachete, prețuri și mentenanță opțională
+                                `6. Pachete, prețuri și mentenanță
 
 Pachetele prezentate pe website au prețuri orientative de pornire.
 
@@ -458,21 +461,19 @@ Pachetele pot include, în funcție de oferta acceptată:
 - integrare servicii de plată, dacă este menționat expres;
 - alte servicii menționate expres în ofertă.
 
-Plata se face conform ofertei acceptate, contractului sau facturii.
+Plata se face integral înainte de începerea lucrului, conform ofertei acceptate, contractului sau facturii, dacă părțile nu stabilesc altfel în scris.
 
-Pentru proiectele standard, Prestatorul poate solicita 50% avans înainte de începerea lucrului și 50% înainte de lansarea website-ului.
+Un domeniu standard este inclus în prețul pachetului. Domeniile premium, domeniile foarte scumpe, hostingul premium, emailul profesional, aplicațiile terțe, licențele externe și alte costuri externe se taxează separat, dacă nu sunt menționate expres ca fiind incluse.
 
-Pentru proiectele mai complexe, plata poate fi împărțită în etape, de exemplu avans, plată după aprobarea structurii/designului și plată finală înainte de lansare.
-
-Costul domeniului se achită separat de Client, cu excepția cazului în care oferta menționează expres că este inclus.
-
-Mentenanța lunară, hostingul administrat, actualizările lunare și suportul după lansare sunt opționale, cu excepția cazului în care sunt menționate expres în ofertă sau contract.
+Mentenanța lunară, actualizările lunare, suportul după lansare și hostingul administrat se plătesc separat, dacă sunt necesare sau dacă sunt solicitate de Client, cu excepția cazului în care oferta sau contractul menționează expres că sunt incluse.
 
 Schimbările mari, funcțiile noi, paginile extra, redesignul complet, reclamele plătite, SEO avansat, brandingul complet, automatizările complexe și alte servicii neincluse în ofertă se taxează separat.`,
 
-                                `6.1. Mentenanță opțională și servicii recurente
+                                `6.1. Mentenanță separată și servicii recurente
 
-După finalizarea proiectului, Clientul poate opta pentru un pachet separat de mentenanță, suport, actualizări lunare sau hosting administrat.
+După finalizarea proiectului, Clientul poate solicita un pachet separat de mentenanță, suport, actualizări lunare sau hosting administrat.
+
+Mentenanța se plătește separat, dacă este nevoie sau dacă este solicitată de Client, cu excepția cazului în care oferta sau contractul menționează expres că este inclusă.
 
 Mentenanța poate include, în funcție de pachetul ales:
 
@@ -510,11 +511,11 @@ Dacă oferta nu menționează alt termen de valabilitate, aceasta este valabilă
 Contractul dintre Prestator și Client se consideră încheiat atunci când Clientul:
 
 - acceptă oferta în scris;
-- achită suma solicitată pentru începerea lucrului;
+- achită integral suma solicitată înainte de începerea lucrului;
 - semnează un contract de prestări servicii;
 - confirmă comanda prin email sau alt canal scris acceptat de părți.
 
-Acceptarea poate fi făcută prin email, mesaj scris, plată, semnătură pe contract sau altă metodă agreată de părți.
+Acceptarea poate fi făcută prin email, mesaj scris, plată integrală, semnătură pe contract sau altă metodă agreată de părți.
 
 Pentru proiectele mai complexe, Prestatorul poate solicita semnarea unui contract separat de prestări servicii.
 
@@ -524,11 +525,9 @@ Pentru proiectele mai complexe, Prestatorul poate solicita semnarea unui contrac
 
 Prețurile serviciilor sunt stabilite în funcție de pachet, complexitate, număr de pagini, funcționalități, termen de livrare și cerințele Clientului.
 
-Plata se face conform ofertei, contractului sau facturii.
+Plata se face integral înainte de începerea lucrului, conform ofertei, contractului sau facturii, dacă părțile nu stabilesc altfel în scris.
 
-Prestatorul poate solicita plata unui avans înainte de începerea lucrului.
-
-Prestatorul nu are obligația de a începe lucrul, publica website-ul, transfera proiectul sau preda integral livrabilele până la achitarea sumelor stabilite prin ofertă, contract sau factură.
+Prestatorul nu are obligația de a începe lucrul, publica website-ul, transfera proiectul sau preda integral livrabilele până la achitarea integrală a sumelor stabilite prin ofertă, contract sau factură.
 
 Factura se emite conform legislației fiscale aplicabile.
 
@@ -536,9 +535,9 @@ Dacă transmiterea facturii prin sistemul național RO e-Factura este obligatori
 
 Clientul înțelege că neplata la timp poate duce la suspendarea lucrului, suspendarea mentenanței, suspendarea suportului sau oprirea serviciilor active, după caz.
 
-Dacă plata întârzie mai mult de 7 zile, Prestatorul poate suspenda suportul și lucrările în desfășurare.
+Dacă plata întârzie mai mult de 7 zile pentru servicii recurente, mentenanță, hosting administrat sau alte servicii separate, Prestatorul poate suspenda suportul și lucrările în desfășurare.
 
-Dacă plata întârzie mai mult de 30 de zile, Prestatorul poate suspenda serviciile de mentenanță, administrare, dashboard sau hosting gestionate de Prestator, cu notificarea prealabilă a Clientului, fără a afecta obligațiile de plată deja scadente.
+Dacă plata întârzie mai mult de 30 de zile pentru servicii recurente, Prestatorul poate suspenda serviciile de mentenanță, administrare, dashboard sau hosting gestionate de Prestator, cu notificarea prealabilă a Clientului, fără a afecta obligațiile de plată deja scadente.
 
 Suspendarea serviciilor nu înseamnă anularea datoriei. Clientul rămâne responsabil pentru plata sumelor datorate pentru serviciile deja prestate sau facturate.
 
@@ -596,11 +595,13 @@ Modificările suplimentare, funcționalitățile noi sau cerințele care nu au f
 
                                 `14. Domeniu, hosting și servicii terțe
 
-Domeniul, hostingul, conturile de email, licențele, pluginurile, API-urile, temele, aplicațiile externe și alte servicii terțe pot fi achiziționate direct de Client sau, dacă se stabilește prin ofertă, pot fi gestionate de Prestator.
+Un domeniu standard este inclus în prețul pachetului, dacă acesta este disponibil la un cost rezonabil și nu este un domeniu premium.
 
-Costurile pentru domeniu, hosting, licențe, aplicații externe, servicii de email, API-uri, teme, pluginuri, servicii de plată sau alte servicii terțe nu sunt incluse în preț, decât dacă acest lucru este menționat expres în ofertă.
+Domeniile premium, domeniile foarte scumpe, extensiile speciale, hostingul premium, conturile de email profesional, licențele, pluginurile, API-urile, temele, aplicațiile externe, serviciile de plată și alte servicii terțe se taxează separat, dacă nu sunt menționate expres ca fiind incluse în ofertă.
 
-Dacă domeniul este achiziționat pe numele Clientului, Clientul rămâne proprietarul și responsabilul pentru reînnoirea acestuia.
+Domeniul este achiziționat, de preferat, pe numele Clientului, pentru ca afacerea să păstreze controlul asupra acestuia.
+
+Dacă domeniul este achiziționat pe numele Clientului, Clientul rămâne proprietarul și responsabilul pentru păstrarea accesului și reînnoirea acestuia după perioada inclusă, dacă oferta nu prevede altfel.
 
 Dacă hostingul este gestionat de Prestator în cadrul unui pachet de mentenanță sau al unei oferte separate, accesul, administrarea și continuitatea serviciului depind de plata serviciului respectiv și de condițiile furnizorului de hosting.
 
@@ -610,9 +611,11 @@ Clientul este responsabil să păstreze copii ale materialelor originale transmi
 
                                 `14.1. Domeniu, hosting, acces și predarea fișierelor
 
-Domeniul website-ului va fi achiziționat, de preferat, pe numele Clientului. Clientul este responsabil pentru plata, reînnoirea și păstrarea accesului la contul unde este înregistrat domeniul, cu excepția cazului în care părțile stabilesc altfel în scris.
+Un domeniu standard este inclus în prețul pachetului, dacă acesta este disponibil la un cost rezonabil și nu este un domeniu premium.
 
-Costul domeniului se achită separat de Client, cu excepția cazului în care oferta sau contractul menționează expres că este inclus.
+Domeniul website-ului va fi achiziționat, de preferat, pe numele Clientului. Clientul este responsabil pentru păstrarea accesului la contul unde este înregistrat domeniul și pentru reînnoirea acestuia după perioada inclusă, dacă oferta sau contractul nu menționează altfel.
+
+Domeniile premium, domeniile foarte scumpe, extensiile speciale și costurile suplimentare ale furnizorilor de domenii se taxează separat, dacă nu sunt menționate expres ca fiind incluse.
 
 Hostingul poate fi:
 
@@ -623,7 +626,7 @@ Dacă hostingul este gestionat de Prestator, Clientul poate primi acces administ
 
 Prestatorul poate oferi Clientului acces la dashboard-ul website-ului, panoul de administrare sau alte zone private, în funcție de pachetul ales. Clientul este responsabil pentru păstrarea în siguranță a datelor de acces primite.
 
-Dacă plata pentru proiect, mentenanță, hosting sau alte servicii recurente întârzie ori încetează, Prestatorul poate suspenda mentenanța, suportul, administrarea website-ului, dashboard-ul, hostingul gestionat de Prestator sau alte servicii active incluse în ofertă, cu notificarea prealabilă a Clientului, fără a afecta obligațiile de plată deja scadente.
+Dacă plata pentru mentenanță, hosting administrat sau alte servicii recurente întârzie ori încetează, Prestatorul poate suspenda mentenanța, suportul, administrarea website-ului, dashboard-ul, hostingul gestionat de Prestator sau alte servicii active incluse în oferta recurentă, cu notificarea prealabilă a Clientului, fără a afecta obligațiile de plată deja scadente.
 
 La încetarea colaborării, Clientul poate solicita predarea fișierelor website-ului, exportul conținutului sau transferul proiectului, în măsura în care acest lucru este posibil tehnic și contractual.
 
@@ -635,7 +638,7 @@ Clientul este responsabil să păstreze copii ale materialelor originale transmi
 
                                 `15. Mentenanță
 
-Mentenanța este inclusă doar dacă este menționată în pachet, ofertă sau contract.
+Mentenanța nu este inclusă automat în prețul proiectului și se plătește separat, dacă este nevoie sau dacă este solicitată de Client, cu excepția cazului în care oferta sau contractul menționează expres că este inclusă.
 
 Mentenanța poate include, în funcție de pachet:
 
@@ -766,7 +769,7 @@ Această situație poate apărea, de exemplu, atunci când Prestatorul administr
 - formulare de cerere ofertă;
 - sisteme de programări;
 - dashboard-uri administrative;
-- baze de date cu lead-uri;
+- baze de date cu cereri;
 - recenzii sau testimoniale;
 - notificări prin email;
 - sisteme de plată sau confirmare comandă;
@@ -856,7 +859,7 @@ Prestatorul depune eforturi rezonabile pentru a furniza informații corecte, act
 
 Totuși, Prestatorul nu garantează că website-ul este lipsit complet de erori sau că informațiile publicate sunt întotdeauna complete, actuale sau adecvate pentru orice situație particulară.
 
-Prestatorul nu garantează că website-ul, formularul, dashboard-ul, sistemul de programări, structura SEO, textele, designul sau orice alt serviciu prestat va genera un anumit număr de clienți, vânzări, programări, lead-uri, conversii, poziții în Google, trafic organic sau rezultate comerciale, cu excepția cazului în care un anumit rezultat este asumat expres, în scris, prin contract separat.
+Prestatorul nu garantează că website-ul, formularul, dashboard-ul, sistemul de programări, structura SEO, textele, designul sau orice alt serviciu prestat va genera un anumit număr de clienți, vânzări, programări, cereris, conversii, poziții în Google, trafic organic sau rezultate comerciale, cu excepția cazului în care un anumit rezultat este asumat expres, în scris, prin contract separat.
 
 Prestatorul nu răspunde pentru pierderi indirecte, pierderi de profit, întreruperi ale activității, probleme cauzate de furnizori terți, atacuri informatice, erori ale platformelor externe, modificări făcute de Client sau de alte persoane după predarea proiectului.
 
@@ -1025,9 +1028,9 @@ Emailul folosit pentru verificare nu va fi afișat public.
 
 Puteți solicita oricând ștergerea unei recenzii sau retragerea acordului pentru publicare, contactându-ne la adresa de email menționată în această politică.`,
 
-                                `9. Dashboard, programări și lead-uri
+                                `9. Dashboard, programări și cereri
 
-Dacă website-ul include un dashboard privat, sistem de programări sau sistem de gestionare lead-uri, datele trimise prin formulare pot fi stocate în baza de date pentru administrarea solicitărilor, programărilor, statusurilor și comunicării cu potențialii clienți.
+Dacă website-ul include un dashboard privat, sistem de programări sau sistem de gestionare cereris, datele trimise prin formulare pot fi stocate în baza de date pentru administrarea solicitărilor, programărilor, statusurilor și comunicării cu potențialii clienți.
 
 Accesul la dashboard este limitat persoanelor autorizate.`,
 

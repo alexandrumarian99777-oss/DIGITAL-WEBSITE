@@ -1398,6 +1398,10 @@ textarea {
   width: fit-content;
 }
 
+#campanii-publicitare .about-box {
+  margin-top: 60px;
+}
+
 /* Hamburger menu buttons + language switcher */
 @media (max-width: 1250px) {
   .site-header .nav-actions {
