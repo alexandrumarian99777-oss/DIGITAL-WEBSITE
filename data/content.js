@@ -7,7 +7,7 @@ const content = {
                 cui: '[CUI]',
                 tradeRegister: '[Număr ONRC]',
                 registeredAddress: '[Adresă sediu profesional / sediu social]',
-                website: '[site]',
+                site: '[site]',
                 lastUpdated: '14 iunie 2026',
                 email: 'alexandru.marian99777@gmail.com',
                 phone: '+40 752 679 312',
@@ -36,6 +36,10 @@ const content = {
                         href: '/#pachete'
                 },
                 {
+                        label: 'Mentenanță',
+                        href: '/#mentenanta'
+                },
+                {
                         label: 'Recenzii',
                         href: '/#testimoniale'
                 },
@@ -50,8 +54,8 @@ const content = {
         ],
 
         hero: {
-                eyebrow: 'Site-uri clare, rapide și pregătite să aducă cereri',
-                title: 'Construim site-uri clare pentru afaceri locale care vor mai multe cereri, programări și încredere online.',
+                eyebrow: 'Site-uri, sisteme de programări și campanii publicitare pentru afaceri locale.',
+                title: 'Construim site-uri clare, formulare de cereri, panouri de administrare și reclame online pentru afaceri care vor mai multe cereri și mai multă încredere.',
                 text: 'Îți transformăm prezența online într-un sistem simplu: pagini clare, cereri de ofertă, testimoniale video, blog și panou privat unde vezi cererile, recenziile și programările.',
                 primary: 'Programează o consultație gratuită',
                 secondary: 'Vezi pachetele'
