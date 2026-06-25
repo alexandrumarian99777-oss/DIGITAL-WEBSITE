@@ -13,11 +13,39 @@
 
     <div class="nav-menu" id="navMenu">
       <nav class="nav-links" aria-label="Navigație principală">
-        <% content.nav.forEach((item) => { %>
-        <a href="<%= item.href %>" class="<%= currentPath === item.href ? 'active' : '' %>">
-          <%= item.label %>
+        <a href="/" class="<%= currentPath === '/' ? 'active' : '' %>">
+          Acasă
         </a>
-        <% }) %>
+
+        <a href="/despre" class="<%= currentPath === '/despre' ? 'active' : '' %>">
+          Despre
+        </a>
+
+        <div class="nav-dropdown">
+          <button class="dropdown-toggle" type="button" aria-expanded="false">
+            Servicii
+            <span>▾</span>
+          </button>
+
+          <div class="dropdown-menu">
+            <a href="/#pachete">Pachete site-uri</a>
+            <a href="/#mentenanta">Mentenanță lunară</a>
+            <a href="/#campanii-publicitare">Campanii publicitare</a>
+            <a href="/#faq">Întrebări frecvente</a>
+          </div>
+        </div>
+
+        <a href="/#testimoniale">
+          Recenzii
+        </a>
+
+        <a href="/blog" class="<%= currentPath.startsWith('/blog') ? 'active' : '' %>">
+          Blog
+        </a>
+
+        <a href="/contact" class="<%= currentPath === '/contact' ? 'active' : '' %>">
+          Contact
+        </a>
       </nav>
 
       <div class="nav-actions">

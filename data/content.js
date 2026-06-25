@@ -32,14 +32,6 @@ const content = {
                         href: '/despre'
                 },
                 {
-                        label: 'Pachete',
-                        href: '/#pachete'
-                },
-                {
-                        label: 'Mentenanță',
-                        href: '/#mentenanta'
-                },
-                {
                         label: 'Recenzii',
                         href: '/#testimoniale'
                 },
