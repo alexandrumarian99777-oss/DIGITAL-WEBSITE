@@ -24,8 +24,8 @@
       <div class="hero-card" aria-label="Previzualizare dashboard lead-uri">
         <div class="mini-bar"><span></span><span></span><span></span></div>
         <h2>Dashboard privat</h2>
-        <div class="lead-row"><strong>Lead nou</strong><span>Contactat</span></div>
-        <div class="lead-row"><strong>Review video</strong><span>Aprobat</span></div>
+        <div class="lead-row"><strong>Cereri noi</strong><span>Contactat</span></div>
+        <div class="lead-row"><strong>Recenzie video</strong><span>Aprobat</span></div>
         <div class="lead-row"><strong>Programare</strong><span>10:30</span></div>
         <div class="pulse-card">+ cereri salvate direct în sistem</div>
       </div>
@@ -65,138 +65,6 @@
       <% }) %>
     </div>
   </section>
-
-  <section id="campanii-publicitare" class="section soft-section">
-    <div class="container section-heading">
-      <p class="eyebrow">Campanii publicitare</p>
-      <h2>Promovare online pentru firme care vor mai multă vizibilitate și cereri mai clare</h2>
-      <p>
-        Pe lângă website-uri și sisteme web, putem ajuta afacerile locale cu
-        campanii publicitare pe Facebook, Instagram, Meta Ads și Google Ads.
-        Reclamele sunt gândite să aducă trafic relevant către website, formular,
-        pagină de programare sau cerere de ofertă.
-      </p>
-    </div>
-
-    <div class="container cards-grid three">
-      <article class="service-card equal-card">
-        <h3>Strategie de promovare</h3>
-        <p>
-          Stabilim obiectivul campaniei: mai multe cereri, programări, mesaje,
-          apeluri, trafic pe website sau promovarea unui serviciu specific.
-          Înainte să pornim reclamele, clarificăm cui ne adresăm și ce ofertă promovăm.
-        </p>
-        <a class="card-link" href="/contact#formular">Vreau promovare</a>
-      </article>
-
-      <article class="service-card equal-card">
-        <h3>Facebook & Instagram Ads</h3>
-        <p>
-          Putem crea campanii pentru Meta Ads, adică Facebook și Instagram.
-          Acestea pot fi folosite pentru promovare locală, servicii, oferte,
-          evenimente, programări sau atragerea de cereri directe.
-        </p>
-        <a class="card-link" href="/contact#formular">Promovează afacerea</a>
-      </article>
-
-      <article class="service-card equal-card">
-        <h3>Google Ads</h3>
-        <p>
-          Pentru afacerile unde oamenii caută activ serviciul pe Google, putem
-          crea campanii care trimit potențialii clienți către o pagină relevantă,
-          formular de contact sau pagină de programare.
-        </p>
-        <a class="card-link" href="/contact#formular">Vreau Google Ads</a>
-      </article>
-
-      <article class="service-card equal-card">
-        <h3>Landing page pentru reclame</h3>
-        <p>
-          O reclamă bună are nevoie de o pagină clară. Putem construi pagini
-          dedicate pentru campanii, cu mesaj simplu, beneficii clare, recenzii,
-          butoane de acțiune și formular de contact.
-        </p>
-        <a class="card-link" href="/contact#formular">Vreau landing page</a>
-      </article>
-
-      <article class="service-card equal-card">
-        <h3>Texte și structură pentru reclame</h3>
-        <p>
-          Pregătim texte clare pentru reclame, idei de mesaje, direcții de promovare
-          și structură pentru ofertă. Scopul este ca mesajul să fie simplu,
-          relevant și ușor de înțeles pentru client.
-        </p>
-        <a class="card-link" href="/contact#formular">Vreau texte pentru reclame</a>
-      </article>
-
-      <article class="service-card equal-card">
-        <h3>Testare și optimizare</h3>
-        <p>
-          Campaniile pot fi ajustate în funcție de rezultate. Putem testa audiențe,
-          mesaje, imagini, bugete și pagini diferite pentru a înțelege ce funcționează
-          mai bine pentru afacerea ta.
-        </p>
-        <a class="card-link" href="/contact#formular">Vreau optimizare</a>
-      </article>
-    </div>
-
-    <div class="container">
-      <div class="about-box">
-        <h3>Important despre rezultate</h3>
-        <p>
-          Nu promitem vânzări garantate, sute de clienți peste noapte sau rezultate
-          fixe din reclame. Rezultatele depind de ofertă, buget, piață, concurență,
-          prețuri, reputație, recenzii, website și calitatea serviciilor oferite.
-        </p>
-
-        <p>
-          Ce putem face este să construim o structură mai clară: reclamă relevantă,
-          pagină bună, formular simplu, tracking mai organizat și optimizare în timp.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section id="sistem" class="section dark-section">
-    <div class="container split-grid">
-      <div>
-        <p class="eyebrow orange">Prezentarea sistemului</p>
-        <h2>Nu vindem doar un site. Construim un traseu clar de la vizitator la cumpărător.</h2>
-        <p>
-          Fiecare secțiune are un rol: să explice oferta, să crească încrederea,
-          să colecteze date și să te ajute să urmărești oportunitățile din dashboard.
-        </p>
-      </div>
-
-      <div class="system-list">
-        <% content.system.forEach((item) => { %>
-        <div class="system-item">
-          <h3><%= item.title %></h3>
-          <p><%= item.text %></p>
-        </div>
-        <% }) %>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container section-heading">
-      <p class="eyebrow">Cum lucrăm</p>
-      <h2>Cum decurge colaborarea</h2>
-      <p>Proces scurt, clar și ușor de urmărit. Fără întâlniri inutile și fără haos.</p>
-    </div>
-
-    <div class="container cards-grid three">
-      <% content.process.forEach((item) => { %>
-      <article class="process-card equal-card">
-        <span class="step"><%= item.step %></span>
-        <h3><%= item.title %></h3>
-        <p><%= item.text %></p>
-      </article>
-      <% }) %>
-    </div>
-  </section>
-
   <section id="pachete" class="section soft-section">
     <div class="container section-heading">
       <p class="eyebrow">Pachete</p>
@@ -242,12 +110,190 @@
     <div class="container contract-note"><%= content.contractNote %></div>
   </section>
 
+
+  <section class="section">
+    <div class="container section-heading">
+      <p class="eyebrow">Cum lucrăm</p>
+      <h2>Cum decurge colaborarea</h2>
+      <p>Proces scurt, clar și ușor de urmărit. Fără întâlniri inutile și fără haos.</p>
+    </div>
+
+    <div class="container cards-grid three">
+      <% content.process.forEach((item) => { %>
+      <article class="process-card equal-card">
+        <span class="step"><%= item.step %></span>
+        <h3><%= item.title %></h3>
+        <p><%= item.text %></p>
+      </article>
+      <% }) %>
+    </div>
+  </section>
+
+  <section id="campanii-publicitare" class="section soft-section ads-section">
+    <div class="container section-heading">
+      <p class="eyebrow">Campanii publicitare</p>
+      <h2>Promovare online pentru afaceri locale care vor mai multe cereri</h2>
+      <p>
+        Putem pregăti și administra campanii pe Facebook, Instagram și Google Ads.
+        Bugetul de reclame este separat și se plătește direct către Meta sau Google.
+      </p>
+    </div>
+
+    <div class="container ads-alert">
+      <strong>Buget separat:</strong>
+      <span>
+        Prețurile de mai jos reprezintă taxa de setup și administrare. Bugetul efectiv de reclame
+        nu este inclus.
+      </span>
+    </div>
+
+    <div class="container ads-offer-grid">
+      <article class="ads-plan-card">
+        <div class="ads-plan-top">
+          <span class="ads-badge">Start local</span>
+          <h3>Promovare de Început</h3>
+          <p>Pentru afaceri mici care vor să testeze reclame local.</p>
+        </div>
+
+        <div class="ads-price">
+          <span>De la</span>
+          <strong>€199</strong>
+          <em>/ lună</em>
+        </div>
+
+        <ul class="ads-list">
+          <li>1 platformă: Meta Ads sau Google Ads</li>
+          <li>1 campanie principală</li>
+          <li>Setup de bază</li>
+          <li>Texte simple pentru reclame</li>
+          <li>Targetare locală</li>
+          <li>Verificare săptămânală</li>
+          <li>Raport lunar simplu</li>
+        </ul>
+
+        <div class="ads-recommendation">
+          Buget reclame recomandat: <strong>€150-€300/lună</strong>
+        </div>
+
+        <a class="btn btn-primary full" href="/contact#formular">Vreau promovare de început</a>
+      </article>
+
+      <article class="ads-plan-card ads-featured">
+        <div class="ads-plan-top">
+          <span class="ads-badge">Recomandat</span>
+          <h3>Promovare Locală</h3>
+          <p>Pentru afaceri care vor campanii mai clare și cereri mai constante.</p>
+        </div>
+
+        <div class="ads-price">
+          <span>De la</span>
+          <strong>€349</strong>
+          <em>/ lună</em>
+        </div>
+
+        <ul class="ads-list">
+          <li>Meta Ads sau Google Ads</li>
+          <li>2 campanii active</li>
+          <li>2-4 reclame/teste</li>
+          <li>Texte pentru reclame</li>
+          <li>Optimizare săptămânală</li>
+          <li>Tracking de bază</li>
+          <li>Raport lunar cu recomandări</li>
+        </ul>
+
+        <div class="ads-recommendation">
+          Buget reclame recomandat: <strong>€300-€800/lună</strong>
+        </div>
+
+        <a class="btn btn-primary full" href="/contact#formular">Vreau promovare locală</a>
+      </article>
+
+      <article class="ads-plan-card">
+        <div class="ads-plan-top">
+          <span class="ads-badge">Creștere</span>
+          <h3>Campanii de Creștere</h3>
+          <p>Pentru afaceri care au deja website bun și vor să testeze mai serios.</p>
+        </div>
+
+        <div class="ads-price">
+          <span>De la</span>
+          <strong>€599</strong>
+          <em>/ lună</em>
+        </div>
+
+        <ul class="ads-list">
+          <li>4 campanii active</li>
+          <li>Meta Ads + Google Ads</li>
+          <li>Campanii separate pe obiective</li>
+          <li>Testare audiențe și mesaje</li>
+          <li>Optimizare pentru cereri</li>
+          <li>Recomandări pentru pagină dedicată</li>
+          <li>Raport lunar mai detaliat</li>
+          <li>Traseu de conversie</li>
+        </ul>
+
+        <div class="ads-recommendation">
+          Buget reclame recomandat: <strong>€800-€2.000/lună</strong>
+        </div>
+
+        <a class="btn btn-primary full" href="/contact#formular">Vreau campanii de creștere</a>
+      </article>
+    </div>
+
+    <div class="container ads-small-grid">
+      <article class="ads-small-card">
+        <h3>Setup campanie</h3>
+        <p>
+          Pentru campanii noi, setup-ul pornește de la <strong>€150-€250</strong>,
+          în funcție de platformă și complexitate.
+        </p>
+      </article>
+
+      <article class="ads-small-card">
+        <h3>Pagină dedicată pentru reclame</h3>
+        <p>
+          Dacă nu există o pagină clară pentru trafic, putem crea una separat,
+          de la <strong>€250-€500</strong>.
+        </p>
+      </article>
+
+      <article class="ads-small-card">
+        <h3>Fără promisiuni false</h3>
+        <p>
+          Nu garantăm vânzări sau rezultate fixe. Construim campanii clare,
+          pagini relevante și optimizăm în timp.
+        </p>
+      </article>
+    </div>
+  </section>
+  <section id="sistem" class="section dark-section">
+    <div class="container split-grid">
+      <div>
+        <p class="eyebrow orange">Prezentarea sistemului</p>
+        <h2>Nu vindem doar un site. Construim un traseu clar de la vizitator la cumpărător.</h2>
+        <p>
+          Fiecare secțiune are un rol: să explice oferta, să crească încrederea,
+          să colecteze date și să te ajute să urmărești oportunitățile din dashboard.
+        </p>
+      </div>
+
+      <div class="system-list">
+        <% content.system.forEach((item) => { %>
+        <div class="system-item">
+          <h3><%= item.title %></h3>
+          <p><%= item.text %></p>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+
   <section id="testimoniale" class="section">
     <div class="container section-heading">
-      <p class="eyebrow">Review-uri video</p>
+      <p class="eyebrow">Recenzii video</p>
       <h2>Testimoniale care arată mai real decât citatele perfecte</h2>
       <p>
-        Video-ul construiește încredere mai repede. Clienții pot trimite review-uri
+        Video-ul construiește încredere mai repede. Clienții pot trimite recenzii
         direct de pe homepage, iar tu le aprobi din dashboard înainte să apară public.
       </p>
     </div>
@@ -289,10 +335,10 @@
 
     <div class="container">
       <div class="review-submit-box">
-        <h3>Lasă un review</h3>
+        <h3>Lasă o recenzie</h3>
         <p>
-          Scrie un testimonial scurt și, opțional, încarcă un video. Review-ul va fi
-          verificat înainte să apară public.
+          Scrie un testimonial scurt și, opțional, încarcă un video. Recenzia ta va fi
+          verificată înainte să apară public.
         </p>
 
         <form class="review-form" method="POST" action="/reviews" enctype="multipart/form-data">
@@ -321,20 +367,20 @@
           <label class="consent-check">
             <input type="checkbox" name="consentDataProcessing" value="yes" required>
             <span>
-              Sunt de acord ca datele mele să fie prelucrate pentru verificarea și administrarea review-ului.
+              Sunt de acord ca datele mele să fie prelucrate pentru verificarea și administrarea recenziei.
             </span>
           </label>
 
           <label class="consent-check">
             <input type="checkbox" name="consentPublicDisplay" value="yes" required>
             <span>
-              Sunt de acord ca numele meu, numele afacerii, textul review-ului și video-ul transmis să fie afișate
+              Sunt de acord ca numele meu, numele afacerii, textul recenziei și video-ul transmis să fie afișate
               public pe website după aprobare.
             </span>
           </label>
 
           <button class="btn btn-primary review-small-btn" type="submit">
-            Trimite review
+            Trimite recenzie
           </button>
         </form>
       </div>

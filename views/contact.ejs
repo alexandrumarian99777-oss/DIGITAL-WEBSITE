@@ -6,8 +6,11 @@
   <section class="page-hero section">
     <div class="container narrow">
       <p class="eyebrow">Contact</p>
-      <h1>Programează un demo gratuit pentru site-ul și sistemul tău de lead-uri.</h1>
-      <p>Completează formularul. Spune ce afacere ai, ce problemă vrei să rezolvi și ce pachet te interesează.</p>
+      <h1>Programează o prezentare gratuită pentru site-ul, sistemul sau campania ta.</h1>
+      <p>
+        Completează formularul. Spune ce afacere ai, ce problemă vrei să rezolvi
+        și ce pachet te interesează.
+      </p>
     </div>
   </section>
 
@@ -15,21 +18,35 @@
     <div class="container contact-grid">
       <form class="lead-form" method="POST" action="/leads">
         <h2>Trimite cererea</h2>
+
         <div class="form-grid two">
           <input name="name" placeholder="Nume" required>
           <input name="phone" placeholder="Telefon" required>
           <input name="email" type="email" placeholder="Email" required>
           <input name="businessName" placeholder="Numele afacerii">
           <input name="businessType" placeholder="Tip afacere: salon, restaurant, construcții...">
-          <input name="website" placeholder="Website / Facebook / Instagram">
+          <input name="website" placeholder="Site / Facebook / Instagram">
         </div>
+
         <select name="packageInterest">
           <option value="">Alege pachetul care te interesează</option>
-          <option>Starter Website - €99/lună</option>
-          <option>Booking Website - €169/lună</option>
-          <option>Growth System - €249/lună</option>
+
+          <optgroup label="Site-uri și sisteme web">
+            <option>Site cu o singură pagină - de la 299 €</option>
+            <option>Site de prezentare - de la 499 €</option>
+            <option>Site cu programări - de la 799 €</option>
+            <option>Sistem de creștere - de la 1.200 €</option>
+          </optgroup>
+
+          <optgroup label="Campanii publicitare">
+            <option>Promovare de Început - de la 199 €/lună</option>
+            <option>Promovare Locală - de la 349 €/lună</option>
+            <option>Promovare pentru Creștere - de la 599 €/lună</option>
+          </optgroup>
         </select>
+
         <textarea name="message" placeholder="Ce vrei să rezolvăm pentru afacerea ta?" required></textarea>
+
         <label class="form-consent">
           <input type="checkbox" name="acceptTerms" value="yes" required>
           <span>
@@ -37,18 +54,26 @@
             <a href="/termeni-si-conditii" target="_blank">Termenii și Condițiile</a>.
           </span>
         </label>
+
         <button class="btn btn-primary" type="submit">Trimite cererea</button>
       </form>
 
       <aside class="contact-card">
         <h2>Detalii contact</h2>
+
         <p><strong>Telefon:</strong> <%= content.business.phone %></p>
         <p><strong>Email:</strong> <%= content.business.email %></p>
         <p><strong>Locație:</strong> <%= content.business.address %></p>
-        <a class="btn btn-secondary full" href="<%= content.business.whatsapp %>" target="_blank" rel="noopener">Scrie
-          pe WhatsApp</a>
-        <p class="small-note">Domeniul se achită separat de client. Putem ajuta cu înregistrarea și conectarea lui la
-          site.</p>
+
+        <a class="btn btn-secondary full" href="<%= content.business.whatsapp %>" target="_blank" rel="noopener">
+          Scrie pe WhatsApp
+        </a>
+
+        <p class="small-note">
+          Domeniul standard este inclus în pachetele de site. Domeniile premium,
+          găzduirea premium, emailul profesional, aplicațiile terțe și bugetul de reclame
+          se taxează separat.
+        </p>
       </aside>
     </div>
   </section>

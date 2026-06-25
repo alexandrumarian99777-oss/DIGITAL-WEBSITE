@@ -2,16 +2,81 @@
 <%- include('partials/header') %>
 <%- include('partials/flash') %>
 
-<main>
-  <section class="section login-section">
-    <form class="login-card" method="POST" action="/login">
-      <h1>Login admin</h1>
-      <p>Acces privat pentru lead-uri, review-uri video, bloguri și programări.</p>
-      <input name="email" type="email" placeholder="Email" required>
-      <input name="password" type="password" placeholder="Parolă" required>
-      <button class="btn btn-primary full" type="submit">Intră în dashboard</button>
-    </form>
-  </section>
+<main class="auth-page">
+  <div class="container auth-grid">
+
+    <section class="auth-card login-card">
+      <p class="eyebrow">Admin</p>
+      <h1>Login</h1>
+      <p>Intră în dashboard folosind contul de admin.</p>
+
+      <form action="/login" method="POST" class="form-stack">
+        <input type="hidden" name="returnUrl"
+          value="<%= typeof returnUrl !== 'undefined' ? returnUrl : '/dashboard' %>">
+
+        <label>
+          Email
+          <input type="email" name="email" required placeholder="admin@email.com">
+        </label>
+
+        <label>
+          Parolă
+          <input type="password" name="password" required placeholder="Parola ta">
+        </label>
+
+        <button class="btn btn-primary" type="submit">Login</button>
+      </form>
+
+      <div class="auth-note">
+        Accesul este doar pentru administrarea lead-urilor, review-urilor, blogului și programărilor.
+      </div>
+    </section>
+
+    <section class="auth-card register-card">
+      <p class="eyebrow">Admin nou</p>
+      <h2>Înregistrare admin</h2>
+
+      <% if (typeof adminCount !== 'undefined' && adminCount === 0) { %>
+      <p>Nu există niciun admin încă. Creează primul cont de admin.</p>
+      <% } else { %>
+      <p>Creează un admin nou folosind codul privat de înregistrare.</p>
+      <% } %>
+
+      <form action="/register" method="POST" class="form-stack">
+        <label>
+          Nume
+          <input type="text" name="name" required placeholder="Nume admin">
+        </label>
+
+        <label>
+          Email
+          <input type="email" name="email" required placeholder="admin@email.com">
+        </label>
+
+        <label>
+          Parolă
+          <input type="password" name="password" required placeholder="Minimum 6 caractere">
+        </label>
+
+        <label>
+          Confirmă parola
+          <input type="password" name="confirmPassword" required placeholder="Repetă parola">
+        </label>
+
+        <label>
+          Cod înregistrare
+          <input type="password" name="registerCode" required placeholder="Cod privat din .env">
+        </label>
+
+        <button class="btn btn-secondary" type="submit">Creează admin</button>
+      </form>
+
+      <div class="auth-note">
+        După ce creezi contul real de admin, schimbă codul din .env sau scoate formularul de înregistrare.
+      </div>
+    </section>
+
+  </div>
 </main>
 
 <%- include('partials/footer') %>
