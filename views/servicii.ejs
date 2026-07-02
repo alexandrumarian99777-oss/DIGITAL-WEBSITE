@@ -1,0 +1,87 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<%- include('partials/flash') %>
+
+<main>
+    <section class="page-hero section">
+        <div class="container narrow">
+            <p class="eyebrow">Servicii</p>
+            <h1>Site-uri, sisteme de programări și panouri de administrare pentru afaceri locale</h1>
+            <p>
+                Aici găsești detaliile complete pentru pachetele de site. Homepage-ul rămâne simplu,
+                iar pagina aceasta explică exact ce primești și ce nu este inclus.
+            </p>
+        </div>
+    </section>
+
+    <section id="pachete" class="section soft-section">
+        <div class="container section-heading">
+            <p class="eyebrow">Pachete site</p>
+            <h2>Alege pachetul potrivit pentru afacerea ta</h2>
+            <p>
+                Prețurile sunt orientative. Oferta finală se stabilește în funcție de complexitate,
+                funcții, număr de pagini și materiale disponibile.
+            </p>
+        </div>
+
+        <div class="container-bgg pricing-grid">
+            <% content.packages.forEach((pkg) => { %>
+            <article class="pricing-card equal-card <%= pkg.featured ? 'featured' : '' %>">
+                <span class="pricing-tag"><%= pkg.tag %></span>
+                <h3><%= pkg.name %></h3>
+                <div class="price"><%= pkg.price %></div>
+                <p class="intro-price"><%= pkg.introPrice %></p>
+                <p><%= pkg.bestFor %></p>
+                <p class="pages"><%= pkg.pages %></p>
+
+                <h4>Inclus</h4>
+                <ul>
+                    <% pkg.included.forEach((feature) => { %>
+                    <li><%= feature %></li>
+                    <% }) %>
+                </ul>
+
+                <h4>Nu este inclus</h4>
+                <ul class="muted-list">
+                    <% pkg.notIncluded.forEach((feature) => { %>
+                    <li><%= feature %></li>
+                    <% }) %>
+                </ul>
+
+                <a class="btn btn-primary full" href="/contact#formular">
+                    Cere ofertă pentru acest pachet
+                </a>
+            </article>
+            <% }) %>
+        </div>
+
+        <div class="container contract-note"><%= content.contractNote %></div>
+    </section>
+
+    <section class="section">
+        <div class="container section-heading">
+            <p class="eyebrow">Servicii conexe</p>
+            <h2>Ai nevoie și de mentenanță sau promovare?</h2>
+        </div>
+
+        <div class="container home-service-grid">
+            <article class="home-service-card">
+                <h3>Mentenanță lunară</h3>
+                <p>
+                    Suport, verificări, backup și modificări simple după lansarea site-ului.
+                </p>
+                <a class="btn btn-secondary full" href="/mentenanta">Vezi mentenanța</a>
+            </article>
+
+            <article class="home-service-card">
+                <h3>Campanii publicitare</h3>
+                <p>
+                    Promovare online pe Facebook, Instagram și Google pentru afaceri locale.
+                </p>
+                <a class="btn btn-secondary full" href="/campanii-publicitare">Vezi campaniile</a>
+            </article>
+        </div>
+    </section>
+</main>
+
+<%- include('partials/footer') %>

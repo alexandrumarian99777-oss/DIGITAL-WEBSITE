@@ -354,4 +354,35 @@
       next(error);
     }
   });
+  router.get('/servicii', (req, res) => {
+    res.render('servicii', {
+      title: 'Servicii | AM Digital Growth',
+      description: 'Servicii de creare site, sisteme de programări, panouri de administrare, mentenanță și promovare online pentru afaceri locale.',
+      canonical: `${res.locals.siteUrl}/servicii`
+    });
+  });
+
+  router.get('/mentenanta', (req, res) => {
+    res.render('mentenanta', {
+      title: 'Mentenanță lunară | AM Digital Growth',
+      description: 'Pachete de mentenanță lunară pentru site-uri: verificări, backup, modificări simple și suport.',
+      canonical: `${res.locals.siteUrl}/mentenanta`
+    });
+  });
+
+  router.get('/campanii-publicitare', (req, res) => {
+    res.render('campanii-publicitare', {
+      title: 'Campanii publicitare | AM Digital Growth',
+      description: 'Administrare campanii publicitare pe Facebook, Instagram și Google pentru afaceri locale.',
+      canonical: `${res.locals.siteUrl}/campanii-publicitare`
+    });
+  });
+
+  router.get('/proiecte', (req, res) => {
+    res.render('proiecte', {
+      title: 'Proiecte | AM Digital Growth',
+      description: 'Exemple de proiecte create: site-uri de prezentare, website-uri imobiliare, portofolii și landing page-uri.',
+      canonical: `${res.locals.siteUrl}/proiecte`
+    });
+  });
   module.exports = router;

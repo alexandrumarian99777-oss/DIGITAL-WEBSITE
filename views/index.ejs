@@ -12,18 +12,18 @@
 
         <div class="hero-actions">
           <a class="btn btn-primary" href="/contact#formular"><%= content.hero.primary %></a>
-          <a class="btn btn-secondary" href="#pachete"><%= content.hero.secondary %></a>
+          <a class="btn btn-secondary" href="/servicii"><%= content.hero.secondary %></a>
         </div>
 
         <p class="domain-note">
-          Domeniu standard inclus în pachet. Domeniile premium, hostingul premium și aplicațiile terțe se taxează
-          separat.
+          Domeniu standard inclus în pachetele de site. Domeniile premium, găzduirea premium,
+          emailul profesional și aplicațiile terțe se taxează separat.
         </p>
       </div>
 
-      <div class="hero-card" aria-label="Previzualizare dashboard lead-uri">
+      <div class="hero-card" aria-label="Previzualizare panou privat">
         <div class="mini-bar"><span></span><span></span><span></span></div>
-        <h2>Dashboard privat</h2>
+        <h2>Panou privat</h2>
         <div class="lead-row"><strong>Cereri noi</strong><span>Contactat</span></div>
         <div class="lead-row"><strong>Recenzie video</strong><span>Aprobat</span></div>
         <div class="lead-row"><strong>Programare</strong><span>10:30</span></div>
@@ -54,31 +54,26 @@
     </div>
 
     <div class="container cards-grid three">
-      <% content.fixes.forEach((item) => { %>
+      <% content.fixes.slice(0, 6).forEach((item) => { %>
       <article class="service-card equal-card">
         <h3><%= item.title %></h3>
         <p><%= item.text %></p>
-        <a class="card-link" href="/contact#formular">
-
-        </a>
       </article>
       <% }) %>
     </div>
   </section>
+
   <section id="pachete" class="section soft-section">
     <div class="container section-heading">
-      <p class="eyebrow">Pachete</p>
-      <h2>
-        Fără taxă separată de configurare. Plătești pentru proiectul ales, iar pachetul
-        include designul, implementarea și funcțiile menționate în ofertă.
-      </h2>
+      <p class="eyebrow">Pachete principale</p>
+      <h2>Alege nivelul potrivit pentru afacerea ta</h2>
       <p>
-        Alege nivelul potrivit. Pachetele au limite clare, ca să nu transformăm
-        proiectul într-o gaură de timp.
+        Pe homepage păstrăm doar prezentarea scurtă. Detaliile complete, ce este inclus
+        și ce nu este inclus sunt pe pagina de servicii.
       </p>
     </div>
 
-    <div class="container-bgg pricing-grid">
+    <div class="container-bgg pricing-grid compact-pricing-grid">
       <% content.packages.forEach((pkg) => { %>
       <article class="pricing-card equal-card <%= pkg.featured ? 'featured' : '' %>">
         <span class="pricing-tag"><%= pkg.tag %></span>
@@ -88,180 +83,165 @@
         <p><%= pkg.bestFor %></p>
         <p class="pages"><%= pkg.pages %></p>
 
-        <h4>Inclus</h4>
+        <h4>Pe scurt</h4>
         <ul>
-          <% pkg.included.forEach((feature) => { %>
+          <% pkg.included.slice(0, 4).forEach((feature) => { %>
           <li><%= feature %></li>
           <% }) %>
         </ul>
 
-        <h4>Nu este inclus</h4>
-        <ul class="muted-list">
-          <% pkg.notIncluded.forEach((feature) => { %>
-          <li><%= feature %></li>
-          <% }) %>
-        </ul>
-
-        <a class="btn btn-primary full" href="/contact#formular">Programează o consultație gratuită</a>
+        <a class="btn btn-primary full" href="/servicii">
+          Vezi detalii pachet
+        </a>
       </article>
       <% }) %>
     </div>
 
-    <div class="container contract-note"><%= content.contractNote %></div>
+    <div class="container center-button">
+      <a class="btn btn-secondary" href="/servicii">
+        Vezi toate serviciile și detaliile complete
+      </a>
+    </div>
   </section>
 
-  <section id="mentenanta" class="section maintenance-section">
+  <section class="section">
     <div class="container section-heading">
-      <p class="eyebrow">Mentenanță lunară</p>
-      <h2>Suport, verificări și modificări simple după lansarea site-ului</h2>
+      <p class="eyebrow">Servicii extra</p>
+      <h2>După lansare poți continua cu mentenanță sau promovare</h2>
       <p>
-        Mentenanța este opțională și se plătește lunar. Este potrivită pentru afacerile
-        care vor ca site-ul să rămână verificat, actualizat și funcțional după lansare.
+        Nu încărcăm homepage-ul cu toate detaliile. Fiecare serviciu are pagina lui separată.
       </p>
     </div>
 
-    <div class="container maintenance-grid">
-      <article class="maintenance-card">
-        <span class="maintenance-badge">Început</span>
-
-        <h3>Mentenanță Simplă</h3>
-
-        <div class="maintenance-price">
-          <span>De la</span>
-          <strong>€49</strong>
-          <em>/ lună</em>
-        </div>
-
-        <p class="maintenance-description">
-          Pentru site-uri simple care au nevoie de verificare lunară și mici ajustări.
+    <div class="container home-service-grid">
+      <article class="home-service-card">
+        <span class="pricing-tag">De la 49 €/lună</span>
+        <h3>Mentenanță lunară</h3>
+        <p>
+          Verificări, backup, suport și modificări simple după lansarea site-ului.
+          Potrivit pentru afaceri care vor un site actualizat și funcțional.
         </p>
-
-        <h4>Inclus</h4>
-        <ul>
-          <li>Verificare lunară site</li>
-          <li>Verificare formular de contact</li>
-          <li>Verificare butoane WhatsApp / telefon</li>
-          <li>Backup lunar</li>
-          <li>Până la 3 modificări simple/lună</li>
-          <li>Suport prin email sau WhatsApp</li>
-        </ul>
-
-        <h4>Exemple de modificări simple</h4>
-        <ul class="muted-list">
-          <li>Schimbare text</li>
-          <li>Schimbare imagine</li>
-          <li>Actualizare program</li>
-          <li>Actualizare număr de telefon</li>
-          <li>Schimbare link</li>
-        </ul>
-
-        <a class="btn btn-secondary full" href="/contact#formular">
-          Vreau mentenanță simplă
+        <a class="btn btn-secondary full" href="/mentenanta">
+          Vezi pachetele de mentenanță
         </a>
       </article>
 
-      <article class="maintenance-card maintenance-featured">
-        <span class="maintenance-badge">Recomandat</span>
-
-        <h3>Mentenanță Standard</h3>
-
-        <div class="maintenance-price">
-          <span>De la</span>
-          <strong>€99</strong>
-          <em>/ lună</em>
-        </div>
-
-        <p class="maintenance-description">
-          Pentru afaceri care vor un site actualizat, verificat lunar și pregătit pentru modificări constante.
+      <article class="home-service-card">
+        <span class="pricing-tag">De la 199 €/lună</span>
+        <h3>Campanii publicitare</h3>
+        <p>
+          Promovare pe Facebook, Instagram și Google pentru afaceri locale.
+          Bugetul efectiv de reclame se plătește separat.
         </p>
-
-        <h4>Inclus</h4>
-        <ul>
-          <li>Verificare lunară site</li>
-          <li>Verificare formulare, butoane și linkuri</li>
-          <li>Backup lunar</li>
-          <li>Actualizări de text și imagini</li>
-          <li>Până la 7 modificări simple/lună</li>
-          <li>Adăugare articol simplu de blog, dacă textul este oferit de client</li>
-          <li>Verificare de bază pentru viteză</li>
-          <li>Verificare erori vizibile</li>
-          <li>Suport prioritar prin WhatsApp sau email</li>
-        </ul>
-
-        <h4>Nu este inclus</h4>
-        <ul class="muted-list">
-          <li>Pagini noi complexe</li>
-          <li>Funcții noi</li>
-          <li>Integrare plăți</li>
-          <li>Campanii publicitare</li>
-          <li>Design complet nou</li>
-        </ul>
-
-        <a class="btn btn-primary full" href="/contact#formular">
-          Vreau mentenanță Standard
+        <a class="btn btn-secondary full" href="/campanii-publicitare">
+          Vezi pachetele de promovare
         </a>
       </article>
-
-      <article class="maintenance-card">
-        <span class="maintenance-badge">Pro</span>
-
-        <h3>Mentenanță Pro</h3>
-
-        <div class="maintenance-price">
-          <span>De la</span>
-          <strong>€179</strong>
-          <em>/ lună</em>
-        </div>
-
-        <p class="maintenance-description">
-          Pentru site-uri cu programări, blog, recenzii, panou de administrare sau modificări mai frecvente.
-        </p>
-
-        <h4>Inclus</h4>
-        <ul>
-          <li>Verificare lunară completă</li>
-          <li>Backup lunar</li>
-          <li>Verificare formulare, programări și notificări</li>
-          <li>Actualizări de text, imagini și secțiuni</li>
-          <li>Până la 12 modificări simple/lună</li>
-          <li>Adăugare pagină simplă sau articol de blog, dacă materialele sunt oferite de client</li>
-          <li>Verificare de bază pentru optimizare locală</li>
-          <li>Verificare linkuri și erori vizibile</li>
-          <li>Suport prioritar</li>
-          <li>Recomandări lunare pentru îmbunătățirea site-ului</li>
-        </ul>
-
-        <h4>Nu este inclus</h4>
-        <ul class="muted-list">
-          <li>Funcții complexe noi</li>
-          <li>Sisteme noi de plată</li>
-          <li>Refacere completă design</li>
-          <li>Campanii publicitare</li>
-          <li>Buget reclame</li>
-          <li>Servicii externe plătite</li>
-        </ul>
-
-        <a class="btn btn-secondary full" href="/contact#formular">
-          Vreau mentenanță Pro
-        </a>
-      </article>
-    </div>
-
-    <div class="container maintenance-note">
-      <strong>Ce înseamnă o modificare simplă?</strong>
-      <p>
-        O modificare simplă înseamnă o ajustare de text, imagine, link, program,
-        număr de telefon, secțiune existentă sau conținut oferit de client.
-        Paginile noi complexe, funcțiile noi, designul nou, integrarea cu aplicații externe
-        și modificările majore se taxează separat.
-      </p>
     </div>
   </section>
+
+  <section id="proiecte" class="section projects-section">
+    <div class="container section-heading">
+      <p class="eyebrow">Proiecte</p>
+      <h2>Exemple de proiecte create</h2>
+      <p>
+        Câteva exemple vizuale care arată stilul, structura și nivelul de prezentare
+        pe care îl putem construi pentru afaceri locale.
+      </p>
+    </div>
+
+    <div class="container projects-grid">
+      <article class="project-card">
+        <div class="project-image-wrap">
+          <img src="/images/projects/estatepoint-hero.png"
+            alt="Proiect EstatePoint - secțiune principală website imobiliare" class="project-image" loading="lazy">
+          <span class="project-badge">Website imobiliare</span>
+        </div>
+
+        <div class="project-content">
+          <div class="project-meta">
+            <span>Design premium</span>
+            <span>Responsive</span>
+            <span>Lead generation</span>
+          </div>
+
+          <h3>EstatePoint — pagină principală</h3>
+          <p>
+            Concept modern pentru un website imobiliar, cu imagine puternică,
+            structură clară și formular de căutare integrat.
+          </p>
+
+          <div class="project-actions">
+            <a class="btn btn-primary" href="/contact#formular">Vreau un site similar</a>
+            <a class="btn btn-secondary" href="/proiecte">Vezi proiectele</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-image-wrap">
+          <img src="/images/projects/estatepoint-properties.png"
+            alt="Proiect EstatePoint - secțiune listare proprietăți" class="project-image" loading="lazy">
+          <span class="project-badge">Listare proprietăți</span>
+        </div>
+
+        <div class="project-content">
+          <div class="project-meta">
+            <span>UI curat</span>
+            <span>Carduri elegante</span>
+            <span>Experiență clară</span>
+          </div>
+
+          <h3>EstatePoint — secțiune proprietăți</h3>
+          <p>
+            Secțiune de prezentare pentru proprietăți premium, construită cu accent
+            pe imagini mari și informații ușor de parcurs.
+          </p>
+
+          <div class="project-actions">
+            <a class="btn btn-primary" href="/contact#formular">Vreau un proiect similar</a>
+            <a class="btn btn-secondary" href="/proiecte">Vezi proiectele</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-image-wrap">
+          <img src="/images/projects/devportfolio-hero.png" alt="Proiect DevPortfolio - website portofoliu developer"
+            class="project-image" loading="lazy">
+          <span class="project-badge">Portofoliu developer</span>
+        </div>
+
+        <div class="project-content">
+          <div class="project-meta">
+            <span>Look modern</span>
+            <span>Personal branding</span>
+            <span>UI premium</span>
+          </div>
+
+          <h3>DevPortfolio — landing page modernă</h3>
+          <p>
+            Concept de portofoliu cu design futurist, call to action clar și prezentare
+            vizuală memorabilă.
+          </p>
+
+          <div class="project-actions">
+            <a class="btn btn-primary" href="/contact#formular">Vreau un portofoliu similar</a>
+            <a class="btn btn-secondary" href="/proiecte">Vezi proiectele</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
   <section class="section">
     <div class="container section-heading">
       <p class="eyebrow">Cum lucrăm</p>
-      <h2>Cum decurge colaborarea</h2>
-      <p>Proces scurt, clar și ușor de urmărit. Fără întâlniri inutile și fără haos.</p>
+      <h2>Proces scurt, clar și ușor de urmărit</h2>
+      <p>
+        Fără întâlniri inutile și fără haos. Stabilim ce trebuie făcut, construim,
+        testăm și lansăm.
+      </p>
     </div>
 
     <div class="container cards-grid three">
@@ -275,150 +255,13 @@
     </div>
   </section>
 
-  <section id="campanii-publicitare" class="section soft-section ads-section">
-    <div class="container section-heading">
-      <p class="eyebrow">Campanii publicitare</p>
-      <h2>Promovare online pentru afaceri locale care vor mai multe cereri</h2>
-      <p>
-        Putem pregăti și administra campanii pe Facebook, Instagram și Google.
-        Bugetul de reclame este separat și se plătește direct către Meta sau Google.
-      </p>
-    </div>
-
-    <div class="container ads-alert">
-      <strong>Buget separat:</strong>
-      <span>
-        Prețurile de mai jos reprezintă taxa de configurare și administrare. Bugetul efectiv de reclame
-        nu este inclus.
-      </span>
-    </div>
-
-    <div class="container ads-offer-grid">
-      <article class="ads-plan-card">
-        <div class="ads-plan-top">
-          <span class="ads-badge">Promovare Simplă</span>
-          <h3>Promovare de Început</h3>
-          <p>Pentru afaceri mici care vor să testeze reclame local.</p>
-        </div>
-
-        <div class="ads-price">
-          <span>De la</span>
-          <strong>€199</strong>
-          <em>/ lună</em>
-        </div>
-
-        <ul class="ads-list">
-          <li>1 platformă: reclame pe Facebook, Instagram sau Google</li>
-          <li>1 campanie principală</li>
-          <li>Configurare de bază</li>
-          <li>Texte simple pentru reclame</li>
-          <li>direcționare locală</li>
-          <li>Verificare săptămânală</li>
-          <li>Raport lunar simplu</li>
-        </ul>
-
-        <div class="ads-recommendation">
-          Buget reclame recomandat: <strong>€150-€300/lună</strong>
-        </div>
-
-        <a class="btn btn-primary full" href="/contact#formular">Vreau promovare de început</a>
-      </article>
-
-      <article class="ads-plan-card ads-featured">
-        <div class="ads-plan-top">
-          <span class="ads-badge">Recomandat</span>
-          <h3>Promovare Locală</h3>
-          <p>Pentru afaceri care vor campanii mai clare și cereri mai constante.</p>
-        </div>
-
-        <div class="ads-price">
-          <span>De la</span>
-          <strong>€349</strong>
-          <em>/ lună</em>
-        </div>
-
-        <ul class="ads-list">
-          <li>Reclame pe Facebook, Instagram sau Google</li>
-          <li>2 campanii active</li>
-          <li>2-4 reclame/teste</li>
-          <li>Texte pentru reclame</li>
-          <li>Optimizare săptămânală</li>
-          <li>Urmărire rezultate de bază</li>
-          <li>Raport lunar cu recomandări</li>
-        </ul>
-
-        <div class="ads-recommendation">
-          Buget reclame recomandat: <strong>€300-€800/lună</strong>
-        </div>
-
-        <a class="btn btn-primary full" href="/contact#formular">Vreau promovare locală</a>
-      </article>
-
-      <article class="ads-plan-card">
-        <div class="ads-plan-top">
-          <span class="ads-badge">Creștere</span>
-          <h3>Campanii de Creștere</h3>
-          <p>Pentru afaceri care au deja site bun și vor să testeze mai serios.</p>
-        </div>
-
-        <div class="ads-price">
-          <span>De la</span>
-          <strong>€599</strong>
-          <em>/ lună</em>
-        </div>
-
-        <ul class="ads-list">
-          <li>4 campanii active</li>
-          <li>Reclame pe Facebook, Instagram și Google</li>
-          <li>Campanii separate pe obiective</li>
-          <li>Testare audiențe și mesaje</li>
-          <li>Optimizare pentru cereri</li>
-          <li>Recomandări pentru pagină dedicată</li>
-          <li>Raport lunar mai detaliat</li>
-          <li>Traseu de conversie</li>
-        </ul>
-
-        <div class="ads-recommendation">
-          Buget reclame recomandat: <strong>€800-€2.000/lună</strong>
-        </div>
-
-        <a class="btn btn-primary full" href="/contact#formular">Vreau campanii de creștere</a>
-      </article>
-    </div>
-
-    <div class="container ads-small-grid">
-      <article class="ads-small-card">
-        <h3>Configurare campanie</h3>
-        <p>
-          Pentru campanii noi, configurarea pornește de la <strong>€150-€250</strong>,
-          în funcție de platformă și complexitate.
-        </p>
-      </article>
-
-      <article class="ads-small-card">
-        <h3>Pagină dedicată pentru reclame</h3>
-        <p>
-          Dacă nu există o pagină clară pentru trafic, putem crea una separat,
-          de la <strong>€250-€500</strong>.
-        </p>
-      </article>
-
-      <article class="ads-small-card">
-        <h3>Fără promisiuni false</h3>
-        <p>
-          Nu garantăm vânzări sau rezultate fixe. Construim campanii clare,
-          pagini relevante și optimizăm în timp.
-        </p>
-      </article>
-    </div>
-  </section>
   <section id="faq" class="section faq-section">
     <div class="container section-heading">
       <p class="eyebrow">Întrebări frecvente</p>
-      <h2>Întrebări pe care clienții le au înainte să înceapă un proiect</h2>
+      <h2>Întrebări importante înainte să începem</h2>
       <p>
-        Am adunat cele mai importante întrebări despre site-uri, domeniu, mentenanță,
-        campanii publicitare, plată și rezultate.
+        Răspunsuri scurte la cele mai comune întrebări despre site-uri, domeniu,
+        mentenanță, reclame și plată.
       </p>
     </div>
 
@@ -430,9 +273,8 @@
         </button>
         <div class="faq-answer">
           <p>
-            Depinde de pachet, numărul de pagini, funcții și cât de repede sunt oferite materialele.
-            Un site simplu poate fi livrat mai repede, iar un sistem cu programări, panou de administrare
-            sau funcții extra poate dura mai mult.
+            Depinde de pachet, numărul de pagini și cât de repede sunt oferite materialele.
+            Un site simplu poate fi livrat mai repede, iar un sistem cu programări poate dura mai mult.
           </p>
         </div>
       </div>
@@ -444,62 +286,21 @@
         </button>
         <div class="faq-answer">
           <p>
-            Da, un domeniu standard este inclus în pachet, dacă este disponibil la un cost rezonabil.
-            Domeniile premium, domeniile foarte scumpe sau domeniile speciale se taxează separat.
+            Da, un domeniu standard este inclus în pachetele de site, dacă este disponibil la un cost rezonabil.
+            Domeniile premium sau foarte scumpe se taxează separat.
           </p>
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-question" type="button">
-          <span>Găzduirea este inclusă?</span>
+          <span>Campaniile includ bugetul de reclame?</span>
           <strong>+</strong>
         </button>
         <div class="faq-answer">
           <p>
-            Găzduirea de bază poate fi inclusă sau configurată în funcție de ofertă.
-            Găzduirea premium, serverele mai puternice, emailul profesional și aplicațiile terțe
-            se taxează separat dacă nu sunt menționate expres ca fiind incluse.
-          </p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" type="button">
-          <span>Pot modifica textele după lansare?</span>
-          <strong>+</strong>
-        </button>
-        <div class="faq-answer">
-          <p>
-            Da, dacă proiectul include panou de administrare sau dacă alegi un pachet de mentenanță.
-            Modificările simple pot include texte, imagini, linkuri, program, număr de telefon sau
-            secțiuni existente.
-          </p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" type="button">
-          <span>Mentenanța este obligatorie?</span>
-          <strong>+</strong>
-        </button>
-        <div class="faq-answer">
-          <p>
-            Nu. Mentenanța este opțională și se plătește lunar. Este recomandată pentru afacerile
-            care vor ca site-ul să fie verificat, actualizat și menținut funcțional după lansare.
-          </p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" type="button">
-          <span>Campaniile publicitare includ bugetul de reclame?</span>
-          <strong>+</strong>
-        </button>
-        <div class="faq-answer">
-          <p>
-            Nu. Prețul pentru campanii acoperă configurarea, administrarea, optimizarea și raportarea.
-            Bugetul efectiv de reclame se plătește separat către Facebook, Instagram sau Google.
+            Nu. Taxa de administrare este separată de bugetul efectiv de reclame,
+            care se plătește către Facebook, Instagram sau Google.
           </p>
         </div>
       </div>
@@ -511,145 +312,17 @@
         </button>
         <div class="faq-answer">
           <p>
-            Nu garantăm vânzări, clienți, profit, poziții fixe pe Google sau rezultate peste noapte.
-            Rezultatele depind de ofertă, buget, piață, concurență, reputație, prețuri, recenzii și calitatea
-            serviciilor.
-          </p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" type="button">
-          <span>Cum se face plata?</span>
-          <strong>+</strong>
-        </button>
-        <div class="faq-answer">
-          <p>
-            Plata pentru proiect se face integral înainte de începerea lucrului, conform ofertei acceptate,
-            contractului sau facturii. Pentru serviciile lunare, plata se face în avans pentru luna respectivă.
+            Nu garantăm vânzări, profit, clienți sau poziții fixe pe Google.
+            Rezultatele depind de ofertă, piață, buget, reputație și concurență.
           </p>
         </div>
       </div>
     </div>
-  </section>
-  <section id="sistem" class="section dark-section">
-    <div class="container split-grid">
-      <div>
-        <p class="eyebrow orange">Prezentarea sistemului</p>
-        <h2>Nu vindem doar un site. Construim un traseu clar de la vizitator la cumpărător.</h2>
-        <p>
-          Fiecare secțiune are un rol: să explice oferta, să crească încrederea,
-          să colecteze date și să te ajute să urmărești oportunitățile din dashboard.
-        </p>
-      </div>
 
-      <div class="system-list">
-        <% content.system.forEach((item) => { %>
-        <div class="system-item">
-          <h3><%= item.title %></h3>
-          <p><%= item.text %></p>
-        </div>
-        <% }) %>
-      </div>
-    </div>
-  </section>
-
-  <section id="testimoniale" class="section">
-    <div class="container section-heading">
-      <p class="eyebrow">Recenzii video</p>
-      <h2>Testimoniale care arată mai real decât citatele perfecte</h2>
-      <p>
-        Video-ul construiește încredere mai repede. Clienții pot trimite recenzii
-        direct de pe homepage, iar tu le aprobi din dashboard înainte să apară public.
-      </p>
-    </div>
-
-    <div class="container cards-grid three">
-      <% if (reviews.length === 0) { %>
-      <p class="empty-state">Primele testimoniale vor apărea aici în curând.</p>
-      <% } %>
-
-      <% reviews.forEach((review) => { %>
-      <article class="review-card equal-card">
-        <% if (review.videoUrl) { %>
-        <% if (review.videoUrl.startsWith('/uploads/')) { %>
-        <video class="video-box" controls preload="metadata" aria-label="Review video de la <%= review.customerName %>">
-          <source src="<%= review.videoUrl %>">
-        </video>
-        <% } else { %>
-        <a class="video-box video-link" href="<%= review.videoUrl %>" target="_blank" rel="noopener"
-          aria-label="Deschide review video">
-          <% if (review.thumbnail) { %>
-          <img src="<%= review.thumbnail %>" alt="Review video de la <%= review.customerName %>" loading="lazy">
-          <% } else { %>
-          <span>▶</span>
-          <% } %>
-        </a>
-        <% } %>
-        <% } %>
-
-        <div class="stars"><%= '★'.repeat(review.rating) %></div>
-        <p>“<%= review.quote %>”</p>
-        <strong><%= review.customerName %></strong>
-
-        <% if (review.businessName) { %>
-        <span><%= review.businessName %></span>
-        <% } %>
-      </article>
-      <% }) %>
-    </div>
-
-    <div class="container">
-      <div class="review-submit-box">
-        <h3>Lasă o recenzie</h3>
-        <p>
-          Scrie un testimonial scurt și, opțional, încarcă un video. Recenzia ta va fi
-          verificată înainte să apară public.
-        </p>
-
-        <form class="review-form" method="POST" action="/reviews" enctype="multipart/form-data">
-          <div class="form-grid two">
-            <input name="customerName" type="text" placeholder="Numele tău" required>
-            <input name="businessName" type="text" placeholder="Afacerea ta, opțional">
-          </div>
-
-          <select name="rating" required>
-            <option value="">Alege rating</option>
-            <option value="5">5 stele</option>
-            <option value="4">4 stele</option>
-            <option value="3">3 stele</option>
-            <option value="2">2 stele</option>
-            <option value="1">1 stea</option>
-          </select>
-
-          <textarea name="quote" placeholder="Scrie review-ul tău aici..." required></textarea>
-
-          <div class="upload-box public-upload-box">
-            <label>Încarcă video testimonial</label>
-            <input type="file" name="videoFile" accept="video/*">
-            <small>MP4, WEBM sau MOV. Maxim 150MB.</small>
-          </div>
-
-          <label class="consent-check">
-            <input type="checkbox" name="consentDataProcessing" value="yes" required>
-            <span>
-              Sunt de acord ca datele mele să fie prelucrate pentru verificarea și administrarea recenziei.
-            </span>
-          </label>
-
-          <label class="consent-check">
-            <input type="checkbox" name="consentPublicDisplay" value="yes" required>
-            <span>
-              Sunt de acord ca numele meu, numele afacerii, textul recenziei și video-ul transmis să fie afișate
-              public pe site după aprobare.
-            </span>
-          </label>
-
-          <button class="btn btn-primary review-small-btn" type="submit">
-            Trimite recenzie
-          </button>
-        </form>
-      </div>
+    <div class="container center-button">
+      <a class="btn btn-secondary" href="/servicii">
+        Vezi detaliile complete
+      </a>
     </div>
   </section>
 
@@ -660,7 +333,7 @@
     </div>
 
     <div class="container blog-grid">
-      <% posts.forEach((post) => { %>
+      <% posts.slice(0, 3).forEach((post) => { %>
       <article class="blog-card equal-card">
         <% if (post.coverImage) { %>
         <img src="<%= post.coverImage %>" alt="<%= post.coverAlt || post.title %>" loading="lazy">

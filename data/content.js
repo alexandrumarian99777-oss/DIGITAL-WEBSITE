@@ -13,8 +13,8 @@ const content = {
                 phone: '+40 752 679 312',
                 whatsapp: 'https://wa.me/40752679312',
                 address: 'Galați, România',
-                facebook: 'https://facebook.com/',
-                instagram: 'https://instagram.com/'
+                facebook: 'https://www.facebook.com/profile.php?id=61591357014810',
+                instagram: 'https://www.instagram.com/amdigitalgrowthofficial/'
         },
 
         seo: {
@@ -46,11 +46,11 @@ const content = {
         ],
 
         hero: {
-                eyebrow: 'Site-uri, sisteme de programări și campanii publicitare pentru afaceri locale.',
-                title: 'Construim site-uri clare, formulare de cereri, panouri de administrare și reclame online pentru afaceri care vor mai multe cereri și mai multă încredere.',
-                text: 'Îți transformăm prezența online într-un sistem simplu: pagini clare, cereri de ofertă, testimoniale video, blog și panou privat unde vezi cererile, recenziile și programările.',
+                eyebrow: 'Site-uri, programări și promovare online',
+                title: 'Site-uri și sisteme online pentru afaceri locale care vor mai multe cereri.',
+                text: 'Construim site-uri clare, formulare de contact, sisteme de programări, panouri de administrare și campanii publicitare pentru afaceri care vor să pară mai serioase online.',
                 primary: 'Programează o consultație gratuită',
-                secondary: 'Vezi pachetele'
+                secondary: 'Vezi serviciile'
         },
 
         trustStats: [{
