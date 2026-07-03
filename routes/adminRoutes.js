@@ -8,9 +8,9 @@
   const Review = require('../models/Review');
   const Blog = require('../models/Blog');
   const Appointment = require('../models/Appointment');
-  const {
-    sendAppointmentEmail
-  } = require('../services/emailService');
+  // const {
+  //   sendAppointmentEmail
+  // } = require('../services/emailService');
 
   const router = express.Router();
 
@@ -322,87 +322,74 @@
     }
   });
 
-  router.post('/appointments', async (req, res, next) => {
+  router.post('/appointments', requireAdmin, async (req, res) => {
     try {
-      if (!isValidHalfHour(req.body.time)) {
-        req.flash('error', 'Ora trebuie să fie în format HH:00 sau HH:30. Exemplu: 10:00 sau 10:30.');
-        return res.redirect('/dashboard#programari');
-      }
+      const {
+        customerName,
+        customerEmail,
+        customerPhone,
+        businessName,
+        service,
+        status,
+        date,
+        time,
+        notes
+      } = req.body;
 
-      const exists = await Appointment.findOne({
-        date: req.body.date,
-        time: req.body.time
-      });
-      if (exists) {
-        req.flash('error', 'Există deja o programare pentru această dată și oră.');
-        return res.redirect('/dashboard#programari');
-      }
-
-      const appointment = await Appointment.create({
-        customerName: req.body.customerName,
-        customerEmail: req.body.customerEmail,
-        customerPhone: req.body.customerPhone,
-        businessName: req.body.businessName,
-        service: req.body.service,
-        date: req.body.date,
-        time: req.body.time,
-        notes: req.body.notes,
-        customEmailMessage: req.body.customEmailMessage,
-        status: req.body.status || 'programat'
+      await Appointment.create({
+        customerName,
+        customerEmail,
+        customerPhone,
+        businessName,
+        service,
+        status: status || 'programat',
+        date,
+        time,
+        notes
       });
 
-      await sendAppointmentEmail(appointment);
-      appointment.emailSent = true;
-      await appointment.save();
-
-      req.flash('success', 'Programare creată și email trimis / afișat în terminal.');
+      req.flash('success', 'Programarea a fost creată și salvată în dashboard.');
       res.redirect('/dashboard#programari');
     } catch (error) {
-      next(error);
+      console.error(error);
+      req.flash('error', 'Programarea nu a putut fi creată.');
+      res.redirect('/dashboard#programari');
     }
   });
-
-  router.post('/appointments/:id/update', async (req, res, next) => {
+  router.post('/appointments/:id/update', async (req, res) => {
     try {
-      if (!isValidHalfHour(req.body.time)) {
-        req.flash('error', 'Ora trebuie să fie în format HH:00 sau HH:30.');
-        return res.redirect('/dashboard#programari');
-      }
-
-      const conflict = await Appointment.findOne({
-        date: req.body.date,
-        time: req.body.time,
-        _id: {
-          $ne: req.params.id
-        }
-      });
-      if (conflict) {
-        req.flash('error', 'Există deja o altă programare pentru această dată și oră.');
-        return res.redirect('/dashboard#programari');
-      }
+      const {
+        customerName,
+        customerEmail,
+        customerPhone,
+        businessName,
+        service,
+        status,
+        date,
+        time,
+        notes
+      } = req.body;
 
       await Appointment.findByIdAndUpdate(req.params.id, {
-        customerName: req.body.customerName,
-        customerEmail: req.body.customerEmail,
-        customerPhone: req.body.customerPhone,
-        businessName: req.body.businessName,
-        service: req.body.service,
-        date: req.body.date,
-        time: req.body.time,
-        notes: req.body.notes,
-        customEmailMessage: req.body.customEmailMessage,
-        status: req.body.status
-      }, {
-        runValidators: true
+        customerName,
+        customerEmail,
+        customerPhone,
+        businessName,
+        service,
+        status,
+        date,
+        time,
+        notes
       });
 
-      req.flash('success', 'Programare actualizată.');
+      req.flash('success', 'Programarea a fost actualizată.');
       res.redirect('/dashboard#programari');
     } catch (error) {
-      next(error);
+      console.error(error);
+      req.flash('error', 'Programarea nu a putut fi actualizată.');
+      res.redirect('/dashboard#programari');
     }
   });
-
   router.post('/appointments/:id/delete', async (req, res, next) => {
     try {
       await Appointment.findByIdAndDelete(req.params.id);

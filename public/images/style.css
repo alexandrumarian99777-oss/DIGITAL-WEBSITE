@@ -484,11 +484,13 @@ li {
   align-items: center;
   overflow: hidden;
   background-image:
-    linear-gradient(90deg,
+    linear-gradient(
+      90deg,
       rgba(255, 255, 255, 0.94) 0%,
       rgba(255, 255, 255, 0.86) 36%,
       rgba(255, 255, 255, 0.58) 62%,
-      rgba(255, 255, 255, 0.18) 100%),
+      rgba(255, 255, 255, 0.18) 100%
+    ),
     url("/images/hero/website-creation-hero.png");
   background-size: cover;
   background-position: center right;
@@ -557,10 +559,12 @@ li {
     min-height: auto;
     padding: 110px 0 80px;
     background-image:
-      linear-gradient(180deg,
+      linear-gradient(
+        180deg,
         rgba(255, 255, 255, 0.94) 0%,
         rgba(255, 255, 255, 0.88) 45%,
-        rgba(255, 255, 255, 0.96) 100%),
+        rgba(255, 255, 255, 0.96) 100%
+      ),
       url("/images/hero/website-creation-hero.png");
     background-position: center;
   }
@@ -2156,70 +2160,6 @@ textarea {
 
 .home-service-card .btn {
   margin-top: auto;
-}
-
-.appointment-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 5px 11px;
-  border-radius: 999px;
-  font-size: 0.82rem;
-  font-weight: 800;
-  line-height: 1;
-  margin-left: 6px;
-  border: 1px solid transparent;
-}
-
-.status-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-/* Programat */
-.appointment-status.status-programat {
-  color: #92400e;
-  background: #fffbeb;
-  border-color: #fcd34d;
-}
-
-.appointment-status.status-programat .status-dot {
-  background: #f59e0b;
-}
-
-/* Confirmat */
-.appointment-status.status-confirmat {
-  color: #166534;
-  background: #ecfdf5;
-  border-color: #86efac;
-}
-
-.appointment-status.status-confirmat .status-dot {
-  background: #22c55e;
-}
-
-/* Anulat */
-.appointment-status.status-anulat {
-  color: #991b1b;
-  background: #fef2f2;
-  border-color: #fecaca;
-}
-
-.appointment-status.status-anulat .status-dot {
-  background: #ef4444;
-}
-
-/* Finalizat */
-.appointment-status.status-finalizat {
-  color: #1e3a8a;
-  background: #eff6ff;
-  border-color: #bfdbfe;
-}
-
-.appointment-status.status-finalizat .status-dot {
-  background: #3b82f6;
 }
 
 @media (max-width: 900px) {

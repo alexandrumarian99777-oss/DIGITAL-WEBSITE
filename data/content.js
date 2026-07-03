@@ -9,7 +9,7 @@ const content = {
                 registeredAddress: '[Adresă sediu profesional / sediu social]',
                 site: '[site]',
                 lastUpdated: '14 iunie 2026',
-                email: 'alexandru.marian99777@gmail.com',
+                email: 'amdigitalgrowth@yahoo.com',
                 phone: '+40 752 679 312',
                 whatsapp: 'https://wa.me/40752679312',
                 address: 'Galați, România',
@@ -438,7 +438,7 @@ Formă juridică: [PFA/SRL]
 CUI: [CUI]
 Nr. Registrul Comerțului: [Număr ONRC]
 Sediu profesional / sediu social: [Adresă sediu]
-Email: alexandru.marian99777@gmail.com
+Email: amdigitalgrowth@yahoo.com
 Telefon: +40 752 679 312
 Site: [website]
 
@@ -893,7 +893,7 @@ Dacă Clientul este consumator și contractul este încheiat la distanță, onli
 
 Termenul de 14 zile începe, de regulă, de la data încheierii contractului pentru servicii.
 
-Pentru exercitarea dreptului de retragere, consumatorul trebuie să transmită o declarație clară privind decizia de retragere, prin email la alexandru.marian99777@gmail.com sau prin alt mijloc de comunicare indicat de Prestator.
+Pentru exercitarea dreptului de retragere, consumatorul trebuie să transmită o declarație clară privind decizia de retragere, prin email la amdigitalgrowth@yahoo.com sau prin alt mijloc de comunicare indicat de Prestator.
 
 Dacă, la cererea expresă a consumatorului, Prestatorul începe prestarea serviciilor înainte de expirarea perioadei de 14 zile, consumatorul înțelege că poate datora plata proporțională pentru serviciile deja prestate până la momentul comunicării retragerii.
 
@@ -1058,7 +1058,7 @@ Prestatorul poate refuza sau opri orice proiect ori campanie care implică activ
 
                                 `32. Reclamații
 
-Orice reclamație privind site-ul sau serviciile prestate poate fi transmisă la adresa de email: alexandru.marian99777@gmail.com.
+Orice reclamație privind site - ul sau serviciile prestate poate fi transmisă la adresa de email: amdigitalgrowth@yahoo.com.
 
 Prestatorul va analiza reclamația și va încerca soluționarea amiabilă într-un termen rezonabil.`,
 
@@ -1119,7 +1119,7 @@ Formă juridică: [PFA/SRL]
 CUI: [CUI]
 Nr. Registrul Comerțului: [Număr ONRC]
 Sediu profesional / sediu social: [Adresă sediu]
-Email: alexandru.marian99777@gmail.com
+Email: amdigitalgrowth@yahoo.com
 Telefon: +40 752 679 312
 Site: [site]
 
@@ -1250,7 +1250,8 @@ Mai multe informații sunt disponibile în Politica de Cookie-uri.`,
 
 Putem transmite comunicări comerciale doar în situațiile permise de lege, de exemplu dacă v-ați dat consimțământul sau dacă există un interes legitim aplicabil pentru comunicări privind servicii similare.
 
-Vă puteți dezabona sau puteți solicita oprirea comunicărilor comerciale oricând, prin email la alexandru.marian99777@gmail.com sau prin mecanismul de dezabonare inclus în mesajele comerciale, dacă acesta este disponibil.`,
+Vă puteți dezabona sau puteți solicita oprirea comunicărilor comerciale oricând, prin email la amdigitalgrowth@yahoo.com sau prin mecanismul de dezabonare inclus în mesajele comerciale, dacă acesta este disponibil.
+`,
 
                                 `14. Destinatarii datelor
 
@@ -1312,7 +1313,7 @@ Conform legislației privind protecția datelor, aveți următoarele drepturi:
 - dreptul de a retrage consimțământul, atunci când prelucrarea se bazează pe consimțământ;
 - dreptul de a depune o plângere la autoritatea de supraveghere.
 
-Pentru exercitarea acestor drepturi, ne puteți contacta la: alexandru.marian99777@gmail.com.
+Pentru exercitarea acestor drepturi, ne puteți contacta la: amdigitalgrowth@yahoo.com.
 
 Pentru protecția datelor, este posibil să solicităm informații suplimentare pentru verificarea identității persoanei care face solicitarea.`,
 
@@ -1324,7 +1325,8 @@ Pentru clienții persoane juridice, PFA, întreprinderi individuale, întreprind
 
 Dacă Clientul este consumator și contractul este încheiat la distanță, online, prin email, telefon, formular, WhatsApp sau alt mijloc similar, acesta poate avea dreptul să se retragă din contract în termen de 14 zile calendaristice, fără a preciza un motiv, conform legislației aplicabile privind protecția consumatorilor.
 
-Pentru exercitarea dreptului de retragere, consumatorul trebuie să transmită o declarație clară privind decizia de retragere, prin email la alexandru.marian99777@gmail.com sau prin alt mijloc de comunicare indicat de Prestator.`,
+Pentru exercitarea dreptului de retragere, consumatorul trebuie să transmită o declarație clară privind decizia de retragere, prin email la amdigitalgrowth@yahoo.com sau prin alt mijloc de comunicare indicat de Prestator.
+`,
 
                                 `20. Retragerea consimțământului
 
@@ -1362,7 +1364,7 @@ Versiunea actualizată va fi publicată pe această pagină și va produce efect
 
 Pentru orice întrebări privind această Politică de Confidențialitate sau modul în care prelucrăm datele personale, ne puteți contacta la:
 
-Email: alexandru.marian99777@gmail.com
+Email: amdigitalgrowth@yahoo.com
 Telefon: +40 752 679 312
 Operator: [Nume PFA/SRL]
 CUI: [CUI]
@@ -1394,7 +1396,7 @@ Poți solicita:
 
 Solicitarea se poate trimite prin email la:
 
-alexandru.marian99777@gmail.com
+amdigitalgrowth@yahoo.com
 
 În mesaj, te rugăm să menționezi clar ce drept dorești să exerciți și, dacă este posibil, contextul în care ai transmis datele: formular de contact, cerere de ofertă, programare, recenzie, testimonial, contract, factură sau campanie publicitară.`,
 
@@ -1436,7 +1438,7 @@ Dacă consideri că datele tale personale nu sunt prelucrate conform legislație
 
 Pentru orice solicitare privind datele personale, ne poți contacta la:
 
-Email: alexandru.marian99777@gmail.com
+Email: amdigitalgrowth@yahoo.com
 Telefon: +40 752 679 312
 Operator: [Nume PFA/SRL]
 CUI: [CUI]
@@ -1467,7 +1469,7 @@ Formă juridică: [PFA/SRL]
 CUI: [CUI]
 Nr. Registrul Comerțului: [Număr ONRC]
 Sediu profesional / sediu social: [Adresă sediu]
-Email: alexandru.marian99777@gmail.com
+Email: amdigitalgrowth@yahoo.com
 Telefon: +40 752 679 312
 Site: [site]
 
@@ -1657,7 +1659,7 @@ Versiunea actualizată va fi publicată pe această pagină și va produce efect
 
 Pentru întrebări privind această Politică de Cookie-uri sau modul în care folosim cookie-uri, ne puteți contacta la:
 
-Email: alexandru.marian99777@gmail.com
+Email: amdigitalgrowth@yahoo.com
 Telefon: +40 752 679 312
 Operator: [Nume PFA/SRL]
 CUI: [CUI]

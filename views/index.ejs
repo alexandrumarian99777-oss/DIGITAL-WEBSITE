@@ -3,31 +3,24 @@
 <%- include('partials/flash') %>
 
 <main>
-  <section class="hero section">
-    <div class="container hero-grid">
-      <div class="hero-copy">
+  <section class="hero section hero-bg-centered">
+    <div class="container hero-bg-content">
+      <div class="hero-copy hero-centered-text">
         <p class="eyebrow"><%= content.hero.eyebrow %></p>
         <h1><%= content.hero.title %></h1>
         <p class="hero-text"><%= content.hero.text %></p>
 
         <div class="hero-actions">
           <a class="btn btn-primary" href="/contact#formular"><%= content.hero.primary %></a>
-          <a class="btn btn-secondary" href="/servicii"><%= content.hero.secondary %></a>
+          <a class="btn btn-secondary" href="/servicii=" btn btn-primary"
+            href="/contact#formular"><%= content.hero.primary %></a>
+          <a class="btn"><%= content.hero.secondary %></a>
         </div>
 
         <p class="domain-note">
           Domeniu standard inclus în pachetele de site. Domeniile premium, găzduirea premium,
           emailul profesional și aplicațiile terțe se taxează separat.
         </p>
-      </div>
-
-      <div class="hero-card" aria-label="Previzualizare panou privat">
-        <div class="mini-bar"><span></span><span></span><span></span></div>
-        <h2>Panou privat</h2>
-        <div class="lead-row"><strong>Cereri noi</strong><span>Contactat</span></div>
-        <div class="lead-row"><strong>Recenzie video</strong><span>Aprobat</span></div>
-        <div class="lead-row"><strong>Programare</strong><span>10:30</span></div>
-        <div class="pulse-card">+ cereri salvate direct în sistem</div>
       </div>
     </div>
   </section>

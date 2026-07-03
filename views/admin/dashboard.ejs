@@ -390,154 +390,164 @@
   ]; %>
 
     <form class="admin-form" method="POST" action="/dashboard/appointments">
+      <div class="form-grid three">
+        <input name="customerName" placeholder="Nume client" required>
+        <input name="customerEmail" type="email" placeholder="Email client" required>
+        <input name="customerPhone" placeholder="Telefon client" required>
+        <input name="businessName" placeholder="Afacere">
 
-      <form class="admin-form" method="POST" action="/dashboard/appointments">
-        <div class="form-grid three">
-          <input name="customerName" placeholder="Nume client" required>
-          <input name="customerEmail" type="email" placeholder="Email client" required>
-          <input name="customerPhone" placeholder="Telefon client" required>
-          <input name="businessName" placeholder="Afacere">
-          <select name="service" required>
-            <option value="">Alege pachetul / serviciul</option>
+        <select name="service" required>
+          <option value="">Alege pachetul / serviciul</option>
 
-            <% serviceOptions.forEach((group) => { %>
-            <optgroup label="<%= group.group %>">
-              <% group.options.forEach((service) => { %>
-              <option value="<%= service %>"><%= service %></option>
-              <% }) %>
-            </optgroup>
+          <% serviceOptions.forEach((group) => { %>
+          <optgroup label="<%= group.group %>">
+            <% group.options.forEach((service) => { %>
+            <option value="<%= service %>"><%= service %></option>
             <% }) %>
-          </select>
-          <select name="status" required>
-            <option value="programat">programat</option>
-            <option value="confirmat">confirmat</option>
-            <option value="anulat">anulat</option>
-            <option value="finalizat">finalizat</option>
-          </select>
+          </optgroup>
+          <% }) %>
+        </select>
 
-          <input name="date" type="date" required>
+        <select name="status" required>
+          <option value="programat">Programat</option>
+          <option value="confirmat">Confirmat</option>
+          <option value="anulat">Anulat</option>
+          <option value="finalizat">Finalizat</option>
+        </select>
 
-          <select name="time" required>
-            <option value="">Alege ora</option>
+        <input name="date" type="date" required>
 
-            <% timeSlots.forEach((slot) => { %>
-            <option value="<%= slot %>"><%= slot %></option>
-            <% }) %>
-          </select>
+        <select name="time" required>
+          <option value="">Alege ora</option>
+
+          <% timeSlots.forEach((slot) => { %>
+          <option value="<%= slot %>"><%= slot %></option>
+          <% }) %>
+        </select>
+      </div>
+
+      <textarea name="notes" placeholder="Note interne"></textarea>
+
+      <button class="btn btn-primary" type="submit">
+        Creează programare
+      </button>
+    </form>
+
+    <div class="admin-list">
+      <% if (appointments.length === 0) { %>
+      <article class="admin-item">
+        <p>Nu există programări momentan.</p>
+      </article>
+      <% } %>
+
+      <% appointments.forEach((appointment) => { %>
+      <article class="admin-item">
+        <div class="appointment-summary">
+          <h3><%= appointment.customerName || 'Client fără nume' %></h3>
+          <% const appointmentStatus = appointment.status || 'programat'; %>
+
+          <p>
+            <strong>Serviciu:</strong> <%= appointment.service %><br>
+            <strong>Dată:</strong> <%= appointment.date %><br>
+            <strong>Oră:</strong> <%= appointment.time %><br>
+
+            <strong>Status:</strong>
+            <span class="appointment-status status-<%= appointmentStatus %>">
+              <span class="status-dot"></span>
+              <%= appointmentStatus.charAt(0).toUpperCase() + appointmentStatus.slice(1) %>
+            </span>
+            <br>
+
+            <strong>Email:</strong> <%= appointment.customerEmail %><br>
+            <strong>Telefon:</strong> <%= appointment.customerPhone %>
+          </p>
+
+          <% if (appointment.businessName) { %>
+          <p><strong>Afacere:</strong> <%= appointment.businessName %></p>
+          <% } %>
+
+          <% if (appointment.notes) { %>
+          <p><strong>Note:</strong> <%= appointment.notes %></p>
+          <% } %>
         </div>
 
-        <textarea name="notes" placeholder="Note interne"></textarea>
+        <details class="edit-box">
+          <summary class="btn btn-secondary">Editează programarea</summary>
 
-        <textarea name="customEmailMessage"
-          placeholder="Mesaj personalizat pentru emailul clientului">Bună ziua! Programarea ta a fost creată. Mai jos ai toate detaliile.</textarea>
+          <form method="POST" action="/dashboard/appointments/<%= appointment._id %>/update" class="admin-form compact">
+            <div class="form-grid three">
+              <input name="customerName" placeholder="Nume client" value="<%= appointment.customerName || '' %>"
+                required>
 
-        <button class="btn btn-primary" type="submit">Creează programare și trimite email</button>
-      </form>
+              <input name="customerEmail" type="email" placeholder="Email client"
+                value="<%= appointment.customerEmail || '' %>" required>
 
-      <div class="admin-list">
-        <% if (appointments.length === 0) { %>
-        <article class="admin-item">
-          <p>Nu există programări momentan.</p>
-        </article>
-        <% } %>
+              <input name="customerPhone" placeholder="Telefon client" value="<%= appointment.customerPhone || '' %>"
+                required>
 
-        <% appointments.forEach((appointment) => { %>
-        <article class="admin-item">
-          <div class="appointment-summary">
-            <h3><%= appointment.customerName || 'Client fără nume' %></h3>
+              <input name="businessName" placeholder="Afacere" value="<%= appointment.businessName || '' %>">
 
-            <p>
-              <strong>Serviciu:</strong> <%= appointment.service %><br>
-              <strong>Dată:</strong> <%= appointment.date %><br>
-              <strong>Oră:</strong> <%= appointment.time %><br>
-              <strong>Status:</strong> <%= appointment.status %><br>
-              <strong>Email:</strong> <%= appointment.customerEmail %><br>
-              <strong>Telefon:</strong> <%= appointment.customerPhone %>
-            </p>
+              <select name="service" required>
+                <option value="">Alege pachetul / serviciul</option>
 
-            <% if (appointment.businessName) { %>
-            <p><strong>Afacere:</strong> <%= appointment.businessName %></p>
-            <% } %>
-
-            <% if (appointment.notes) { %>
-            <p><strong>Note:</strong> <%= appointment.notes %></p>
-            <% } %>
-          </div>
-
-          <details class="edit-box">
-            <summary class="btn btn-secondary">Editează programarea</summary>
-
-            <form method="POST" action="/dashboard/appointments/<%= appointment._id %>/update"
-              class="admin-form compact">
-              <div class="form-grid three">
-                <input name="customerName" placeholder="Nume client" value="<%= appointment.customerName || '' %>"
-                  required>
-                <input name="customerEmail" type="email" placeholder="Email client"
-                  value="<%= appointment.customerEmail || '' %>" required>
-                <input name="customerPhone" placeholder="Telefon client" value="<%= appointment.customerPhone || '' %>"
-                  required>
-                <input name="businessName" placeholder="Afacere" value="<%= appointment.businessName || '' %>">
-                <select name="service" required>
-                  <option value="">Alege pachetul / serviciul</option>
-
-                  <% serviceOptions.forEach((group) => { %>
-                  <optgroup label="<%= group.group %>">
-                    <% group.options.forEach((service) => { %>
-                    <option value="<%= service %>" <%= appointment.service === service ? 'selected' : '' %>>
-                      <%= service %>
-                    </option>
-                    <% }) %>
-                  </optgroup>
-                  <% }) %>
-
-                  <% 
-    const allServices = serviceOptions.flatMap((group) => group.options);
-    const currentService = appointment.service || '';
-  %>
-
-                  <% if (currentService && !allServices.includes(currentService)) { %>
-                  <option value="<%= currentService %>" selected>
-                    <%= currentService %>
-                  </option>
-                  <% } %>
-                </select>
-                <select name="status" required>
-                  <% ['programat','confirmat','anulat','finalizat'].forEach((status) => { %>
-                  <option value="<%= status %>" <%= appointment.status === status ? 'selected' : '' %>>
-                    <%= status %>
+                <% serviceOptions.forEach((group) => { %>
+                <optgroup label="<%= group.group %>">
+                  <% group.options.forEach((service) => { %>
+                  <option value="<%= service %>" <%= appointment.service === service ? 'selected' : '' %>>
+                    <%= service %>
                   </option>
                   <% }) %>
-                </select>
+                </optgroup>
+                <% }) %>
 
-                <input name="date" type="date" value="<%= appointment.date || '' %>" required>
+                <% 
+                  const allServices = serviceOptions.flatMap((group) => group.options);
+                  const currentService = appointment.service || '';
+                %>
 
-                <select name="time" required>
-                  <option value="">Alege ora</option>
+                <% if (currentService && !allServices.includes(currentService)) { %>
+                <option value="<%= currentService %>" selected>
+                  <%= currentService %>
+                </option>
+                <% } %>
+              </select>
 
-                  <% timeSlots.forEach((slot) => { %>
-                  <option value="<%= slot %>" <%= appointment.time === slot ? 'selected' : '' %>>
-                    <%= slot %>
-                  </option>
-                  <% }) %>
-                </select>
-              </div>
+              <select name="status" required>
+                <% ['programat', 'confirmat', 'anulat', 'finalizat'].forEach((status) => { %>
+                <option value="<%= status %>" <%= appointment.status === status ? 'selected' : '' %>>
+                  <%= status.charAt(0).toUpperCase() + status.slice(1) %>
+                </option>
+                <% }) %>
+              </select>
 
-              <textarea name="notes" placeholder="Note interne"><%= appointment.notes || '' %></textarea>
+              <input name="date" type="date" value="<%= appointment.date || '' %>" required>
 
-              <textarea name="customEmailMessage"
-                placeholder="Mesaj personalizat pentru emailul clientului"><%= appointment.customEmailMessage || '' %></textarea>
+              <select name="time" required>
+                <option value="">Alege ora</option>
 
-              <button class="btn btn-secondary" type="submit">Salvează modificările</button>
-            </form>
-          </details>
+                <% timeSlots.forEach((slot) => { %>
+                <option value="<%= slot %>" <%= appointment.time === slot ? 'selected' : '' %>>
+                  <%= slot %>
+                </option>
+                <% }) %>
+              </select>
+            </div>
 
-          <form method="POST" action="/dashboard/appointments/<%= appointment._id %>/delete"
-            onsubmit="return confirm('Ștergi programarea?')">
-            <button class="danger-btn" type="submit">Șterge</button>
+            <textarea name="notes" placeholder="Note interne"><%= appointment.notes || '' %></textarea>
+
+            <button class="btn btn-secondary" type="submit">
+              Salvează modificările
+            </button>
           </form>
-        </article>
-        <% }) %>
-      </div>
+        </details>
+
+        <form method="POST" action="/dashboard/appointments/<%= appointment._id %>/delete"
+          onsubmit="return confirm('Ștergi programarea?')">
+          <button class="danger-btn" type="submit">Șterge</button>
+        </form>
+      </article>
+      <% }) %>
+    </div>
   </section>
 </main>
 

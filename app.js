@@ -16,7 +16,7 @@ const content = require('./data/content');
 const publicRoutes = require('./routes/publicRoutes');
 const authRoutes = require('./routes/authRoutes');
 const adminRoutes = require('./routes/adminRoutes');
-const startReviewReminderJob = require('./jobs/reviewReminderJob');
+// const startReviewReminderJob = require('./jobs/reviewReminderJob');
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -111,7 +111,7 @@ connectDB()
     server.listen(PORT, () => {
       console.log(`Server pornit pe http://localhost:${PORT}`);
       console.log(`Login admin: http://localhost:${PORT}/login`);
-      startReviewReminderJob();
+      // startReviewReminderJob();
     });
   })
   .catch((error) => {
