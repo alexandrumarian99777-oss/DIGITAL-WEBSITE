@@ -24,8 +24,14 @@
 
   <section id="leaduri" class="admin-panel">
     <div class="panel-title">
-      <h2>Lead-uri</h2>
-      <p>Creează lead-uri, apoi editează, șterge sau actualizează statusurile.</p>
+      <div>
+        <h2>Lead-uri</h2>
+        <p>Creează lead-uri, apoi editează, șterge sau actualizează statusurile.</p>
+      </div>
+
+      <a class="btn btn-secondary" href="/dashboard/export/leads">
+        Exportă lead-uri CSV
+      </a>
     </div>
 
     <form class="admin-form" method="POST" action="/dashboard/leads">
@@ -334,8 +340,14 @@
 
   <section id="programari" class="admin-panel">
     <div class="panel-title">
-      <h2>Programări</h2>
-      <p>Creează programări, apoi editează sau șterge programările existente.</p>
+      <div>
+        <h2>Programări</h2>
+        <p>Creează programări, apoi editează sau șterge programările existente.</p>
+      </div>
+
+      <a class="btn btn-secondary" href="/dashboard/export/appointments">
+        Exportă programări CSV
+      </a>
     </div>
 
     <% const timeSlots = [
@@ -432,123 +444,202 @@
         Creează programare
       </button>
     </form>
+    <div class="dashboard-filters">
+      <input id="leadSearchInput" type="text" placeholder="Caută lead după nume, email, telefon sau afacere...">
 
+      <select id="leadStatusFilter">
+        <option value="">Toate statusurile</option>
+        <option value="nou">Nou</option>
+        <option value="contactat">Contactat</option>
+        <option value="calificat">Calificat</option>
+        <option value="câștigat">Câștigat</option>
+        <option value="pierdut">Pierdut</option>
+      </select>
+    </div>
     <div class="admin-list">
       <% if (appointments.length === 0) { %>
-      <article class="admin-item">
-        <p>Nu există programări momentan.</p>
-      </article>
-      <% } %>
+      <article class="admin-item lead-filter-item"
+        data-search="<%= `${lead.name || ''} ${lead.email || ''} ${lead.phone || ''} ${lead.businessName || ''} ${lead.businessType || ''} ${lead.website || ''} ${lead.packageInterest || ''}`.toLowerCase() %>"
+        data-status="<%= lead.status || 'nou' %>">
+        <% } %>
 
-      <% appointments.forEach((appointment) => { %>
-      <article class="admin-item">
-        <div class="appointment-summary">
-          <h3><%= appointment.customerName || 'Client fără nume' %></h3>
-          <% const appointmentStatus = appointment.status || 'programat'; %>
+        <% appointments.forEach((appointment) => { %>
+        <article class="admin-item">
+          <div class="appointment-summary">
+            <h3><%= appointment.customerName || 'Client fără nume' %></h3>
+            <% const appointmentStatus = appointment.status || 'programat'; %>
 
-          <p>
-            <strong>Serviciu:</strong> <%= appointment.service %><br>
-            <strong>Dată:</strong> <%= appointment.date %><br>
-            <strong>Oră:</strong> <%= appointment.time %><br>
+            <p>
+              <strong>Serviciu:</strong> <%= appointment.service %><br>
+              <strong>Dată:</strong> <%= appointment.date %><br>
+              <strong>Oră:</strong> <%= appointment.time %><br>
 
-            <strong>Status:</strong>
-            <span class="appointment-status status-<%= appointmentStatus %>">
-              <span class="status-dot"></span>
-              <%= appointmentStatus.charAt(0).toUpperCase() + appointmentStatus.slice(1) %>
-            </span>
-            <br>
+              <strong>Status:</strong>
+              <span class="appointment-status status-<%= appointmentStatus %>">
+                <span class="status-dot"></span>
+                <%= appointmentStatus.charAt(0).toUpperCase() + appointmentStatus.slice(1) %>
+              </span>
+              <br>
 
-            <strong>Email:</strong> <%= appointment.customerEmail %><br>
-            <strong>Telefon:</strong> <%= appointment.customerPhone %>
-          </p>
+              <strong>Email:</strong> <%= appointment.customerEmail %><br>
+              <strong>Telefon:</strong> <%= appointment.customerPhone %>
+            </p>
 
-          <% if (appointment.businessName) { %>
-          <p><strong>Afacere:</strong> <%= appointment.businessName %></p>
-          <% } %>
+            <% if (appointment.businessName) { %>
+            <p><strong>Afacere:</strong> <%= appointment.businessName %></p>
+            <% } %>
 
-          <% if (appointment.notes) { %>
-          <p><strong>Note:</strong> <%= appointment.notes %></p>
-          <% } %>
-        </div>
+            <% if (appointment.notes) { %>
+            <p><strong>Note:</strong> <%= appointment.notes %></p>
+            <% } %>
+          </div>
 
-        <details class="edit-box">
-          <summary class="btn btn-secondary">Editează programarea</summary>
+          <details class="edit-box">
+            <summary class="btn btn-secondary">Editează programarea</summary>
 
-          <form method="POST" action="/dashboard/appointments/<%= appointment._id %>/update" class="admin-form compact">
-            <div class="form-grid three">
-              <input name="customerName" placeholder="Nume client" value="<%= appointment.customerName || '' %>"
-                required>
+            <form method="POST" action="/dashboard/appointments/<%= appointment._id %>/update"
+              class="admin-form compact">
+              <div class="form-grid three">
+                <input name="customerName" placeholder="Nume client" value="<%= appointment.customerName || '' %>"
+                  required>
 
-              <input name="customerEmail" type="email" placeholder="Email client"
-                value="<%= appointment.customerEmail || '' %>" required>
+                <input name="customerEmail" type="email" placeholder="Email client"
+                  value="<%= appointment.customerEmail || '' %>" required>
 
-              <input name="customerPhone" placeholder="Telefon client" value="<%= appointment.customerPhone || '' %>"
-                required>
+                <input name="customerPhone" placeholder="Telefon client" value="<%= appointment.customerPhone || '' %>"
+                  required>
 
-              <input name="businessName" placeholder="Afacere" value="<%= appointment.businessName || '' %>">
+                <input name="businessName" placeholder="Afacere" value="<%= appointment.businessName || '' %>">
 
-              <select name="service" required>
-                <option value="">Alege pachetul / serviciul</option>
+                <select name="service" required>
+                  <option value="">Alege pachetul / serviciul</option>
 
-                <% serviceOptions.forEach((group) => { %>
-                <optgroup label="<%= group.group %>">
-                  <% group.options.forEach((service) => { %>
-                  <option value="<%= service %>" <%= appointment.service === service ? 'selected' : '' %>>
-                    <%= service %>
-                  </option>
+                  <% serviceOptions.forEach((group) => { %>
+                  <optgroup label="<%= group.group %>">
+                    <% group.options.forEach((service) => { %>
+                    <option value="<%= service %>" <%= appointment.service === service ? 'selected' : '' %>>
+                      <%= service %>
+                    </option>
+                    <% }) %>
+                  </optgroup>
                   <% }) %>
-                </optgroup>
-                <% }) %>
 
-                <% 
+                  <% 
                   const allServices = serviceOptions.flatMap((group) => group.options);
                   const currentService = appointment.service || '';
                 %>
 
-                <% if (currentService && !allServices.includes(currentService)) { %>
-                <option value="<%= currentService %>" selected>
-                  <%= currentService %>
-                </option>
-                <% } %>
-              </select>
+                  <% if (currentService && !allServices.includes(currentService)) { %>
+                  <option value="<%= currentService %>" selected>
+                    <%= currentService %>
+                  </option>
+                  <% } %>
+                </select>
 
-              <select name="status" required>
-                <% ['programat', 'confirmat', 'anulat', 'finalizat'].forEach((status) => { %>
-                <option value="<%= status %>" <%= appointment.status === status ? 'selected' : '' %>>
-                  <%= status.charAt(0).toUpperCase() + status.slice(1) %>
-                </option>
-                <% }) %>
-              </select>
+                <select name="status" required>
+                  <% ['programat', 'confirmat', 'anulat', 'finalizat'].forEach((status) => { %>
+                  <option value="<%= status %>" <%= appointment.status === status ? 'selected' : '' %>>
+                    <%= status.charAt(0).toUpperCase() + status.slice(1) %>
+                  </option>
+                  <% }) %>
+                </select>
 
-              <input name="date" type="date" value="<%= appointment.date || '' %>" required>
+                <input name="date" type="date" value="<%= appointment.date || '' %>" required>
 
-              <select name="time" required>
-                <option value="">Alege ora</option>
+                <select name="time" required>
+                  <option value="">Alege ora</option>
 
-                <% timeSlots.forEach((slot) => { %>
-                <option value="<%= slot %>" <%= appointment.time === slot ? 'selected' : '' %>>
-                  <%= slot %>
-                </option>
-                <% }) %>
-              </select>
-            </div>
+                  <% timeSlots.forEach((slot) => { %>
+                  <option value="<%= slot %>" <%= appointment.time === slot ? 'selected' : '' %>>
+                    <%= slot %>
+                  </option>
+                  <% }) %>
+                </select>
+              </div>
 
-            <textarea name="notes" placeholder="Note interne"><%= appointment.notes || '' %></textarea>
+              <textarea name="notes" placeholder="Note interne"><%= appointment.notes || '' %></textarea>
 
-            <button class="btn btn-secondary" type="submit">
-              Salvează modificările
-            </button>
+              <button class="btn btn-secondary" type="submit">
+                Salvează modificările
+              </button>
+            </form>
+          </details>
+
+          <form method="POST" action="/dashboard/appointments/<%= appointment._id %>/delete"
+            onsubmit="return confirm('Ștergi programarea?')">
+            <button class="danger-btn" type="submit">Șterge</button>
           </form>
-        </details>
-
-        <form method="POST" action="/dashboard/appointments/<%= appointment._id %>/delete"
-          onsubmit="return confirm('Ștergi programarea?')">
-          <button class="danger-btn" type="submit">Șterge</button>
-        </form>
-      </article>
-      <% }) %>
+        </article>
+        <% }) %>
     </div>
   </section>
 </main>
 
+<script>
+  function setupDashboardFilters() {
+    const leadSearchInput = document.getElementById('leadSearchInput');
+    const leadStatusFilter = document.getElementById('leadStatusFilter');
+    const leadItems = document.querySelectorAll('.lead-filter-item');
+
+    function filterLeads() {
+      const searchValue = leadSearchInput ? leadSearchInput.value.toLowerCase().trim() : '';
+      const statusValue = leadStatusFilter ? leadStatusFilter.value : '';
+
+      leadItems.forEach(function (item) {
+        const itemSearch = item.dataset.search || '';
+        const itemStatus = item.dataset.status || '';
+
+        const matchesSearch = itemSearch.includes(searchValue);
+        const matchesStatus = !statusValue || itemStatus === statusValue;
+
+        item.style.display = matchesSearch && matchesStatus ? '' : 'none';
+      });
+    }
+
+    if (leadSearchInput) {
+      leadSearchInput.addEventListener('input', filterLeads);
+    }
+
+    if (leadStatusFilter) {
+      leadStatusFilter.addEventListener('change', filterLeads);
+    }
+
+    const appointmentSearchInput = document.getElementById('appointmentSearchInput');
+    const appointmentStatusFilter = document.getElementById('appointmentStatusFilter');
+    const appointmentDateFilter = document.getElementById('appointmentDateFilter');
+    const appointmentItems = document.querySelectorAll('.appointment-filter-item');
+
+    function filterAppointments() {
+      const searchValue = appointmentSearchInput ? appointmentSearchInput.value.toLowerCase().trim() : '';
+      const statusValue = appointmentStatusFilter ? appointmentStatusFilter.value : '';
+      const dateValue = appointmentDateFilter ? appointmentDateFilter.value : '';
+
+      appointmentItems.forEach(function (item) {
+        const itemSearch = item.dataset.search || '';
+        const itemStatus = item.dataset.status || '';
+        const itemDate = item.dataset.date || '';
+
+        const matchesSearch = itemSearch.includes(searchValue);
+        const matchesStatus = !statusValue || itemStatus === statusValue;
+        const matchesDate = !dateValue || itemDate === dateValue;
+
+        item.style.display = matchesSearch && matchesStatus && matchesDate ? '' : 'none';
+      });
+    }
+
+    if (appointmentSearchInput) {
+      appointmentSearchInput.addEventListener('input', filterAppointments);
+    }
+
+    if (appointmentStatusFilter) {
+      appointmentStatusFilter.addEventListener('change', filterAppointments);
+    }
+
+    if (appointmentDateFilter) {
+      appointmentDateFilter.addEventListener('change', filterAppointments);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', setupDashboardFilters);
+</script>
 <%- include('../partials/footer') %>

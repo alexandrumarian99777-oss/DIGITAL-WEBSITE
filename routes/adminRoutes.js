@@ -11,6 +11,44 @@
   // const {
   //   sendAppointmentEmail
   // } = require('../services/emailService');
+  function escapeCsvValue(value) {
+    if (value === null || value === undefined) {
+      return '';
+    }
+
+    const stringValue = String(value)
+      .replace(/\r?\n|\r/g, ' ')
+      .trim();
+
+    if (
+      stringValue.includes(',') ||
+      stringValue.includes('"') ||
+      stringValue.includes(';')
+    ) {
+      return `"${stringValue.replace(/"/g, '""')}"`;
+    }
+
+    return stringValue;
+  }
+
+  function buildCsv(headers, rows) {
+    const headerRow = headers.map((header) => escapeCsvValue(header.label)).join(',');
+
+    const dataRows = rows.map((row) => {
+      return headers
+        .map((header) => escapeCsvValue(row[header.key]))
+        .join(',');
+    });
+
+    return [headerRow, ...dataRows].join('\n');
+  }
+
+  function sendCsv(res, filename, csvContent) {
+    res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+    res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+
+    res.send('\uFEFF' + csvContent);
+  }
 
   const router = express.Router();
 
@@ -440,6 +478,165 @@
       res.redirect('/dashboard#leaduri');
     } catch (error) {
       next(error);
+    }
+  });
+  router.get('/export/leads', requireAdmin, async (req, res) => {
+    try {
+      const leads = await Lead.find().sort({
+        createdAt: -1
+      });
+
+      const headers = [{
+          label: 'Nume',
+          key: 'name'
+        },
+        {
+          label: 'Email',
+          key: 'email'
+        },
+        {
+          label: 'Telefon',
+          key: 'phone'
+        },
+        {
+          label: 'Afacere',
+          key: 'businessName'
+        },
+        {
+          label: 'Tip afacere',
+          key: 'businessType'
+        },
+        {
+          label: 'Website / Social',
+          key: 'website'
+        },
+        {
+          label: 'Pachet interesat',
+          key: 'packageInterest'
+        },
+        {
+          label: 'Status vanzare',
+          key: 'status'
+        },
+        {
+          label: 'Status completare',
+          key: 'completionStatus'
+        },
+        {
+          label: 'Status apel',
+          key: 'callStatus'
+        },
+        {
+          label: 'Status plata',
+          key: 'paymentStatus'
+        },
+        {
+          label: 'Mesaj',
+          key: 'message'
+        },
+        {
+          label: 'Creat la',
+          key: 'createdAtFormatted'
+        }
+      ];
+
+      const rows = leads.map((lead) => ({
+        name: lead.name || '',
+        email: lead.email || '',
+        phone: lead.phone || '',
+        businessName: lead.businessName || '',
+        businessType: lead.businessType || '',
+        website: lead.website || '',
+        packageInterest: lead.packageInterest || '',
+        status: lead.status || '',
+        completionStatus: lead.completionStatus || '',
+        callStatus: lead.callStatus || '',
+        paymentStatus: lead.paymentStatus || '',
+        message: lead.message || '',
+        createdAtFormatted: lead.createdAt ?
+          lead.createdAt.toLocaleString('ro-RO') : ''
+      }));
+
+      const csv = buildCsv(headers, rows);
+
+      sendCsv(res, 'leaduri-am-digital-growth.csv', csv);
+    } catch (error) {
+      console.error(error);
+      req.flash('error', 'Exportul lead-urilor nu a putut fi generat.');
+      res.redirect('/dashboard#leaduri');
+    }
+  });
+
+  router.get('/export/appointments', requireAdmin, async (req, res) => {
+    try {
+      const appointments = await Appointment.find().sort({
+        date: -1,
+        time: -1
+      });
+
+      const headers = [{
+          label: 'Nume client',
+          key: 'customerName'
+        },
+        {
+          label: 'Email client',
+          key: 'customerEmail'
+        },
+        {
+          label: 'Telefon client',
+          key: 'customerPhone'
+        },
+        {
+          label: 'Afacere',
+          key: 'businessName'
+        },
+        {
+          label: 'Serviciu',
+          key: 'service'
+        },
+        {
+          label: 'Status',
+          key: 'status'
+        },
+        {
+          label: 'Data',
+          key: 'date'
+        },
+        {
+          label: 'Ora',
+          key: 'time'
+        },
+        {
+          label: 'Note',
+          key: 'notes'
+        },
+        {
+          label: 'Creat la',
+          key: 'createdAtFormatted'
+        }
+      ];
+
+      const rows = appointments.map((appointment) => ({
+        customerName: appointment.customerName || '',
+        customerEmail: appointment.customerEmail || '',
+        customerPhone: appointment.customerPhone || '',
+        businessName: appointment.businessName || '',
+        service: appointment.service || '',
+        status: appointment.status || '',
+        date: appointment.date || '',
+        time: appointment.time || '',
+        notes: appointment.notes || '',
+        createdAtFormatted: appointment.createdAt ?
+          appointment.createdAt.toLocaleString('ro-RO') : ''
+      }));
+
+      const csv = buildCsv(headers, rows);
+
+      sendCsv(res, 'programari-am-digital-growth.csv', csv);
+    } catch (error) {
+      console.error(error);
+      req.flash('error', 'Exportul programărilor nu a putut fi generat.');
+      res.redirect('/dashboard#programari');
     }
   });
   module.exports = router;

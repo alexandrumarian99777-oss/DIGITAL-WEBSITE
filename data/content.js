@@ -2,12 +2,12 @@ const content = {
         business: {
                 name: 'AM Digital Growth',
                 shortName: '',
-                legalName: '[Nume PFA/SRL]',
-                legalForm: '[PFA/SRL]',
-                cui: '[CUI]',
-                tradeRegister: '[Număr ONRC]',
-                registeredAddress: '[Adresă sediu profesional / sediu social]',
-                site: '[site]',
+                legalName: 'Ioan Alexandru-Marian Persoană Fizică Autorizată',
+                legalForm: 'Ioan Alexandru-Marian Persoană Fizică Autorizată',
+                cui: '55109227',
+                tradeRegister: 'F2026033773003',
+                registeredAddress: 'Municipiul Galați, Județul Galați, Strada Nicolae Deleanu, nr. 13, Bl. C, scara 1, Etaj 1, ap. 26',
+                site: 'amdigitalgrowth.ro',
                 lastUpdated: '14 iunie 2026',
                 email: 'amdigitalgrowth@yahoo.com',
                 phone: '+40 752 679 312',
@@ -397,7 +397,7 @@ Ultima actualizare: 14 iunie 2026
 
 Bun venit pe site-ul AM Digital Growth.
 
-Această pagină stabilește termenii și condițiile de utilizare a site-ului [website] și regulile aplicabile serviciilor oferite de [Nume PFA/SRL], prin denumirea comercială AM Digital Growth.
+Această pagină stabilește termenii și condițiile de utilizare a site - ului amdigitalgrowth.ro și regulile aplicabile serviciilor oferite de Ioan Alexandru - Marian Persoană Fizică Autorizată, prin denumirea comercială AM Digital Growth.
 
 AM Digital Growth este denumirea comercială folosită pentru prezentarea serviciilor. Furnizorul legal al serviciilor este [Nume PFA/SRL], identificat prin datele complete menționate în secțiunea „Datele furnizorului”.
 
@@ -430,19 +430,19 @@ Acești termeni pot fi rezumați astfel:
 
                                 `1. Datele furnizorului
 
-Site-ul [website] este administrat de:
+Site-ul amdigitalgrowth.ro este administrat de:
 
-Denumire legală: [Nume PFA/SRL]
+Denumire legală: Ioan Alexandru - Marian Persoană Fizică Autorizată
 Denumire comercială: AM Digital Growth
-Formă juridică: [PFA/SRL]
-CUI: [CUI]
-Nr. Registrul Comerțului: [Număr ONRC]
-Sediu profesional / sediu social: [Adresă sediu]
+Formă juridică: PFA
+CUI: 55109227
+Nr.Registrul Comerțului: F2026033773003
+Sediu profesional / sediu social: Municipiul Galați, Județul Galați, Strada Nicolae Deleanu, nr.13, Bl.C, scara 1, Etaj 1, Ap.26
 Email: amdigitalgrowth@yahoo.com
 Telefon: +40 752 679 312
-Site: [website]
+Site: amdigitalgrowth.ro
 
-În continuare, [Nume PFA/SRL] va fi denumit „Prestatorul”, „noi”, „furnizorul serviciilor” sau „operatorul economic”.
+În continuare, Ioan Alexandru - Marian Persoană Fizică Autorizată va fi denumit„ Prestatorul”, „noi”, „furnizorul serviciilor” sau„ operatorul economic”.
 
 „AM Digital Growth” este denumirea comercială folosită pentru prezentarea serviciilor.
 
@@ -1113,17 +1113,18 @@ Prin utilizarea site-ului sau transmiterea datelor prin formularele disponibile,
 
 Operatorul de date este:
 
-Denumire: [Nume PFA/SRL]
+Denumire: Ioan Alexandru - Marian Persoană Fizică Autorizată
 Denumire comercială: AM Digital Growth
-Formă juridică: [PFA/SRL]
-CUI: [CUI]
-Nr. Registrul Comerțului: [Număr ONRC]
-Sediu profesional / sediu social: [Adresă sediu]
+Formă juridică: PFA
+CUI: 55109227
+Nr. Registrul Comerțului: F2026033773003
+Sediu profesional / sediu social: Municipiul Galați, Județul Galați, Strada Nicolae Deleanu, nr .13, Bl.C, scara 1, Etaj 1, Ap .26
 Email: amdigitalgrowth@yahoo.com
 Telefon: +40 752 679 312
-Site: [site]
+Site: amdigitalgrowth.ro
 
-În această politică, [Nume PFA/SRL] poate fi denumit „noi”, „operatorul”, „prestatorul” sau „AM Digital Growth”.`,
+În această politică, Ioan Alexandru - Marian Persoană Fizică Autorizată poate fi denumit„ noi”, „operatorul”, „prestatorul” sau„ AM Digital Growth”.
+`,
 
                                 `2. Ce date personale putem colecta
 
@@ -1366,10 +1367,10 @@ Pentru orice întrebări privind această Politică de Confidențialitate sau mo
 
 Email: amdigitalgrowth@yahoo.com
 Telefon: +40 752 679 312
-Operator: [Nume PFA/SRL]
-CUI: [CUI]
-Nr. Registrul Comerțului: [Număr ONRC]
-Adresă: [Adresă sediu profesional / sediu social]`
+Operator: Ioan Alexandru - Marian Persoană Fizică Autorizată
+CUI: 55109227
+Nr. Registrul Comerțului: F2026033773003
+Adresă: Municipiul Galați, Județul Galați, Strada Nicolae Deleanu, nr .13, Bl.C, scara 1, Etaj 1, Ap .26 `
                         ]
                 },
                 privacyRequest: {
@@ -1440,10 +1441,10 @@ Pentru orice solicitare privind datele personale, ne poți contacta la:
 
 Email: amdigitalgrowth@yahoo.com
 Telefon: +40 752 679 312
-Operator: [Nume PFA/SRL]
-CUI: [CUI]
-Nr. Registrul Comerțului: [Număr ONRC]
-Sediu profesional / sediu social: [Adresă sediu]`
+Operator: Ioan Alexandru-Marian Pers
+CUI: 55109227
+Nr. Registrul Comerțului: F2026033773003
+Sediu profesional / sediu social: Municipiul Galați, Județul Galați, Strada Nicolae Deleanu, nr .13, Bl.C, scara 1, Etaj 1, Ap .26 `
                         ]
                 },
 
@@ -1455,25 +1456,26 @@ Sediu profesional / sediu social: [Adresă sediu]`
 
 Ultima actualizare: 14 iunie 2026
 
-Această Politică de Cookie-uri explică modul în care AM Digital Growth / [Nume PFA/SRL] folosește cookie-uri și tehnologii similare pe site-ul [site].
+Această Politică de Cookie - uri explică modul în care AM Digital Growth / Ioan Alexandru - Marian Persoană Fizică Autorizată folosește cookie - uri și tehnologii similare pe site - ul amdigitalgrowth.ro.
 
 Prin utilizarea site-ului, puteți accepta, refuza sau modifica preferințele privind cookie-urile, în funcție de categoriile disponibile în bannerul de consimțământ.`,
 
                                 `1. Cine suntem
 
-Site-ul [site] este administrat de:
+Site-ul amdigitalgrowth.ro este administrat de:
 
-Denumire: [Nume PFA/SRL]
+Denumire: Ioan Alexandru - Marian Persoană Fizică Autorizată
 Denumire comercială: AM Digital Growth
-Formă juridică: [PFA/SRL]
-CUI: [CUI]
-Nr. Registrul Comerțului: [Număr ONRC]
-Sediu profesional / sediu social: [Adresă sediu]
+Formă juridică: PFA
+CUI: 55109227
+Nr. Registrul Comerțului: F2026033773003
+Sediu profesional / sediu social: Municipiul Galați, Județul Galați, Strada Nicolae Deleanu, nr .13, Bl.C, scara 1, Etaj 1, Ap .26
 Email: amdigitalgrowth@yahoo.com
 Telefon: +40 752 679 312
-Site: [site]
+Site: amdigitalgrowth.ro
 
-În continuare, [Nume PFA/SRL] va fi denumit „noi”, „operatorul” sau „AM Digital Growth”.`,
+În continuare, Ioan Alexandru - Marian Persoană Fizică Autorizată va fi denumit„ noi”, „operatorul” sau„ AM Digital Growth”.
+`,
 
                                 `2. Ce sunt cookie-urile
 
@@ -1574,22 +1576,22 @@ Nu se vor menționa servicii de analiză, publicitate, plată sau urmărire rezu
 Nume cookie: preferinte_cookie
 Scop: memorarea preferințelor utilizatorului privind cookie-urile
 Durată: până la 12 luni sau până la modificarea preferințelor
-Furnizor: AM Digital Growth / [site]
+Furnizor: AM Digital Growth / amdigitalgrowth.ro
 
 Nume cookie: sesiune_site
 Scop: funcționarea sesiunii site-ului, formularelor sau zonei de autentificare
 Durată: sesiune
-Furnizor: AM Digital Growth / [site]
+Furnizor: AM Digital Growth / amdigitalgrowth.ro
 
 Nume cookie: protectie_formular
 Scop: protecția formularelor împotriva trimiterilor neautorizate
 Durată: sesiune
-Furnizor: AM Digital Growth / [site]
+Furnizor: AM Digital Growth / amdigitalgrowth.ro
 
 Nume cookie: sesiune_panou
 Scop: autentificare și menținerea sesiunii în panoul de administrare, dacă există zonă de autentificare
 Durată: sesiune sau până la ieșirea din cont
-Furnizor: AM Digital Growth / [site]`,
+Furnizor: AM Digital Growth / amdigitalgrowth.ro `,
 
                                 `6.2. Cookie-uri de analiză
 
@@ -1661,10 +1663,10 @@ Pentru întrebări privind această Politică de Cookie-uri sau modul în care f
 
 Email: amdigitalgrowth@yahoo.com
 Telefon: +40 752 679 312
-Operator: [Nume PFA/SRL]
-CUI: [CUI]
-Nr. Registrul Comerțului: [Număr ONRC]
-Sediu profesional / sediu social: [Adresă sediu]`
+Operator: Ioan Alexandru - Marian Persoană Fizică Autorizată
+CUI: 55109227
+Nr.Registrul Comerțului: F2026033773003
+Sediu profesional / sediu social: Municipiul Galați, Județul Galați, Strada Nicolae Deleanu, nr .13, Bl.C, scara 1, Etaj 1, Ap .26 `
                         ]
                 }
         }
