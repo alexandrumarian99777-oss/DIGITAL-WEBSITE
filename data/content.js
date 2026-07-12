@@ -374,7 +374,7 @@ const content = {
                 }
         ],
 
-        contractNote: 'Prețurile sunt orientative și reprezintă puncte de pornire. Prețul final se stabilește prin ofertă personalizată, în funcție de complexitatea proiectului. Plata se face integral înainte de începerea lucrului, la semnarea contractului, acceptarea ofertei sau emiterea facturii, dacă părțile nu stabilesc altfel în scris. Un domeniu standard este inclus în pachetele de site. Domeniile premium, domeniile foarte scumpe, găzduirea premium, emailul profesional, mentenanța lunară, funcțiile extra, paginile suplimentare, reclamele, bugetul de reclame, optimizarea avansată pentru motoare de căutare și automatizările complexe se taxează separat, dacă nu sunt menționate expres ca fiind incluse.',
+        contractNote: 'Prețurile sunt orientative și reprezintă puncte de pornire. Prețul final se stabilește prin ofertă personalizată, în funcție de complexitatea proiectului. Plata proiectelor se efectuează, de regulă, în două tranșe: 50% avans înainte de începerea lucrărilor și 50% înainte de publicarea, predarea sau transferul proiectului. Prestatorul începe lucrările numai după încasarea avansului și poate suspenda livrarea în cazul neachitării diferenței. Serviciile recurente se achită integral în avans pentru perioada facturată. Părțile pot stabili în scris o altă modalitate de plată. Un domeniu standard este inclus în pachetele de site. Domeniile premium, domeniile foarte scumpe, găzduirea premium, emailul profesional, mentenanța lunară, funcțiile extra, paginile suplimentare, reclamele, bugetul de reclame, optimizarea avansată pentru motoare de căutare și automatizările complexe se taxează separat, dacă nu sunt menționate expres ca fiind incluse.',
 
         footerProducts: [
                 'Site de prezentare',
@@ -399,7 +399,7 @@ Bun venit pe site-ul AM Digital Growth.
 
 Această pagină stabilește termenii și condițiile de utilizare a site - ului amdigitalgrowth.ro și regulile aplicabile serviciilor oferite de Ioan Alexandru - Marian Persoană Fizică Autorizată, prin denumirea comercială AM Digital Growth.
 
-AM Digital Growth este denumirea comercială folosită pentru prezentarea serviciilor. Furnizorul legal al serviciilor este [Nume PFA/SRL], identificat prin datele complete menționate în secțiunea „Datele furnizorului”.
+AM Digital Growth este denumirea comercială folosită pentru prezentarea serviciilor.Furnizorul legal al serviciilor este Ioan Alexandru - Marian Persoană Fizică Autorizată, identificat prin datele complete menționate în secțiunea„ Datele furnizorului”.
 
 Prin accesarea site-ului, navigarea pe pagini, transmiterea unui formular de contact, solicitarea unei oferte, programarea unei prezentări gratuite sau contractarea serviciilor noastre, confirmați că ați citit, înțeles și acceptat acești Termeni și Condiții.
 
@@ -415,7 +415,7 @@ Acești termeni pot fi rezumați astfel:
 - Serviciile exacte, prețul, termenul de livrare și ce este inclus se stabilesc prin ofertă, contract, email, factură sau alt document agreat.
 - Prețurile afișate pe site sunt orientative și reprezintă puncte de pornire pentru proiecte standard.
 - Prețul final se stabilește prin ofertă personalizată, în funcție de complexitatea proiectului.
-- Plata se face integral înainte de începerea lucrului, dacă părțile nu stabilesc altfel în scris.
+-Plata proiectelor se efectuează, de regulă, în două tranșe: 50 % avans înainte de începerea lucrărilor și 50 % înainte de publicarea, predarea sau transferul proiectului.Prestatorul începe lucrările numai după încasarea avansului și poate suspenda livrarea în cazul neachitării diferenței.Serviciile recurente se achită integral în avans pentru perioada facturată.Părțile pot stabili în scris o altă modalitate de plată.
 - Un domeniu standard este inclus în prețul pachetului de site, dacă este disponibil la un cost rezonabil și nu este domeniu premium.
 - Domeniile premium, domeniile foarte scumpe, găzduirea premium, emailul profesional, aplicațiile terțe și licențele externe se taxează separat, dacă nu sunt menționate expres ca fiind incluse.
 - Mentenanța lunară nu este inclusă automat și se plătește separat, dacă este nevoie sau dacă este solicitată de Client.
@@ -542,7 +542,7 @@ Pachetele de site-uri pot include, în funcție de oferta acceptată:
 - integrare servicii de plată, dacă este menționat expres;
 - alte servicii menționate expres în ofertă.
 
-Plata se face integral înainte de începerea lucrului, conform ofertei acceptate, contractului sau facturii, dacă părțile nu stabilesc altfel în scris.
+Plata proiectelor se efectuează, de regulă, în două tranșe: 50 % avans înainte de începerea lucrărilor și 50 % înainte de publicarea, predarea sau transferul proiectului.
 
 Un domeniu standard este inclus în prețul pachetului de site. Domeniile premium, domeniile foarte scumpe, găzduirea premium, emailul profesional, aplicațiile terțe, licențele externe și alte costuri externe se taxează separat, dacă nu sunt menționate expres ca fiind incluse.
 
@@ -717,7 +717,7 @@ Pentru proiectele mai complexe, pentru campanii publicitare sau pentru servicii 
 
 Prețurile serviciilor sunt stabilite în funcție de pachet, complexitate, număr de pagini, funcționalități, termen de livrare, cerințele Clientului și tipul serviciului ales.
 
-Plata se face integral înainte de începerea lucrului, conform ofertei, contractului sau facturii, dacă părțile nu stabilesc altfel în scris.
+Plata proiectelor se efectuează, de regulă, în două tranșe: 50 % avans înainte de începerea lucrărilor și 50 % înainte de publicarea, predarea sau transferul proiectului.Prestatorul începe lucrările numai după încasarea avansului și poate suspenda livrarea în cazul neachitării diferenței.Serviciile recurente se achită integral în avans pentru perioada facturată.Părțile pot stabili în scris o altă modalitate de plată.
 
 Pentru campanii publicitare, taxa de configurare și taxa de administrare se plătesc separat de bugetul de reclame.
 
@@ -1105,7 +1105,7 @@ Prin utilizarea site-ului, transmiterea unei solicitări, acceptarea unei oferte
 
 Ultima actualizare: 14 iunie 2026
 
-Această Politică de Confidențialitate explică modul în care AM Digital Growth / [Nume PFA/SRL] colectează, folosește, stochează și protejează datele personale transmise prin site-ul [site], formulare, email, telefon, WhatsApp, cereri de ofertă, programări, recenzii, testimoniale, campanii publicitare sau alte canale de comunicare.
+Această Politică de Confidențialitate explică modul în care AM Digital Growth / Ioan Alexandru - Marian Persoană Fizică Autorizată colectează, folosește, stochează și protejează datele personale transmise prin site - ul[site], formulare, email, telefon, WhatsApp, cereri de ofertă, programări, recenzii, testimoniale, campanii publicitare sau alte canale de comunicare.
 
 Prin utilizarea site-ului sau transmiterea datelor prin formularele disponibile, confirmați că ați citit această Politică de Confidențialitate.`,
 
@@ -1379,7 +1379,8 @@ Adresă: Municipiul Galați, Județul Galați, Strada Nicolae Deleanu, nr .13, B
                         sections: [
                                 `CERERE DE CONFIDENȚIALITATE
 
-Această pagină explică modul în care poți trimite o solicitare privind datele personale prelucrate de AM Digital Growth / [Nume PFA/SRL].`,
+Această pagină explică modul în care poți trimite o solicitare privind datele personale prelucrate de AM Digital Growth / Ioan Alexandru - Marian Persoană Fizică Autorizată.
+`,
 
                                 `1. Ce poți solicita
 
@@ -1441,7 +1442,7 @@ Pentru orice solicitare privind datele personale, ne poți contacta la:
 
 Email: amdigitalgrowth@yahoo.com
 Telefon: +40 752 679 312
-Operator: Ioan Alexandru-Marian Pers
+Operator: Ioan Alexandru - Marian Persoană Fizică Autorizată
 CUI: 55109227
 Nr. Registrul Comerțului: F2026033773003
 Sediu profesional / sediu social: Municipiul Galați, Județul Galați, Strada Nicolae Deleanu, nr .13, Bl.C, scara 1, Etaj 1, Ap .26 `

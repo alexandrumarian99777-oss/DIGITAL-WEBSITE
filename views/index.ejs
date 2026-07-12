@@ -3,46 +3,223 @@
 <%- include('partials/flash') %>
 
 <main>
+  <!-- HERO -->
   <section class="hero section hero-bg-centered">
     <div class="container hero-bg-content">
       <div class="hero-copy hero-centered-text">
-        <p class="eyebrow"><%= content.hero.eyebrow %></p>
-        <h1><%= content.hero.title %></h1>
-        <p class="hero-text"><%= content.hero.text %></p>
+        <p class="eyebrow">
+          Website-uri și sisteme digitale pentru afaceri locale
+        </p>
+
+        <h1>
+          Transformăm vizitatorii în cereri, programări și clienți.
+        </h1>
+
+        <p class="hero-text">
+          Construim website-uri rapide, formulare de contact, sisteme de
+          programări și panouri de administrare care prezintă clar afacerea
+          și simplifică procesul de atragere a clienților.
+        </p>
 
         <div class="hero-actions">
-          <a class="btn btn-primary" href="/contact#formular"><%= content.hero.primary %></a>
-          <a class="btn btn-secondary" href="/servicii=" btn btn-primary"
-            href="/contact#formular"><%= content.hero.primary %></a>
-          <a class="btn"><%= content.hero.secondary %></a>
+          <a class="btn btn-primary" href="/contact#formular">
+            Programează o consultație gratuită
+          </a>
+
+          <a class="btn btn-secondary" href="#proiecte">
+            Vezi exemplele
+          </a>
         </div>
 
         <p class="domain-note">
-          Domeniu standard inclus în pachetele de site. Domeniile premium, găzduirea premium,
-          emailul profesional și aplicațiile terțe se taxează separat.
+          Domeniu standard inclus în pachetele de website. Domeniile premium,
+          găzduirea premium, emailul profesional și aplicațiile terțe se
+          taxează separat.
         </p>
       </div>
     </div>
   </section>
 
-  <section class="stats-section">
+  <!-- REPERE RAPIDE -->
+  <section class="stats-section" aria-label="Detalii despre colaborare">
     <div class="container stats-grid">
-      <% content.trustStats.forEach((stat) => { %>
       <div class="stat-card">
-        <strong><%= stat.value %></strong>
-        <span><%= stat.label %></span>
+        <strong>30 de minute</strong>
+        <span>Consultație inițială</span>
       </div>
-      <% }) %>
+
+      <div class="stat-card">
+        <strong>14–21 de zile</strong>
+        <span>Termen mediu de lansare</span>
+      </div>
+
+      <div class="stat-card">
+        <strong>Gratuit</strong>
+        <span>Analiza inițială</span>
+      </div>
     </div>
   </section>
 
+  <!-- CONCEPTE DEMONSTRATIVE -->
+  <section id="proiecte" class="section projects-section">
+    <div class="container section-heading">
+      <p class="eyebrow">Concepte demonstrative</p>
+
+      <h2>
+        Exemple de website-uri pe care le putem construi
+      </h2>
+
+      <p>
+        Aceste concepte prezintă direcții de design, structură și
+        funcționalități disponibile pentru diferite tipuri de afaceri.
+        Nu sunt prezentate drept proiecte comerciale livrate unor clienți.
+      </p>
+    </div>
+
+    <div class="container projects-grid">
+      <!-- SALON -->
+      <article class="project-card">
+        <div class="project-image-wrap">
+          <img src="/images/projects/salon.png" alt="Concept demonstrativ de website pentru salon de înfrumusețare"
+            class="project-image zoomable-image" data-full-image="/images/projects/salon.png" loading="lazy"
+            tabindex="0" role="button" aria-label="Deschide conceptul de website pentru salon">
+
+          <span class="project-badge">
+            Concept pentru salon
+          </span>
+        </div>
+
+        <div class="project-content">
+          <div class="project-meta">
+            <span>Design elegant</span>
+            <span>Responsive</span>
+            <span>Programări online</span>
+          </div>
+
+          <h3>
+            Salon Beauty — website de prezentare
+          </h3>
+
+          <p>
+            Structură modernă pentru un salon de înfrumusețare, cu servicii
+            prezentate clar, imagini elegante și acces rapid la programări
+            și informațiile de contact.
+          </p>
+
+          <div class="project-actions">
+            <a class="btn btn-primary" href="/contact#formular">
+              Vreau un website similar
+            </a>
+
+            <button class="btn btn-secondary project-preview-button" type="button"
+              data-preview-target="/images/projects/salon.png" data-preview-alt="Concept demonstrativ pentru salon">
+              Vezi imaginea completă
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- RESTAURANT -->
+      <article class="project-card">
+        <div class="project-image-wrap">
+          <img src="/images/projects/restaurant.png" alt="Concept demonstrativ de website premium pentru restaurant"
+            class="project-image zoomable-image" data-full-image="/images/projects/restaurant.png" loading="lazy"
+            tabindex="0" role="button" aria-label="Deschide conceptul de website pentru restaurant">
+
+          <span class="project-badge">
+            Concept pentru restaurant
+          </span>
+        </div>
+
+        <div class="project-content">
+          <div class="project-meta">
+            <span>Design premium</span>
+            <span>Meniu online</span>
+            <span>Rezervări rapide</span>
+          </div>
+
+          <h3>
+            Maison Noir — website premium pentru restaurant
+          </h3>
+
+          <p>
+            Concept elegant pentru un restaurant premium, cu prezentarea
+            meniului, imagini gastronomice de impact și acces rapid la
+            rezervări și contact.
+          </p>
+
+          <div class="project-actions">
+            <a class="btn btn-primary" href="/contact#formular">
+              Vreau un website similar
+            </a>
+
+            <button class="btn btn-secondary project-preview-button" type="button"
+              data-preview-target="/images/projects/restaurant.png"
+              data-preview-alt="Concept demonstrativ pentru restaurant">
+              Vezi imaginea completă
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- IMOBILIARE -->
+      <article class="project-card project-card-real-estate">
+        <div class="project-image-wrap">
+          <img src="/images/projects/imobiliare.png"
+            alt="Concept demonstrativ de website premium pentru agenție imobiliară" class="project-image zoomable-image"
+            data-full-image="/images/projects/imobiliare.png" loading="lazy" tabindex="0" role="button"
+            aria-label="Deschide conceptul de website pentru agenție imobiliară">
+
+          <span class="project-badge">
+            Concept pentru imobiliare
+          </span>
+        </div>
+
+        <div class="project-content">
+          <div class="project-meta">
+            <span>Design premium</span>
+            <span>Listări proprietăți</span>
+            <span>Generare de lead-uri</span>
+          </div>
+
+          <h3>
+            Greenwich Realty — website pentru agenție imobiliară
+          </h3>
+
+          <p>
+            Concept pentru o agenție imobiliară, cu proprietăți prezentate
+            profesional, filtre de căutare, profil de agent și formulare
+            clare pentru programarea consultațiilor.
+          </p>
+
+          <div class="project-actions">
+            <a class="btn btn-primary" href="/contact#formular">
+              Vreau un website similar
+            </a>
+
+            <button class="btn btn-secondary project-preview-button" type="button"
+              data-preview-target="/images/projects/imobiliare.png"
+              data-preview-alt="Concept demonstrativ pentru agenție imobiliară">
+              Vezi imaginea completă
+            </button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CE REZOLVĂM -->
   <section id="ce-rezolam" class="section">
     <div class="container section-heading">
-      <p class="eyebrow">Ce reparăm și ce facem</p>
-      <h2>Problemele reale care opresc clienții din a te contacta</h2>
+      <p class="eyebrow">Ce rezolvăm</p>
+
+      <h2>
+        Un website construit pentru acțiune, nu doar pentru aspect
+      </h2>
+
       <p>
-        Un site bun nu este doar design. Este un sistem care explică, convinge,
-        colectează cereri și transmite încredere.
+        Structurăm informația, formularele și punctele de contact astfel
+        încât vizitatorul să înțeleagă rapid oferta și următorul pas.
       </p>
     </div>
 
@@ -56,35 +233,61 @@
     </div>
   </section>
 
+  <!-- PACHETE PRINCIPALE -->
   <section id="pachete" class="section soft-section">
     <div class="container section-heading">
       <p class="eyebrow">Pachete principale</p>
-      <h2>Alege nivelul potrivit pentru afacerea ta</h2>
+
+      <h2>
+        Alege nivelul potrivit pentru etapa actuală a afacerii
+      </h2>
+
       <p>
-        Pe homepage păstrăm doar prezentarea scurtă. Detaliile complete, ce este inclus
-        și ce nu este inclus sunt pe pagina de servicii.
+        Pe homepage afișăm variantele principale. Lista completă de
+        funcționalități, limitări și servicii opționale este disponibilă
+        pe pagina de servicii.
       </p>
     </div>
 
     <div class="container-bgg pricing-grid compact-pricing-grid">
       <% content.packages.forEach((pkg) => { %>
       <article class="pricing-card equal-card <%= pkg.featured ? 'featured' : '' %>">
-        <span class="pricing-tag"><%= pkg.tag %></span>
-        <h3><%= pkg.name %></h3>
-        <div class="price"><%= pkg.price %></div>
-        <p class="intro-price"><%= pkg.introPrice %></p>
-        <p><%= pkg.bestFor %></p>
-        <p class="pages"><%= pkg.pages %></p>
+        <span class="pricing-tag">
+          <%= pkg.tag %>
+        </span>
 
-        <h4>Pe scurt</h4>
+        <h3>
+          <%= pkg.name %>
+        </h3>
+
+        <div class="price">
+          <%= pkg.price %>
+        </div>
+
+        <p class="intro-price">
+          <%= pkg.introPrice %>
+        </p>
+
+        <p>
+          <%= pkg.bestFor %>
+        </p>
+
+        <p class="pages">
+          <%= pkg.pages %>
+        </p>
+
+        <h4>Include, pe scurt</h4>
+
         <ul>
           <% pkg.included.slice(0, 4).forEach((feature) => { %>
-          <li><%= feature %></li>
+          <li>
+            <%= feature %>
+          </li>
           <% }) %>
         </ul>
 
         <a class="btn btn-primary full" href="/servicii">
-          Vezi detalii pachet
+          Vezi detaliile pachetului
         </a>
       </article>
       <% }) %>
@@ -92,196 +295,247 @@
 
     <div class="container center-button">
       <a class="btn btn-secondary" href="/servicii">
-        Vezi toate serviciile și detaliile complete
+        Compară toate serviciile și funcționalitățile
       </a>
     </div>
   </section>
 
+  <!-- SOLUȚIE PERSONALIZATĂ -->
   <section class="section">
-    <div class="container section-heading">
-      <p class="eyebrow">Servicii extra</p>
-      <h2>După lansare poți continua cu mentenanță sau promovare</h2>
+    <div class="container final-card">
+      <p class="eyebrow">Ai nevoie de mai mult?</p>
+
+      <h2>
+        Soluție personalizată pentru fluxuri mai complexe
+      </h2>
+
       <p>
-        Nu încărcăm homepage-ul cu toate detaliile. Fiecare serviciu are pagina lui separată.
+        Pentru proiecte care includ programări avansate, roluri de
+        utilizator, panou de administrare, blog, recenzii, plăți sau
+        integrări externe, stabilim separat arhitectura și bugetul.
+      </p>
+
+      <a class="btn btn-primary cta-small-btn" href="/contact#formular">
+        Discută proiectul
+      </a>
+    </div>
+  </section>
+
+  <!-- SERVICII DUPĂ LANSARE -->
+  <section class="section soft-section">
+    <div class="container section-heading">
+      <p class="eyebrow">După lansare</p>
+
+      <h2>
+        Mentenanță și promovare, fără să aglomerăm pachetul inițial
+      </h2>
+
+      <p>
+        Alegi separat serviciile recurente de care afacerea are nevoie
+        după publicare.
       </p>
     </div>
 
     <div class="container home-service-grid">
       <article class="home-service-card">
-        <span class="pricing-tag">De la 49 €/lună</span>
+        <span class="pricing-tag">
+          De la 49 €/lună
+        </span>
+
         <h3>Mentenanță lunară</h3>
+
         <p>
-          Verificări, backup, suport și modificări simple după lansarea site-ului.
-          Potrivit pentru afaceri care vor un site actualizat și funcțional.
+          Verificări, backup, suport și modificări simple pentru un
+          website actualizat și funcțional.
         </p>
+
         <a class="btn btn-secondary full" href="/mentenanta">
-          Vezi pachetele de mentenanță
+          Vezi mentenanța
         </a>
       </article>
 
       <article class="home-service-card">
-        <span class="pricing-tag">De la 199 €/lună</span>
+        <span class="pricing-tag">
+          De la 199 €/lună
+        </span>
+
         <h3>Campanii publicitare</h3>
+
         <p>
-          Promovare pe Facebook, Instagram și Google pentru afaceri locale.
-          Bugetul efectiv de reclame se plătește separat.
+          Administrare Facebook, Instagram și Google Ads. Bugetul efectiv
+          de publicitate se plătește separat platformelor.
         </p>
+
         <a class="btn btn-secondary full" href="/campanii-publicitare">
-          Vezi pachetele de promovare
+          Vezi promovarea
         </a>
       </article>
     </div>
   </section>
 
-  <section id="proiecte" class="section projects-section">
-    <div class="container section-heading">
-      <p class="eyebrow">Proiecte</p>
-      <h2>Exemple de proiecte create</h2>
-      <p>
-        Câteva exemple vizuale care arată stilul, structura și nivelul de prezentare
-        pe care îl putem construi pentru afaceri locale.
-      </p>
-    </div>
-
-    <div class="container projects-grid">
-      <article class="project-card">
-        <div class="project-image-wrap">
-          <img src="/images/projects/estatepoint-hero.png"
-            alt="Proiect EstatePoint - secțiune principală website imobiliare" class="project-image" loading="lazy">
-          <span class="project-badge">Website imobiliare</span>
-        </div>
-
-        <div class="project-content">
-          <div class="project-meta">
-            <span>Design premium</span>
-            <span>Responsive</span>
-            <span>Lead generation</span>
-          </div>
-
-          <h3>EstatePoint — pagină principală</h3>
-          <p>
-            Concept modern pentru un website imobiliar, cu imagine puternică,
-            structură clară și formular de căutare integrat.
-          </p>
-
-          <div class="project-actions">
-            <a class="btn btn-primary" href="/contact#formular">Vreau un site similar</a>
-            <a class="btn btn-secondary" href="/proiecte">Vezi proiectele</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <div class="project-image-wrap">
-          <img src="/images/projects/estatepoint-properties.png"
-            alt="Proiect EstatePoint - secțiune listare proprietăți" class="project-image" loading="lazy">
-          <span class="project-badge">Listare proprietăți</span>
-        </div>
-
-        <div class="project-content">
-          <div class="project-meta">
-            <span>UI curat</span>
-            <span>Carduri elegante</span>
-            <span>Experiență clară</span>
-          </div>
-
-          <h3>EstatePoint — secțiune proprietăți</h3>
-          <p>
-            Secțiune de prezentare pentru proprietăți premium, construită cu accent
-            pe imagini mari și informații ușor de parcurs.
-          </p>
-
-          <div class="project-actions">
-            <a class="btn btn-primary" href="/contact#formular">Vreau un proiect similar</a>
-            <a class="btn btn-secondary" href="/proiecte">Vezi proiectele</a>
-          </div>
-        </div>
-      </article>
-
-
-    </div>
-  </section>
-
+  <!-- PROCES -->
   <section class="section">
     <div class="container section-heading">
       <p class="eyebrow">Cum lucrăm</p>
-      <h2>Proces scurt, clar și ușor de urmărit</h2>
+
+      <h2>
+        Proces clar, cu responsabilități și termene definite
+      </h2>
+
       <p>
-        Fără întâlniri inutile și fără haos. Stabilim ce trebuie făcut, construim,
-        testăm și lansăm.
+        Stabilim ce trebuie construit, ce materiale sunt necesare și ce
+        trebuie aprobat înainte să începem dezvoltarea.
       </p>
     </div>
 
     <div class="container cards-grid three">
       <% content.process.forEach((item) => { %>
       <article class="process-card equal-card">
-        <span class="step"><%= item.step %></span>
-        <h3><%= item.title %></h3>
-        <p><%= item.text %></p>
+        <span class="step">
+          <%= item.step %>
+        </span>
+
+        <h3>
+          <%= item.title %>
+        </h3>
+
+        <p>
+          <%= item.text %>
+        </p>
       </article>
       <% }) %>
     </div>
   </section>
 
+  <!-- CE PRIMEȘTI -->
+  <section class="section soft-section">
+    <div class="container section-heading">
+      <p class="eyebrow">Colaborare</p>
+
+      <h2>
+        Ce primești când lucrăm împreună
+      </h2>
+
+      <p>
+        Fără promisiuni inventate și fără rezultate garantate. Primești
+        un proces controlat și un produs livrabil clar.
+      </p>
+    </div>
+
+    <div class="container cards-grid three">
+      <article class="service-card equal-card">
+        <h3>Comunicare directă</h3>
+
+        <p>
+          Discuți direct cu persoana care construiește proiectul, fără
+          intermediari și fără pierderi de informație.
+        </p>
+      </article>
+
+      <article class="service-card equal-card">
+        <h3>Livrabile definite</h3>
+
+        <p>
+          Paginile, funcționalitățile, reviziile și limitele proiectului
+          sunt stabilite înainte de dezvoltare.
+        </p>
+      </article>
+
+      <article class="service-card equal-card">
+        <h3>Predare și suport</h3>
+
+        <p>
+          Verificăm formularele și funcțiile importante, apoi primești
+          instrucțiuni pentru administrarea elementelor incluse.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- FAQ -->
   <section id="faq" class="section faq-section">
     <div class="container section-heading">
       <p class="eyebrow">Întrebări frecvente</p>
-      <h2>Întrebări importante înainte să începem</h2>
+
+      <h2>
+        Ce trebuie clarificat înainte să începem
+      </h2>
+
       <p>
-        Răspunsuri scurte la cele mai comune întrebări despre site-uri, domeniu,
-        mentenanță, reclame și plată.
+        Răspunsuri directe despre termene, domeniu, publicitate și
+        rezultate.
       </p>
     </div>
 
     <div class="container faq-wrap">
       <div class="faq-item">
         <button class="faq-question" type="button">
-          <span>Cât durează realizarea unui site?</span>
+          <span>
+            Cât durează realizarea unui website?
+          </span>
+
           <strong>+</strong>
         </button>
+
         <div class="faq-answer">
           <p>
-            Depinde de pachet, numărul de pagini și cât de repede sunt oferite materialele.
-            Un site simplu poate fi livrat mai repede, iar un sistem cu programări poate dura mai mult.
+            Un website standard poate fi lansat în aproximativ 14–21 de
+            zile, după primirea materialelor și aprobarea structurii.
+            Proiectele cu funcționalități personalizate pot necesita mai
+            mult timp.
           </p>
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-question" type="button">
-          <span>Domeniul este inclus?</span>
+          <span>
+            Domeniul este inclus?
+          </span>
+
           <strong>+</strong>
         </button>
+
         <div class="faq-answer">
           <p>
-            Da, un domeniu standard este inclus în pachetele de site, dacă este disponibil la un cost rezonabil.
-            Domeniile premium sau foarte scumpe se taxează separat.
+            Un domeniu standard poate fi inclus dacă este disponibil la
+            un cost rezonabil. Domeniile premium, găzduirea premium și
+            emailul profesional se taxează separat.
           </p>
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-question" type="button">
-          <span>Campaniile includ bugetul de reclame?</span>
+          <span>
+            Campaniile includ bugetul de publicitate?
+          </span>
+
           <strong>+</strong>
         </button>
+
         <div class="faq-answer">
           <p>
-            Nu. Taxa de administrare este separată de bugetul efectiv de reclame,
-            care se plătește către Facebook, Instagram sau Google.
+            Nu. Serviciul de administrare este separat de bugetul plătit
+            către Facebook, Instagram sau Google.
           </p>
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-question" type="button">
-          <span>Garantezi vânzări sau rezultate?</span>
+          <span>
+            Garantezi vânzări sau un anumit număr de clienți?
+          </span>
+
           <strong>+</strong>
         </button>
+
         <div class="faq-answer">
           <p>
-            Nu garantăm vânzări, profit, clienți sau poziții fixe pe Google.
-            Rezultatele depind de ofertă, piață, buget, reputație și concurență.
+            Nu. Rezultatele depind de ofertă, piață, prețuri, reputație,
+            buget, concurență și modul în care sunt gestionate cererile
+            primite.
           </p>
         </div>
       </div>
@@ -289,15 +543,20 @@
 
     <div class="container center-button">
       <a class="btn btn-secondary" href="/servicii">
-        Vezi detaliile complete
+        Vezi informațiile complete
       </a>
     </div>
   </section>
 
+  <!-- BLOG -->
+  <% if (posts && posts.length) { %>
   <section class="section soft-section">
     <div class="container section-heading">
-      <p class="eyebrow">Blog SEO</p>
-      <h2>Articole care educă piața și ajută Google să înțeleagă ce faci</h2>
+      <p class="eyebrow">Resurse</p>
+
+      <h2>
+        Articole utile pentru afaceri locale
+      </h2>
     </div>
 
     <div class="container blog-grid">
@@ -308,29 +567,381 @@
         <% } %>
 
         <div>
-          <h3><%= post.title %></h3>
-          <p><%= post.excerpt %></p>
+          <h3>
+            <%= post.title %>
+          </h3>
+
+          <p class="blog-card-excerpt">
+            <%= post.excerpt %>
+          </p>
         </div>
 
-        <a class="card-link" href="/blog/<%= post.slug %>">Citește articolul</a>
+        <a class="card-link" href="/blog/<%= post.slug %>">
+          Citește articolul
+        </a>
       </article>
       <% }) %>
     </div>
 
     <div class="container center-button">
-      <a class="btn btn-secondary" href="/blog">Vezi toate articolele</a>
+      <a class="btn btn-secondary" href="/blog">
+        Vezi toate articolele
+      </a>
     </div>
   </section>
+  <% } %>
 
+  <!-- CTA FINAL -->
   <section class="section final-cta">
     <div class="container final-card">
-      <h2>Vrei un site care colectează cereri, nu doar complimente?</h2>
-      <p>Trimite detaliile afacerii tale și îți arătăm cum ar putea arăta sistemul tău.</p>
+      <p class="eyebrow">Următorul pas</p>
+
+      <h2>
+        Ai nevoie de un website clar și ușor de administrat?
+      </h2>
+
+      <p>
+        Trimite informațiile de bază despre afacere, serviciile oferite
+        și obiectivul principal. Stabilim apoi dacă proiectul are sens
+        și ce variantă este potrivită.
+      </p>
+
       <a class="btn btn-primary cta-small-btn" href="/contact#formular">
-        Programează o consultație gratuită
+        Programează consultația
       </a>
     </div>
   </section>
 </main>
+
+<!-- PREVIEW PROIECT -->
+<div class="image-modal" id="imageModal" aria-hidden="true" role="dialog" aria-modal="true"
+  aria-label="Previzualizare proiect">
+  <button class="image-modal-close" id="imageModalClose" type="button" aria-label="Închide imaginea">
+    &times;
+  </button>
+
+  <div class="image-modal-stage" id="imageModalStage">
+    <div class="image-modal-canvas" id="imageModalCanvas">
+      <img class="image-modal-content" id="imageModalContent" src="" alt="" draggable="false">
+    </div>
+  </div>
+
+  <div class="image-modal-toolbar" role="group" aria-label="Controale imagine">
+    <button class="image-zoom-button" id="zoomOutButton" type="button" aria-label="Micșorează">
+      −
+    </button>
+
+    <span class="image-zoom-level" id="zoomLevel" aria-live="polite">
+      Potrivire
+    </span>
+
+    <button class="image-zoom-button" id="zoomInButton" type="button" aria-label="Mărește">
+      +
+    </button>
+
+    <button class="image-zoom-reset" id="zoomResetButton" type="button">
+      Potrivește
+    </button>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("imageModal");
+    const stage = document.getElementById("imageModalStage");
+    const canvas = document.getElementById("imageModalCanvas");
+    const modalImage = document.getElementById("imageModalContent");
+
+    const closeButton = document.getElementById("imageModalClose");
+    const zoomInButton = document.getElementById("zoomInButton");
+    const zoomOutButton = document.getElementById("zoomOutButton");
+    const zoomResetButton = document.getElementById("zoomResetButton");
+    const zoomLevel = document.getElementById("zoomLevel");
+
+    const triggers = document.querySelectorAll(
+      ".zoomable-image, .project-preview-button"
+    );
+
+    let fitScale = 1;
+    let currentScale = 1;
+    let lastFocusedElement = null;
+
+    function clamp(value, minimum, maximum) {
+      return Math.min(
+        Math.max(value, minimum),
+        maximum
+      );
+    }
+
+    function getSource(trigger) {
+      return (
+        trigger.getAttribute("data-preview-target") ||
+        trigger.getAttribute("data-full-image") ||
+        trigger.getAttribute("src")
+      );
+    }
+
+    function getAlt(trigger) {
+      return (
+        trigger.getAttribute("data-preview-alt") ||
+        trigger.getAttribute("alt") ||
+        "Previzualizare proiect"
+      );
+    }
+
+    function calculateFitScale() {
+      if (
+        !modalImage.naturalWidth ||
+        !modalImage.naturalHeight
+      ) {
+        return 1;
+      }
+
+      const availableWidth = Math.max(
+        stage.clientWidth - 48,
+        320
+      );
+
+      const availableHeight = Math.max(
+        stage.clientHeight - 120,
+        320
+      );
+
+      return Math.min(
+        availableWidth / modalImage.naturalWidth,
+        availableHeight / modalImage.naturalHeight,
+        1
+      );
+    }
+
+    function maximumScale() {
+      return Math.max(1, fitScale);
+    }
+
+    function updateImageSize() {
+      const width = Math.round(
+        modalImage.naturalWidth * currentScale
+      );
+
+      modalImage.style.width = width + "px";
+      modalImage.style.height = "auto";
+
+      const relativeZoom =
+        currentScale / fitScale;
+
+      zoomLevel.textContent =
+        Math.abs(relativeZoom - 1) < 0.02 ?
+        "Potrivire" :
+        Math.round(relativeZoom * 100) + "%";
+
+      zoomOutButton.disabled =
+        currentScale <= fitScale + 0.001;
+
+      zoomInButton.disabled =
+        currentScale >= maximumScale() - 0.001;
+    }
+
+    function fitImage() {
+      fitScale = calculateFitScale();
+      currentScale = fitScale;
+
+      updateImageSize();
+
+      stage.scrollTop = 0;
+      stage.scrollLeft = 0;
+    }
+
+    function setScale(nextScale) {
+      const previousScrollWidth =
+        stage.scrollWidth;
+
+      const previousScrollHeight =
+        stage.scrollHeight;
+
+      const centerX =
+        stage.scrollLeft +
+        stage.clientWidth / 2;
+
+      const centerY =
+        stage.scrollTop +
+        stage.clientHeight / 2;
+
+      currentScale = clamp(
+        nextScale,
+        fitScale,
+        maximumScale()
+      );
+
+      updateImageSize();
+
+      const widthRatio =
+        stage.scrollWidth /
+        Math.max(previousScrollWidth, 1);
+
+      const heightRatio =
+        stage.scrollHeight /
+        Math.max(previousScrollHeight, 1);
+
+      stage.scrollLeft =
+        centerX * widthRatio -
+        stage.clientWidth / 2;
+
+      stage.scrollTop =
+        centerY * heightRatio -
+        stage.clientHeight / 2;
+    }
+
+    function openModal(trigger) {
+      const source = getSource(trigger);
+
+      if (!source) {
+        return;
+      }
+
+      lastFocusedElement = trigger;
+
+      modalImage.src = source;
+      modalImage.alt = getAlt(trigger);
+
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+
+      document.body.classList.add("modal-open");
+
+      closeButton.focus();
+    }
+
+    function closeModal() {
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+
+      document.body.classList.remove("modal-open");
+
+      window.setTimeout(function () {
+        modalImage.src = "";
+        modalImage.alt = "";
+
+        modalImage.removeAttribute("style");
+        canvas.removeAttribute("style");
+      }, 200);
+
+      if (lastFocusedElement) {
+        lastFocusedElement.focus();
+      }
+    }
+
+    modalImage.addEventListener("load", function () {
+      window.requestAnimationFrame(fitImage);
+    });
+
+    triggers.forEach(function (trigger) {
+      trigger.addEventListener("click", function () {
+        openModal(trigger);
+      });
+
+      if (
+        trigger.classList.contains("zoomable-image")
+      ) {
+        trigger.addEventListener(
+          "keydown",
+          function (event) {
+            if (
+              event.key === "Enter" ||
+              event.key === " "
+            ) {
+              event.preventDefault();
+              openModal(trigger);
+            }
+          }
+        );
+      }
+    });
+
+    zoomInButton.addEventListener("click", function () {
+      setScale(currentScale * 1.2);
+    });
+
+    zoomOutButton.addEventListener("click", function () {
+      setScale(currentScale / 1.2);
+    });
+
+    zoomResetButton.addEventListener(
+      "click",
+      fitImage
+    );
+
+    closeButton.addEventListener(
+      "click",
+      closeModal
+    );
+
+    modalImage.addEventListener(
+      "dblclick",
+      function () {
+        if (
+          Math.abs(currentScale - fitScale) < 0.02
+        ) {
+          setScale(maximumScale());
+        } else {
+          fitImage();
+        }
+      }
+    );
+
+    modal.addEventListener(
+      "click",
+      function (event) {
+        if (
+          event.target === modal ||
+          event.target === canvas
+        ) {
+          closeModal();
+        }
+      }
+    );
+
+    document.addEventListener(
+      "keydown",
+      function (event) {
+        if (
+          !modal.classList.contains("is-open")
+        ) {
+          return;
+        }
+
+        if (event.key === "Escape") {
+          closeModal();
+          return;
+        }
+
+        if (
+          event.key === "+" ||
+          event.key === "="
+        ) {
+          setScale(currentScale * 1.2);
+        }
+
+        if (event.key === "-") {
+          setScale(currentScale / 1.2);
+        }
+
+        if (event.key === "0") {
+          fitImage();
+        }
+      }
+    );
+
+    window.addEventListener(
+      "resize",
+      function () {
+        if (
+          modal.classList.contains("is-open")
+        ) {
+          fitImage();
+        }
+      }
+    );
+  });
+</script>
 
 <%- include('partials/footer') %>
