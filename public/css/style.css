@@ -8,6 +8,7 @@
   --muted: #697086;
   --border: rgba(31, 34, 54, 0.12);
   --shadow: 0 24px 70px rgba(31, 34, 54, 0.12);
+  --shadow-soft: 0 12px 32px rgba(31, 34, 54, 0.08);
   --radius: 26px;
 }
 
@@ -25,7 +26,13 @@ html {
 
 body {
   margin: 0;
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
   color: var(--text);
   background: var(--white);
   line-height: 1.6;
@@ -315,10 +322,6 @@ li {
   box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.18);
 }
 
-.notranslate {
-  translate: no;
-}
-
 .goog-logo-link,
 .goog-te-gadget span,
 .skiptranslate iframe {
@@ -382,7 +385,10 @@ li {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
 }
 
 .btn:hover {
@@ -443,7 +449,9 @@ li {
 
 .hero {
   background:
-    radial-gradient(circle at top left, rgba(249, 115, 22, 0.14), transparent 35%),
+    radial-gradient(circle at top left,
+      rgba(249, 115, 22, 0.14),
+      transparent 35%),
     linear-gradient(135deg, #ffffff 0%, #f7f7fb 100%);
 }
 
@@ -500,7 +508,9 @@ li {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 18% 25%, rgba(255, 132, 0, 0.16), transparent 32%),
+    radial-gradient(circle at 18% 25%,
+      rgba(255, 132, 0, 0.16),
+      transparent 32%),
     radial-gradient(circle at 78% 18%, rgba(255, 132, 0, 0.12), transparent 26%);
   pointer-events: none;
 }
@@ -583,10 +593,6 @@ li {
 }
 
 /* Imagine mică în card */
-.project-image-wrap {
-  overflow: hidden;
-}
-
 .project-image.zoomable-image {
   display: block;
   width: 100%;
@@ -603,7 +609,7 @@ li {
   filter: brightness(0.9);
 }
 
-/* Fundalul popup-ului */
+/* Project image modal */
 .image-modal {
   position: fixed;
   inset: 0;
@@ -611,162 +617,13 @@ li {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   padding: 30px;
-  background: rgba(0, 0, 0, 0.9);
-
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-
-  transition:
-    opacity 0.25s ease,
-    visibility 0.25s ease;
-}
-
-/* Modal deschis */
-.image-modal.is-open {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-
-/* Imaginea mare */
-.image-modal-content {
-  display: block;
-  max-width: 92vw;
-  max-height: 90vh;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  border-radius: 12px;
-  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
-
-  transform: scale(0.85);
-  transition: transform 0.25s ease;
-}
-
-.image-modal.is-open .image-modal-content {
-  transform: scale(1);
-}
-
-/* Buton închidere */
-.image-modal-close {
-  position: fixed;
-  top: 20px;
-  right: 25px;
-  z-index: 100000;
-
-  width: 48px;
-  height: 48px;
-  padding: 0;
-
-  border: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
-  color: #ffffff;
-
-  font-size: 36px;
-  line-height: 44px;
-  cursor: pointer;
-
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease;
-}
-
-.image-modal-close:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: scale(1.08);
-}
-
-body.modal-open {
-  overflow: hidden;
-}
-
-/* Imagine proiect salon - fără spațiu bej */
-.salon-project-image-wrap {
-  position: relative;
-  width: 100%;
-  height: 440px;
-  overflow: hidden;
-  background: transparent;
-}
-
-/* Imaginea ocupă tot wrapper-ul */
-.salon-project-image-wrap .salon-project-image {
-  display: block;
-  width: 100%;
-  height: 100%;
-  min-height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  cursor: zoom-in;
-}
-
-/* Badge-ul rămâne deasupra imaginii */
-.salon-project-image-wrap .project-badge {
-  position: absolute;
-  top: 26px;
-  left: 26px;
-  z-index: 2;
-}
-
-/* Toate imaginile din secțiunea proiecte */
-.projects-grid .project-image-wrap {
-  position: relative;
-  width: 100%;
-  height: 440px;
-  overflow: hidden;
-  background: transparent;
-}
-
-/* Imaginea ocupă complet spațiul disponibil */
-.projects-grid .project-image {
-  display: block;
-  width: 100%;
-  height: 100%;
-  min-height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  cursor: zoom-in;
-
-  transition:
-    transform 0.35s ease,
-    filter 0.35s ease;
-}
-
-/* Efect la hover */
-.projects-grid .project-image:hover {
-  transform: scale(1.025);
-  filter: brightness(0.92);
-}
-
-/* Badge-ul rămâne peste imagine */
-.projects-grid .project-badge {
-  position: absolute;
-  top: 26px;
-  left: 26px;
-  z-index: 2;
-}
-
-/* =====================================================
-   POPUP IMAGINE CU ZOOM
-===================================================== */
-
-.image-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 99999;
-
-  overflow: hidden;
-
   background: rgba(2, 7, 15, 0.96);
   backdrop-filter: blur(8px);
-
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-
   transition:
     opacity 0.25s ease,
     visibility 0.25s ease;
@@ -782,16 +639,11 @@ body.modal-open {
   position: absolute;
   inset: 0;
   z-index: 1;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  overflow: hidden;
-
-  padding:
-    70px 35px 90px;
-
+  overflow: auto;
+  padding: 72px 24px 96px;
   cursor: zoom-in;
   touch-action: none;
   overscroll-behavior: contain;
@@ -805,35 +657,31 @@ body.modal-open {
   cursor: grabbing;
 }
 
+.image-modal-canvas {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-width: 100%;
+  min-height: 100%;
+}
+
 .image-modal-content {
   display: block;
-
   width: auto;
-  max-width: 94vw;
-
+  max-width: none;
   height: auto;
-  max-height: 82vh;
-
+  max-height: none;
   border-radius: 14px;
   object-fit: contain;
-
   opacity: 0;
-
-  transform:
-    translate3d(0, 0, 0) scale(1);
-
-  transform-origin: center center;
+  transform: none;
+  transform-origin: initial;
   will-change: transform;
-
   user-select: none;
   -webkit-user-select: none;
   -webkit-user-drag: none;
-
-  cursor: inherit;
-
-  box-shadow:
-    0 30px 100px rgba(0, 0, 0, 0.7);
-
+  cursor: zoom-in;
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.7);
   transition:
     transform 180ms ease,
     opacity 200ms ease;
@@ -843,34 +691,25 @@ body.modal-open {
   opacity: 1;
 }
 
-/* Buton X */
-
 .image-modal-close {
   position: fixed;
   top: 18px;
   right: 22px;
   z-index: 5;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 50px;
   height: 50px;
   padding: 0;
-
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 50%;
-
   background: rgba(255, 255, 255, 0.12);
   color: #ffffff;
-
   font-family: Arial, sans-serif;
   font-size: 34px;
   line-height: 1;
-
   cursor: pointer;
-
   transition:
     background 0.2s ease,
     transform 0.2s ease;
@@ -881,29 +720,20 @@ body.modal-open {
   transform: scale(1.07);
 }
 
-/* Toolbar zoom */
-
 .image-modal-toolbar {
   position: fixed;
   bottom: 20px;
   left: 50%;
   z-index: 5;
-
   display: flex;
   align-items: center;
   gap: 8px;
-
   padding: 8px;
-
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 16px;
-
   background: rgba(10, 16, 27, 0.92);
   backdrop-filter: blur(12px);
-
-  box-shadow:
-    0 16px 45px rgba(0, 0, 0, 0.45);
-
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.45);
   transform: translateX(-50%);
 }
 
@@ -912,20 +742,14 @@ body.modal-open {
   display: flex;
   align-items: center;
   justify-content: center;
-
   height: 42px;
-
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 10px;
-
   background: rgba(255, 255, 255, 0.08);
   color: #ffffff;
-
   font: inherit;
   font-weight: 800;
-
   cursor: pointer;
-
   transition:
     background 0.2s ease,
     border-color 0.2s ease,
@@ -935,7 +759,6 @@ body.modal-open {
 .image-zoom-button {
   width: 42px;
   padding: 0;
-
   font-size: 24px;
 }
 
@@ -959,9 +782,7 @@ body.modal-open {
 
 .image-zoom-level {
   min-width: 64px;
-
   color: #ffffff;
-
   font-size: 13px;
   font-weight: 800;
   text-align: center;
@@ -976,6 +797,46 @@ body.modal-open {
 
 body.modal-open {
   overflow: hidden;
+}
+
+/* Project image layouts */
+.salon-project-image-wrap,
+.projects-grid .project-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 440px;
+  overflow: hidden;
+  background: transparent;
+}
+
+.salon-project-image-wrap .salon-project-image,
+.projects-grid .project-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  cursor: zoom-in;
+}
+
+.projects-grid .project-image {
+  transition:
+    transform 0.35s ease,
+    filter 0.35s ease;
+}
+
+.projects-grid .project-image:hover {
+  transform: scale(1.025);
+  filter: brightness(0.92);
+}
+
+.salon-project-image-wrap .project-badge,
+.projects-grid .project-badge {
+  position: absolute;
+  top: 26px;
+  left: 26px;
+  z-index: 2;
 }
 
 /* =====================================================
@@ -997,52 +858,6 @@ body.modal-open {
 }
 
 /* =====================================================
-   POPUP PROIECT
-===================================================== */
-
-.image-modal-stage {
-  overflow: auto;
-  overscroll-behavior: contain;
-
-  padding:
-    72px 24px 96px;
-}
-
-.image-modal-canvas {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-
-  min-width: 100%;
-  min-height: 100%;
-}
-
-.image-modal-content {
-  display: block;
-
-  max-width: none;
-  max-height: none;
-
-  height: auto;
-
-  object-fit: contain;
-
-  transform: none;
-  transform-origin: initial;
-
-  cursor: zoom-in;
-
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-user-drag: none;
-}
-
-.image-zoom-button:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
-}
-
-/* =====================================================
    PROIECT IMOBILIARE
 ===================================================== */
 
@@ -1058,10 +873,10 @@ body.modal-open {
   object-position: top center;
 }
 
-/* Grid pachete: 4 carduri */
+/* Grid pachete: 3 carduri */
 .compact-pricing-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 28px;
   align-items: stretch;
 }
@@ -1075,6 +890,8 @@ body.modal-open {
 .compact-pricing-grid .pricing-card .btn {
   margin-top: auto;
 }
+
+
 
 /* Laptop și tabletă */
 @media (max-width: 1200px) {
@@ -1090,58 +907,58 @@ body.modal-open {
   }
 }
 
-/* =====================================================
-   TABLETĂ
-===================================================== */
-
+/* Project and hero responsive adjustments */
 @media (max-width: 992px) {
   .projects-grid .project-card-real-estate .project-image-wrap {
     height: 440px;
   }
-}
 
-/* =====================================================
-   TELEFON
-===================================================== */
-
-@media (max-width: 768px) {
-  .image-modal-stage {
-    padding:
-      64px 12px 88px;
-  }
-
-  .projects-grid .project-card-real-estate {
-    grid-column: auto;
-  }
-
-  .projects-grid .project-card-real-estate .project-image-wrap {
-    height: 300px;
+  .projects-grid .project-image-wrap,
+  .salon-project-image-wrap {
+    height: 380px;
   }
 }
 
-/* =====================================================
-   TELEFON
-===================================================== */
+@media (max-width: 900px) {
+  .hero-bg-centered {
+    min-height: auto;
+    padding: 110px 0 80px;
+    background-image:
+      linear-gradient(180deg,
+        rgba(255, 255, 255, 0.94) 0%,
+        rgba(255, 255, 255, 0.88) 45%,
+        rgba(255, 255, 255, 0.96) 100%),
+      url("/images/hero/website-creation-hero.png");
+    background-position: center;
+  }
+}
+
+@media (max-width: 800px) {
+  .dashboard-filters {
+    grid-template-columns: 1fr;
+  }
+}
 
 @media (max-width: 768px) {
+  .image-modal {
+    padding: 15px;
+  }
+
   .image-modal-stage {
-    padding:
-      65px 12px 85px;
+    padding: 65px 12px 85px;
   }
 
   .image-modal-content {
     max-width: 96vw;
-    max-height: 76vh;
-    border-radius: 9px;
+    max-height: 85vh;
+    border-radius: 8px;
   }
 
   .image-modal-close {
     top: 12px;
     right: 12px;
-
     width: 44px;
     height: 44px;
-
     font-size: 30px;
   }
 
@@ -1163,84 +980,28 @@ body.modal-open {
   .image-zoom-level {
     min-width: 56px;
   }
-}
 
-/* Tabletă */
-@media (max-width: 992px) {
-  .projects-grid .project-image-wrap {
-    height: 380px;
-  }
-}
-
-/* Telefon */
-@media (max-width: 768px) {
-  .projects-grid .project-image-wrap {
-    height: 280px;
+  .projects-grid .project-card-real-estate {
+    grid-column: auto;
   }
 
-  .projects-grid .project-badge {
-    top: 16px;
-    left: 16px;
-  }
-}
-
-/* Tabletă */
-@media (max-width: 992px) {
-  .salon-project-image-wrap {
-    height: 380px;
-  }
-}
-
-/* Telefon */
-@media (max-width: 768px) {
+  .projects-grid .project-card-real-estate .project-image-wrap,
   .salon-project-image-wrap {
     height: 300px;
   }
 
+  .projects-grid .project-image-wrap {
+    height: 280px;
+  }
+
+  .projects-grid .project-badge,
   .salon-project-image-wrap .project-badge {
     top: 16px;
     left: 16px;
   }
-}
 
-@media (max-width: 768px) {
   .project-image.zoomable-image {
     height: 190px;
-  }
-
-  .image-modal {
-    padding: 15px;
-  }
-
-  .image-modal-content {
-    max-width: 96vw;
-    max-height: 85vh;
-    border-radius: 8px;
-  }
-
-  .image-modal-close {
-    top: 12px;
-    right: 12px;
-  }
-}
-
-@media (max-width: 800px) {
-  .dashboard-filters {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 900px) {
-  .hero-bg-centered {
-    min-height: auto;
-    padding: 110px 0 80px;
-    background-image:
-      linear-gradient(180deg,
-        rgba(255, 255, 255, 0.94) 0%,
-        rgba(255, 255, 255, 0.88) 45%,
-        rgba(255, 255, 255, 0.96) 100%),
-      url("/images/hero/website-creation-hero.png");
-    background-position: center;
   }
 }
 
@@ -1376,7 +1137,7 @@ body.modal-open {
 
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   align-items: stretch;
 }
@@ -2163,7 +1924,9 @@ textarea {
   align-items: center;
   padding: 70px 0;
   background:
-    radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 35%),
+    radial-gradient(circle at top left,
+      rgba(37, 99, 235, 0.12),
+      transparent 35%),
     linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
 }
 
@@ -2240,7 +2003,10 @@ textarea {
   background: #f8fafc;
   color: #0f172a;
   outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
 }
 
 .form-stack input:focus {
@@ -2306,11 +2072,9 @@ textarea {
   color: #ffffff;
 }
 
-
 .admin-main .stat-card span {
   color: black;
 }
-
 
 .admin-nav {
   display: flex;
@@ -2721,8 +2485,9 @@ textarea {
 
 .project-image-wrap {
   position: relative;
-  background: #e9e4d8;
   min-height: 100%;
+  overflow: hidden;
+  background: #e9e4d8;
 }
 
 .project-image {

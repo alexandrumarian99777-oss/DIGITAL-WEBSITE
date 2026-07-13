@@ -498,9 +498,10 @@
 
         <div class="faq-answer">
           <p>
-            Un domeniu standard poate fi inclus dacă este disponibil la
-            un cost rezonabil. Domeniile premium, găzduirea premium și
-            emailul profesional se taxează separat.
+            Un domeniu standard este inclus în prețul pachetului pentru primul an, în limita unui cost de maximum 20
+            EUR, inclusiv TVA. Dacă prețul domeniului depășește această limită, costul integral al domeniului va fi
+            suportat de Client, după acceptarea prealabilă. Reînnoirea domeniului după primul an este achitată separat
+            de Client.
           </p>
         </div>
       </div>
@@ -644,7 +645,6 @@
     </button>
   </div>
 </div>
-
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const modal = document.getElementById("imageModal");
@@ -662,26 +662,62 @@
       ".zoomable-image, .project-preview-button"
     );
 
-    let fitScale = 1;
-    let currentScale = 1;
-    let lastFocusedElement = null;
-
-    function clamp(value, minimum, maximum) {
-      return Math.min(
-        Math.max(value, minimum),
-        maximum
-      );
+    if (
+      !modal ||
+      !stage ||
+      !canvas ||
+      !modalImage ||
+      !closeButton ||
+      !zoomInButton ||
+      !zoomOutButton ||
+      !zoomResetButton ||
+      !zoomLevel
+    ) {
+      console.warn("Elementele modalului pentru imagini nu au fost găsite.");
+      return;
     }
 
-    function getSource(trigger) {
+    let fitScale = 1;
+    let currentScale = 1;
+    let maximumScale = 2;
+
+    let lastFocusedElement = null;
+
+    let isDragging = false;
+    let hasDragged = false;
+
+    let dragStartX = 0;
+    let dragStartY = 0;
+    let initialScrollLeft = 0;
+    let initialScrollTop = 0;
+
+    // --- NOU: stare pentru pinch-to-zoom pe mobil ---
+    let activePointers = new Map();
+    let pinchStartDistance = 0;
+    let pinchStartScale = 1;
+    let pinchMidpoint = {
+      x: 0,
+      y: 0
+    };
+
+    function clamp(value, minimum, maximum) {
+      return Math.min(Math.max(value, minimum), maximum);
+    }
+
+    function isModalOpen() {
+      return modal.classList.contains("is-open");
+    }
+
+    function getImageSource(trigger) {
       return (
         trigger.getAttribute("data-preview-target") ||
         trigger.getAttribute("data-full-image") ||
-        trigger.getAttribute("src")
+        trigger.getAttribute("src") ||
+        ""
       );
     }
 
-    function getAlt(trigger) {
+    function getImageAlt(trigger) {
       return (
         trigger.getAttribute("data-preview-alt") ||
         trigger.getAttribute("alt") ||
@@ -690,142 +726,175 @@
     }
 
     function calculateFitScale() {
-      if (
-        !modalImage.naturalWidth ||
-        !modalImage.naturalHeight
-      ) {
+      if (!modalImage.naturalWidth || !modalImage.naturalHeight) {
         return 1;
       }
 
-      const availableWidth = Math.max(
-        stage.clientWidth - 48,
-        320
-      );
+      const isMobile = window.innerWidth <= 768;
+      const horizontalSpace = isMobile ? 24 : 80;
+      const verticalSpace = isMobile ? 150 : 190;
 
-      const availableHeight = Math.max(
-        stage.clientHeight - 120,
-        320
-      );
+      const availableWidth = Math.max(stage.clientWidth - horizontalSpace, 200);
+      const availableHeight = Math.max(stage.clientHeight - verticalSpace, 200);
 
-      return Math.min(
-        availableWidth / modalImage.naturalWidth,
-        availableHeight / modalImage.naturalHeight,
-        1
-      );
+      const widthScale = availableWidth / modalImage.naturalWidth;
+      const heightScale = availableHeight / modalImage.naturalHeight;
+
+      return Math.min(widthScale, heightScale, 1);
     }
 
-    function maximumScale() {
-      return Math.max(1, fitScale);
+    function calculateMaximumScale() {
+      if (fitScale < 1) {
+        return 1;
+      }
+      return 2;
+    }
+
+    function updateZoomLabel() {
+      const relativeZoom = currentScale / Math.max(fitScale, 0.001);
+
+      if (Math.abs(relativeZoom - 1) < 0.02) {
+        zoomLevel.textContent = "Potrivire";
+      } else {
+        zoomLevel.textContent = Math.round(relativeZoom * 100) + "%";
+      }
+
+      zoomOutButton.disabled = currentScale <= fitScale + 0.001;
+      zoomInButton.disabled = currentScale >= maximumScale - 0.001;
+    }
+
+    // NOU: activează/dezactivează tranziția smooth (o oprim în timpul dragului/pinch pentru fluiditate)
+    function setTransitionEnabled(enabled) {
+      modalImage.style.transition = enabled ?
+        "width 0.15s ease-out, height 0.15s ease-out" :
+        "none";
     }
 
     function updateImageSize() {
-      const width = Math.round(
-        modalImage.naturalWidth * currentScale
-      );
+      if (!modalImage.naturalWidth || !modalImage.naturalHeight) {
+        return;
+      }
 
-      modalImage.style.width = width + "px";
-      modalImage.style.height = "auto";
+      const imageWidth = Math.max(Math.round(modalImage.naturalWidth * currentScale), 1);
+      const imageHeight = Math.max(Math.round(modalImage.naturalHeight * currentScale), 1);
 
-      const relativeZoom =
-        currentScale / fitScale;
+      modalImage.style.width = imageWidth + "px";
+      modalImage.style.height = imageHeight + "px";
+      modalImage.style.maxWidth = "none";
+      modalImage.style.maxHeight = "none";
+      modalImage.style.objectFit = "contain";
 
-      zoomLevel.textContent =
-        Math.abs(relativeZoom - 1) < 0.02 ?
-        "Potrivire" :
-        Math.round(relativeZoom * 100) + "%";
+      canvas.style.width = Math.max(stage.clientWidth, imageWidth + 48) + "px";
+      canvas.style.height = Math.max(stage.clientHeight, imageHeight + 48) + "px";
+      canvas.style.minWidth = "100%";
+      canvas.style.minHeight = "100%";
+      canvas.style.display = "flex";
+      canvas.style.alignItems = "center";
+      canvas.style.justifyContent = "center";
 
-      zoomOutButton.disabled =
-        currentScale <= fitScale + 0.001;
+      stage.style.overflow = currentScale > fitScale + 0.01 ? "auto" : "hidden";
+      stage.classList.toggle("is-zoomed", currentScale > fitScale + 0.01);
 
-      zoomInButton.disabled =
-        currentScale >= maximumScale() - 0.001;
+      updateZoomLabel();
+    }
+
+    function centerImage() {
+      stage.scrollLeft = Math.max((stage.scrollWidth - stage.clientWidth) / 2, 0);
+      stage.scrollTop = Math.max((stage.scrollHeight - stage.clientHeight) / 2, 0);
     }
 
     function fitImage() {
+      setTransitionEnabled(false);
       fitScale = calculateFitScale();
+      maximumScale = calculateMaximumScale();
       currentScale = fitScale;
 
       updateImageSize();
 
-      stage.scrollTop = 0;
-      stage.scrollLeft = 0;
+      window.requestAnimationFrame(function () {
+        centerImage();
+      });
     }
 
-    function setScale(nextScale) {
-      const previousScrollWidth =
-        stage.scrollWidth;
+    function setScale(nextScale, clientX, clientY, smooth) {
+      setTransitionEnabled(smooth !== false);
 
-      const previousScrollHeight =
-        stage.scrollHeight;
+      const previousScrollWidth = stage.scrollWidth;
+      const previousScrollHeight = stage.scrollHeight;
+      const stageRectangle = stage.getBoundingClientRect();
 
-      const centerX =
-        stage.scrollLeft +
-        stage.clientWidth / 2;
+      const pointerX = typeof clientX === "number" ? clientX - stageRectangle.left : stage.clientWidth / 2;
+      const pointerY = typeof clientY === "number" ? clientY - stageRectangle.top : stage.clientHeight / 2;
 
-      const centerY =
-        stage.scrollTop +
-        stage.clientHeight / 2;
+      const contentX = stage.scrollLeft + pointerX;
+      const contentY = stage.scrollTop + pointerY;
 
-      currentScale = clamp(
-        nextScale,
-        fitScale,
-        maximumScale()
-      );
+      currentScale = clamp(nextScale, fitScale, maximumScale);
 
       updateImageSize();
 
-      const widthRatio =
-        stage.scrollWidth /
-        Math.max(previousScrollWidth, 1);
+      window.requestAnimationFrame(function () {
+        const widthRatio = stage.scrollWidth / Math.max(previousScrollWidth, 1);
+        const heightRatio = stage.scrollHeight / Math.max(previousScrollHeight, 1);
 
-      const heightRatio =
-        stage.scrollHeight /
-        Math.max(previousScrollHeight, 1);
+        stage.scrollLeft = contentX * widthRatio - pointerX;
+        stage.scrollTop = contentY * heightRatio - pointerY;
+      });
+    }
 
-      stage.scrollLeft =
-        centerX * widthRatio -
-        stage.clientWidth / 2;
+    function resetModalStyles() {
+      modalImage.removeAttribute("style");
+      canvas.removeAttribute("style");
+      stage.removeAttribute("style");
 
-      stage.scrollTop =
-        centerY * heightRatio -
-        stage.clientHeight / 2;
+      stage.classList.remove("is-zoomed", "is-dragging");
+
+      stage.scrollLeft = 0;
+      stage.scrollTop = 0;
     }
 
     function openModal(trigger) {
-      const source = getSource(trigger);
-
-      if (!source) {
-        return;
-      }
+      const source = getImageSource(trigger);
+      if (!source) return;
 
       lastFocusedElement = trigger;
+      resetModalStyles();
 
+      zoomLevel.textContent = "Se încarcă...";
+
+      modalImage.alt = getImageAlt(trigger);
       modalImage.src = source;
-      modalImage.alt = getAlt(trigger);
 
       modal.classList.add("is-open");
       modal.setAttribute("aria-hidden", "false");
 
       document.body.classList.add("modal-open");
-
       closeButton.focus();
+
+      if (modalImage.complete && modalImage.naturalWidth) {
+        window.requestAnimationFrame(fitImage);
+      }
     }
 
     function closeModal() {
+      if (!isModalOpen()) return;
+
       modal.classList.remove("is-open");
       modal.setAttribute("aria-hidden", "true");
-
       document.body.classList.remove("modal-open");
+
+      isDragging = false;
+      hasDragged = false;
+      activePointers.clear();
 
       window.setTimeout(function () {
         modalImage.src = "";
         modalImage.alt = "";
-
-        modalImage.removeAttribute("style");
-        canvas.removeAttribute("style");
+        resetModalStyles();
+        zoomLevel.textContent = "Potrivire";
       }, 200);
 
-      if (lastFocusedElement) {
+      if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
         lastFocusedElement.focus();
       }
     }
@@ -834,113 +903,272 @@
       window.requestAnimationFrame(fitImage);
     });
 
+    modalImage.addEventListener("error", function () {
+      zoomLevel.textContent = "Imagine indisponibilă";
+    });
+
     triggers.forEach(function (trigger) {
       trigger.addEventListener("click", function () {
         openModal(trigger);
       });
 
-      if (
-        trigger.classList.contains("zoomable-image")
-      ) {
-        trigger.addEventListener(
-          "keydown",
-          function (event) {
-            if (
-              event.key === "Enter" ||
-              event.key === " "
-            ) {
-              event.preventDefault();
-              openModal(trigger);
-            }
+      if (trigger.classList.contains("zoomable-image")) {
+        trigger.addEventListener("keydown", function (event) {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openModal(trigger);
           }
-        );
+        });
       }
     });
 
     zoomInButton.addEventListener("click", function () {
-      setScale(currentScale * 1.2);
+      setScale(currentScale * 1.25);
     });
 
     zoomOutButton.addEventListener("click", function () {
-      setScale(currentScale / 1.2);
+      setScale(currentScale / 1.25);
     });
 
-    zoomResetButton.addEventListener(
-      "click",
-      fitImage
+    zoomResetButton.addEventListener("click", fitImage);
+
+    closeButton.addEventListener("click", closeModal);
+
+    /*
+     * MODIFICAT: rotița mouse-ului face zoom direct, fără Ctrl.
+     * Scroll-ul normal (pan) rămâne disponibil prin drag când imaginea e mărită.
+     */
+    stage.addEventListener(
+      "wheel",
+      function (event) {
+        if (!isModalOpen()) return;
+
+        event.preventDefault();
+
+        const zoomMultiplier = event.deltaY < 0 ? 1.12 : 1 / 1.12;
+
+        setScale(currentScale * zoomMultiplier, event.clientX, event.clientY, false);
+      }, {
+        passive: false
+      }
     );
 
-    closeButton.addEventListener(
-      "click",
-      closeModal
-    );
+    modalImage.addEventListener("dblclick", function (event) {
+      event.preventDefault();
 
-    modalImage.addEventListener(
-      "dblclick",
-      function () {
-        if (
-          Math.abs(currentScale - fitScale) < 0.02
-        ) {
-          setScale(maximumScale());
+      if (currentScale <= fitScale + 0.02) {
+        setScale(maximumScale, event.clientX, event.clientY);
+      } else {
+        fitImage();
+      }
+    });
+
+    /*
+     * NOU: dublu-tap pe mobil (touchend) — echivalentul dblclick, care nu
+     * există nativ pentru touch pe majoritatea browserelor mobile.
+     */
+    let lastTapTime = 0;
+    let lastTapX = 0;
+    let lastTapY = 0;
+
+    stage.addEventListener("touchend", function (event) {
+      if (!isModalOpen() || event.changedTouches.length !== 1) return;
+      if (activePointers.size > 0) return; // ignoră dacă tocmai s-a terminat un pinch
+
+      const now = Date.now();
+      const touch = event.changedTouches[0];
+      const dx = Math.abs(touch.clientX - lastTapX);
+      const dy = Math.abs(touch.clientY - lastTapY);
+
+      if (now - lastTapTime < 300 && dx < 30 && dy < 30) {
+        event.preventDefault();
+
+        if (currentScale <= fitScale + 0.02) {
+          setScale(maximumScale, touch.clientX, touch.clientY);
         } else {
           fitImage();
         }
-      }
-    );
 
-    modal.addEventListener(
-      "click",
-      function (event) {
-        if (
-          event.target === modal ||
-          event.target === canvas
-        ) {
-          closeModal();
-        }
+        lastTapTime = 0;
+      } else {
+        lastTapTime = now;
+        lastTapX = touch.clientX;
+        lastTapY = touch.clientY;
       }
-    );
+    });
 
-    document.addEventListener(
-      "keydown",
-      function (event) {
-        if (
-          !modal.classList.contains("is-open")
-        ) {
+    /*
+     * NOU: pinch-to-zoom cu 2 degete pe mobil, via Pointer Events.
+     */
+    function getPointersDistance() {
+      const points = Array.from(activePointers.values());
+      const dx = points[0].x - points[1].x;
+      const dy = points[0].y - points[1].y;
+      return Math.hypot(dx, dy);
+    }
+
+    function getPointersMidpoint() {
+      const points = Array.from(activePointers.values());
+      return {
+        x: (points[0].x + points[1].x) / 2,
+        y: (points[0].y + points[1].y) / 2,
+      };
+    }
+
+    stage.addEventListener("pointerdown", function (event) {
+      if (event.pointerType === "touch") {
+        activePointers.set(event.pointerId, {
+          x: event.clientX,
+          y: event.clientY
+        });
+
+        if (activePointers.size === 2) {
+          isDragging = false; // pinch are prioritate față de drag
+          pinchStartDistance = getPointersDistance();
+          pinchStartScale = currentScale;
+          pinchMidpoint = getPointersMidpoint();
+          setTransitionEnabled(false);
           return;
         }
+      }
 
-        if (event.key === "Escape") {
-          closeModal();
+      if (currentScale <= fitScale + 0.01) return;
+      if (event.target.closest(".image-modal-toolbar, .image-modal-close")) return;
+      if (activePointers.size > 1) return;
+
+      isDragging = true;
+      hasDragged = false;
+
+      dragStartX = event.clientX;
+      dragStartY = event.clientY;
+
+      initialScrollLeft = stage.scrollLeft;
+      initialScrollTop = stage.scrollTop;
+
+      stage.classList.add("is-dragging");
+
+      if (typeof stage.setPointerCapture === "function") {
+        stage.setPointerCapture(event.pointerId);
+      }
+    });
+
+    stage.addEventListener("pointermove", function (event) {
+      if (event.pointerType === "touch" && activePointers.has(event.pointerId)) {
+        activePointers.set(event.pointerId, {
+          x: event.clientX,
+          y: event.clientY
+        });
+
+        if (activePointers.size === 2) {
+          event.preventDefault();
+
+          const newDistance = getPointersDistance();
+          if (pinchStartDistance > 0) {
+            const scaleFactor = newDistance / pinchStartDistance;
+            const nextScale = clamp(pinchStartScale * scaleFactor, fitScale, maximumScale);
+
+            const stageRectangle = stage.getBoundingClientRect();
+            setScale(
+              nextScale,
+              pinchMidpoint.x - stageRectangle.left + stageRectangle.left,
+              pinchMidpoint.y - stageRectangle.top + stageRectangle.top,
+              false
+            );
+          }
           return;
         }
+      }
 
-        if (
-          event.key === "+" ||
-          event.key === "="
-        ) {
-          setScale(currentScale * 1.2);
-        }
+      if (!isDragging) return;
 
-        if (event.key === "-") {
-          setScale(currentScale / 1.2);
-        }
+      const distanceX = event.clientX - dragStartX;
+      const distanceY = event.clientY - dragStartY;
 
-        if (event.key === "0") {
-          fitImage();
+      if (Math.abs(distanceX) > 3 || Math.abs(distanceY) > 3) {
+        hasDragged = true;
+      }
+
+      stage.scrollLeft = initialScrollLeft - distanceX;
+      stage.scrollTop = initialScrollTop - distanceY;
+    });
+
+    function stopDragging(event) {
+      if (event.pointerType === "touch") {
+        activePointers.delete(event.pointerId);
+        if (activePointers.size < 2) {
+          pinchStartDistance = 0;
         }
       }
-    );
 
-    window.addEventListener(
-      "resize",
-      function () {
-        if (
-          modal.classList.contains("is-open")
-        ) {
+      if (!isDragging) return;
+
+      isDragging = false;
+      stage.classList.remove("is-dragging");
+
+      if (
+        event.pointerId !== undefined &&
+        typeof stage.hasPointerCapture === "function" &&
+        stage.hasPointerCapture(event.pointerId)
+      ) {
+        stage.releasePointerCapture(event.pointerId);
+      }
+    }
+
+    stage.addEventListener("pointerup", stopDragging);
+    stage.addEventListener("pointercancel", stopDragging);
+
+    modal.addEventListener("click", function (event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    stage.addEventListener("click", function (event) {
+      if (hasDragged) {
+        hasDragged = false;
+        return;
+      }
+
+      if (event.target === stage || event.target === canvas) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (!isModalOpen()) return;
+
+      if (event.key === "Escape") {
+        closeModal();
+        return;
+      }
+
+      if (event.key === "+" || event.key === "=") {
+        event.preventDefault();
+        setScale(currentScale * 1.25);
+      }
+
+      if (event.key === "-") {
+        event.preventDefault();
+        setScale(currentScale / 1.25);
+      }
+
+      if (event.key === "0") {
+        event.preventDefault();
+        fitImage();
+      }
+    });
+
+    let resizeTimer = null;
+
+    window.addEventListener("resize", function () {
+      window.clearTimeout(resizeTimer);
+
+      resizeTimer = window.setTimeout(function () {
+        if (isModalOpen()) {
           fitImage();
         }
-      }
-    );
+      }, 120);
+    });
   });
 </script>
 

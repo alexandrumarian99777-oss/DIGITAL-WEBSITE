@@ -129,134 +129,115 @@ const content = {
         ],
 
         packages: [{
-                        name: 'Site cu o singură pagină',
+                        name: 'Exist Online',
                         price: 'De la 299 €',
-                        tag: 'Start rapid online',
-                        bestFor: 'Afaceri mici care au nevoie rapid de o prezență online profesională.',
-                        pages: '1 pagină principală cu secțiuni clare: prezentare, servicii, recenzii și contact.',
+                        tag: 'Prezență online clară',
+                        bestFor: 'Pentru afaceri mici care vor să fie găsite rapid online, cu o pagină clară și profesională.',
+                        pages: 'O singură pagină organizată în secțiuni pentru prezentare, servicii, recenzii și contact.',
                         included: [
                                 '1 pagină principală',
                                 'Secțiune de prezentare',
-                                'Secțiune servicii',
-                                'Secțiune recenzii sau testimoniale',
-                                'Formular de contact',
+                                'Secțiune pentru servicii',
+                                'Secțiune pentru recenzii sau testimoniale',
+                                'Formular de contact trimis pe email',
                                 'Buton WhatsApp și buton de apel rapid',
                                 'Hartă Google integrată',
-                                'Design adaptat pentru mobil',
-                                'Optimizare de bază pentru motoare de căutare',
-                                'Domeniu standard inclus și conectare domeniu'
+                                'Design adaptat pentru mobil, tabletă și desktop',
+                                'Optimizare SEO de bază',
+                                'Domeniu standard inclus pentru primul an, în limita a 20 EUR',
+                                'Testare înainte de publicare'
                         ],
                         notIncluded: [
-                                'Pagini suplimentare',
-                                'Sistem de programări',
+                                'Pagini separate',
                                 'Panou de administrare',
-                                'Plăți online',
-                                'Blog',
-                                'Automatizări',
-                                'Reclame pe Google',
-                                'Optimizare avansată pentru motoare de căutare',
-                                'Mentenanță lunară',
-                                'Modificări nelimitate'
-                        ]
-                },
-                {
-                        name: 'Site de prezentare',
-                        price: 'De la 499 €',
-                        tag: 'Site complet de prezentare',
-                        bestFor: 'Afaceri care vor un site profesional, clar și credibil, nu doar o singură pagină.',
-                        pages: 'Până la 5 pagini: Acasă, Despre, Servicii, Recenzii, Contact.',
-                        included: [
-                                'Până la 5 pagini',
-                                'Design adaptat pentru mobil',
-                                'Formular de contact',
-                                'Buton WhatsApp și buton de apel rapid',
-                                'Hartă Google integrată',
-                                'Structură de bază pentru motoare de căutare',
-                                'Titluri și descrieri de bază pentru pagini',
-                                'Optimizare de bază pentru viteză',
-                                'Domeniu standard inclus și conectare domeniu',
-                                'Testare înainte de lansare'
-                        ],
-                        notIncluded: [
-                                'Sistem de programări',
-                                'Panou de administrare',
-                                'Plăți online',
-                                'Configurare plăți cu cardul',
-                                'Reclame pe Google',
-                                'Campanie avansată de optimizare pentru motoare de căutare',
-                                'Branding complet',
-                                'Pagini extra',
-                                'Mentenanță lunară',
-                                'Schimbări nelimitate'
-                        ]
-                },
-                {
-                        name: 'Site cu programări',
-                        price: 'De la 799 €',
-                        tag: 'Cel mai bun pentru cereri',
-                        featured: true,
-                        bestFor: 'Afaceri care vor să primească programări și cereri de ofertă direct din site.',
-                        pages: 'Până la 5-7 pagini: Acasă, Despre, Servicii, Programări/Cerere Ofertă, Recenzii, Contact.',
-                        included: [
-                                'Tot ce include Site de prezentare',
-                                'Până la 5-7 pagini',
-                                'Pagină de programări sau cerere ofertă',
-                                'Formular cu selectare serviciu',
-                                'Câmpuri personalizate în formular',
-                                'Notificări prin email sau Telegram',
-                                'Panou de administrare simplu',
-                                'Gestionare cereri / programări',
-                                'Statusuri: nou, contactat, confirmat, anulat',
-                                'Recenzii/testimoniale cu aprobare',
-                                'Testare formular și notificări înainte de lansare'
-                        ],
-                        notIncluded: [
-                                'Plăți cu cardul',
-                                'Configurare plăți cu cardul',
-                                'Automatizări prin SMS',
-                                'Sistem complex de gestionare clienți',
-                                'Aplicație mobilă',
-                                'Campanie avansată de optimizare pentru motoare de căutare',
-                                'Reclame plătite',
-                                'Refacere completă de design',
-                                'Mentenanță lunară',
-                                'Funcții personalizate neincluse în ofertă'
-                        ]
-                },
-                {
-                        name: 'Sistem de creștere',
-                        price: 'De la 1.200 €',
-                        tag: 'Sistem complet pentru afaceri',
-                        bestFor: 'Afaceri care vor site, cereri, programări, panou de administrare, blog, recenzii și plăți online.',
-                        pages: 'Până la 8-12 pagini, inclusiv pagini individuale pentru servicii importante.',
-                        included: [
-                                'Tot ce include Site cu programări',
-                                'Până la 8-12 pagini',
-                                'Pagini individuale pentru servicii importante',
-                                'Panou de administrare mai complet',
+                                'Bază de date',
+                                'Notificări prin Telegram Bot',
                                 'Blog administrabil',
-                                'Testimoniale / recenzii cu aprobare',
-                                'Integrare plăți cu cardul pentru avansuri/plăți, dacă este necesar',
-                                'Pagini de confirmare și anulare plată',
-                                'Structură locală mai puternică pentru motoare de căutare',
-                                'Verificări de bază pentru copii de siguranță și performanță',
-                                'Organizare mai clară pentru cereri și programări'
+                                'Plăți online',
+                                'Mentenanță lunară'
+                        ]
+                },
+
+                {
+                        name: 'Câștig Încredere',
+                        price: 'De la 549 €',
+                        tag: 'Credibilitate profesională',
+                        featured: true,
+                        bestFor: 'Pentru afaceri care oferă mai multe servicii și vor să pară de încredere, cu pagini dedicate fiecărui serviciu.',
+                        pages: 'Până la 5-6 pagini: Acasă, Despre, Servicii, Recenzii și Contact.',
+                        included: [
+                                'Până la 5-6 pagini separate',
+                                'Formular de contact trimis pe email',
+                                'Buton WhatsApp și buton de apel rapid',
+                                'Hartă Google integrată',
+                                'Design adaptat pentru mobil, tabletă și desktop',
+                                'Structură SEO de bază pentru fiecare pagină',
+                                'Titluri și descrieri SEO optimizate',
+                                'Optimizare de bază pentru viteză',
+                                'Domeniu standard inclus pentru primul an, în limita a 20 EUR',
+                                'Testare înainte de publicare'
                         ],
                         notIncluded: [
-                                'Administrare reclame',
-                                'Fotografie profesională',
-                                'Branding complet',
-                                'Sistem personalizat complex de gestionare clienți',
+                                'Panou de administrare',
+                                'Bază de date',
+                                'Salvarea cererilor',
+                                'Notificări prin Telegram Bot',
+                                'Blog administrabil',
+                                'Plăți online',
+                                'Mentenanță lunară'
+                        ]
+                },
+
+                {
+                        name: 'Aduc Clienți',
+                        price: 'De la 1.400 €',
+                        tag: 'Sistem de generare clienți',
+                        bestFor: 'Pentru afaceri care vor ca site-ul să le aducă și să le gestioneze cererile automat, nu doar să existe.',
+                        pages: 'Până la 8-12 pagini, bază de date, panou de administrare și notificări prin Telegram Bot.',
+                        included: [
+                                'Tot ce include Câștig Încredere',
+                                'Până la 8-12 pagini',
+                                'Pagini individuale pentru serviciile importante',
+                                'Formulare pentru cereri de ofertă sau programări',
+                                'Salvarea cererilor într-o bază de date',
+                                'Panou de administrare protejat prin autentificare',
+                                'Vizualizarea, editarea și ștergerea cererilor',
+                                'Statusuri pentru gestionarea cererilor',
+                                'Notificare automată prin Telegram Bot la fiecare cerere nouă',
+                                'Notificări prin email',
+                                'Blog administrabil',
+                                'Recenzii sau testimoniale cu aprobare',
+                                'Integrare plăți online, dacă este stabilită în contract',
+                                'Structură SEO extinsă',
+                                'Domeniu standard inclus pentru primul an, în limita a 20 EUR',
+                                'Testare completă înainte de lansare'
+                        ],
+                        notIncluded: [
+                                'Aplicație mobilă',
+                                'CRM personalizat complex',
                                 'Automatizări complexe prin SMS',
-                                'Optimizare lunară avansată pentru motoare de căutare',
-                                'Pagini nelimitate',
-                                'Mentenanță lunară',
-                                'Funcții neincluse în oferta inițială',
-                                'Costuri pentru plăți cu cardul, domenii premium, găzduire premium sau aplicații terțe'
+                                'Administrare reclame',
+                                'Fotografie sau video profesional',
+                                'Branding complet',
+                                'Mentenanță lunară'
                         ]
                 }
         ],
 
+        // Add-on separat, nu e tier — se vinde după livrare
+        maintenanceAddon: {
+                name: 'Rămân Actualizat',
+                price: 'De la 39 €/lună',
+                tag: 'Mentenanță continuă',
+                bestFor: 'Pentru orice client care vrea site-ul actualizat, funcțional și cu suport, fără să se ocupe el de asta.',
+                included: [
+                        'Actualizări de securitate și tehnice',
+                        'Backup periodic',
+                        'Mici modificări de conținut (text, imagini)',
+                        'Monitorizare uptime',
+                        'Suport prin email/WhatsApp'
+                ]
+        },
         advertisingPackages: [{
                         name: 'Promovare Start',
                         price: 'De la 199 €/lună',
@@ -544,7 +525,7 @@ Pachetele de site-uri pot include, în funcție de oferta acceptată:
 
 Plata proiectelor se efectuează, de regulă, în două tranșe: 50 % avans înainte de începerea lucrărilor și 50 % înainte de publicarea, predarea sau transferul proiectului.
 
-Un domeniu standard este inclus în prețul pachetului de site. Domeniile premium, domeniile foarte scumpe, găzduirea premium, emailul profesional, aplicațiile terțe, licențele externe și alte costuri externe se taxează separat, dacă nu sunt menționate expres ca fiind incluse.
+Un domeniu standard este inclus în prețul pachetului pentru primul an, în limita unui cost de maximum 20 EUR, inclusiv TVA.Dacă prețul domeniului depășește această limită, costul integral al domeniului va fi suportat de Client, după acceptarea prealabilă.Reînnoirea domeniului după primul an este achitată separat de Client.
 
 Mentenanța lunară, actualizările lunare, suportul după lansare și găzduirea administrată se plătesc separat, dacă sunt necesare sau dacă sunt solicitate de Client, cu excepția cazului în care oferta sau contractul menționează expres că sunt incluse.
 

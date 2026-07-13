@@ -3,90 +3,184 @@
 <%- include('partials/flash') %>
 
 <main>
+    <!-- HERO -->
     <section class="page-hero section">
         <div class="container narrow">
-            <p class="eyebrow">Proiecte</p>
-            <h1>Exemple de proiecte create pentru prezentare, portofoliu și conversie</h1>
+            <p class="eyebrow">Concepte demonstrative</p>
+
+            <h1>Exemple de website-uri pe care le putem construi</h1>
+
             <p>
-                Exemple vizuale care arată direcția de design, structura paginilor și modul
-                în care putem prezenta mai clar o afacere online.
+                Aceste concepte prezintă direcții de design, structură și
+                funcționalități disponibile pentru diferite tipuri de afaceri.
+                Nu sunt prezentate drept proiecte comerciale livrate unor clienți.
             </p>
         </div>
     </section>
 
-    <section class="section projects-section">
+    <!-- PROIECTE -->
+    <section id="proiecte" class="section projects-section">
+        <div class="container section-heading">
+            <p class="eyebrow">Portofoliu demonstrativ</p>
+
+            <h2>Concepte create pentru diferite tipuri de afaceri</h2>
+
+            <p>
+                Explorează exemple pentru saloane, restaurante și agenții
+                imobiliare. Fiecare concept poate fi adaptat în funcție de
+                serviciile, identitatea și obiectivele afacerii.
+            </p>
+        </div>
+
         <div class="container projects-grid">
+            <!-- SALON -->
             <article class="project-card">
                 <div class="project-image-wrap">
-                    <img src="/images/projects/estatepoint-hero.png"
-                        alt="Proiect EstatePoint - secțiune principală website imobiliare" class="project-image"
-                        loading="lazy">
-                    <span class="project-badge">Website imobiliare</span>
+                    <img src="/images/projects/salon.png"
+                        alt="Concept demonstrativ de website pentru salon de înfrumusețare"
+                        class="project-image zoomable-image" data-full-image="/images/projects/salon.png" loading="lazy"
+                        tabindex="0" role="button" aria-label="Deschide conceptul de website pentru salon">
+
+                    <span class="project-badge">
+                        Concept pentru salon
+                    </span>
+                </div>
+
+                <div class="project-content">
+                    <div class="project-meta">
+                        <span>Design elegant</span>
+                        <span>Responsive</span>
+                        <span>Programări online</span>
+                    </div>
+
+                    <h3>Salon Beauty — website de prezentare</h3>
+
+                    <p>
+                        Structură modernă pentru un salon de înfrumusețare, cu servicii
+                        prezentate clar, imagini elegante și acces rapid la programări
+                        și informațiile de contact.
+                    </p>
+
+                    <ul class="project-features">
+                        <li>Prezentarea serviciilor și prețurilor</li>
+                        <li>Secțiune pentru recenzii</li>
+                        <li>Buton WhatsApp și apel rapid</li>
+                        <li>Formular pentru programări sau cereri</li>
+                    </ul>
+
+                    <div class="project-actions">
+                        <a class="btn btn-primary" href="/contact#formular">
+                            Vreau un website similar
+                        </a>
+
+                        <button class="btn btn-secondary project-preview-button" type="button"
+                            data-preview-target="/images/projects/salon.png"
+                            data-preview-alt="Concept demonstrativ pentru salon">
+                            Vezi imaginea completă
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- RESTAURANT -->
+            <article class="project-card">
+                <div class="project-image-wrap">
+                    <img src="/images/projects/restaurant.png"
+                        alt="Concept demonstrativ de website premium pentru restaurant"
+                        class="project-image zoomable-image" data-full-image="/images/projects/restaurant.png"
+                        loading="lazy" tabindex="0" role="button"
+                        aria-label="Deschide conceptul de website pentru restaurant">
+
+                    <span class="project-badge">
+                        Concept pentru restaurant
+                    </span>
                 </div>
 
                 <div class="project-content">
                     <div class="project-meta">
                         <span>Design premium</span>
-                        <span>Responsive</span>
-                        <span>Lead generation</span>
+                        <span>Meniu online</span>
+                        <span>Rezervări rapide</span>
                     </div>
 
-                    <h3>EstatePoint — pagină principală</h3>
+                    <h3>Maison Noir — website premium pentru restaurant</h3>
+
                     <p>
-                        Concept modern pentru un website imobiliar, cu imagine puternică,
-                        structură clară, meniu aerisit și formular de căutare integrat direct
-                        în prima secțiune.
+                        Concept elegant pentru un restaurant premium, cu prezentarea
+                        meniului, imagini gastronomice de impact și acces rapid la
+                        rezervări și contact.
                     </p>
 
                     <ul class="project-features">
-                        <li>Secțiune hero puternică</li>
-                        <li>Formular de căutare proprietăți</li>
-                        <li>Buton clar de contact</li>
-                        <li>Aspect premium și profesionist</li>
+                        <li>Meniu prezentat pe categorii</li>
+                        <li>Galerie cu preparate și locație</li>
+                        <li>Formular pentru rezervări</li>
+                        <li>Hartă, program și informații de contact</li>
                     </ul>
 
                     <div class="project-actions">
-                        <a class="btn btn-primary" href="/contact#formular">Vreau un site similar</a>
-                        <a class="btn btn-secondary" href="/servicii">Vezi serviciile</a>
+                        <a class="btn btn-primary" href="/contact#formular">
+                            Vreau un website similar
+                        </a>
+
+                        <button class="btn btn-secondary project-preview-button" type="button"
+                            data-preview-target="/images/projects/restaurant.png"
+                            data-preview-alt="Concept demonstrativ pentru restaurant">
+                            Vezi imaginea completă
+                        </button>
                     </div>
                 </div>
             </article>
 
-            <article class="project-card">
+            <!-- IMOBILIARE -->
+            <article class="project-card project-card-real-estate">
                 <div class="project-image-wrap">
-                    <img src="/images/projects/estatepoint-properties.png"
-                        alt="Proiect EstatePoint - secțiune listare proprietăți" class="project-image" loading="lazy">
-                    <span class="project-badge">Listare proprietăți</span>
+                    <img src="/images/projects/imobiliare.png"
+                        alt="Concept demonstrativ de website premium pentru agenție imobiliară"
+                        class="project-image zoomable-image" data-full-image="/images/projects/imobiliare.png"
+                        loading="lazy" tabindex="0" role="button"
+                        aria-label="Deschide conceptul de website pentru agenție imobiliară">
+
+                    <span class="project-badge">
+                        Concept pentru imobiliare
+                    </span>
                 </div>
 
                 <div class="project-content">
                     <div class="project-meta">
-                        <span>UI curat</span>
-                        <span>Carduri elegante</span>
-                        <span>Experiență clară</span>
+                        <span>Design premium</span>
+                        <span>Listări proprietăți</span>
+                        <span>Generare de lead-uri</span>
                     </div>
 
-                    <h3>EstatePoint — secțiune proprietăți</h3>
+                    <h3>Greenwich Realty — website pentru agenție imobiliară</h3>
+
                     <p>
-                        Secțiune de prezentare pentru proprietăți premium, construită cu accent
-                        pe imagini mari, carduri curate și informații ușor de parcurs pentru vizitatori.
+                        Concept pentru o agenție imobiliară, cu proprietăți prezentate
+                        profesional, filtre de căutare, profil de agent și formulare
+                        clare pentru programarea consultațiilor.
                     </p>
 
                     <ul class="project-features">
-                        <li>Carduri elegante pentru proprietăți</li>
-                        <li>Accent pe imagini și locație</li>
-                        <li>Structură clară pentru descriere</li>
-                        <li>Potrivit pentru agenții și dezvoltatori</li>
+                        <li>Listări pentru proprietăți</li>
+                        <li>Filtre pentru căutare</li>
+                        <li>Pagini individuale pentru proprietăți</li>
+                        <li>Formulare pentru cereri și vizionări</li>
                     </ul>
 
                     <div class="project-actions">
-                        <a class="btn btn-primary" href="/contact#formular">Vreau un proiect similar</a>
-                        <a class="btn btn-secondary" href="/servicii">Vezi serviciile</a>
+                        <a class="btn btn-primary" href="/contact#formular">
+                            Vreau un website similar
+                        </a>
+
+                        <button class="btn btn-secondary project-preview-button" type="button"
+                            data-preview-target="/images/projects/imobiliare.png"
+                            data-preview-alt="Concept demonstrativ pentru agenție imobiliară">
+                            Vezi imaginea completă
+                        </button>
                     </div>
                 </div>
             </article>
-
-
         </div>
     </section>
 </main>
