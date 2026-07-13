@@ -153,7 +153,9 @@
                         <span>Generare de lead-uri</span>
                     </div>
 
-                    <h3>Greenwich Realty — website pentru agenție imobiliară</h3>
+                    <h3>
+                        Greenwich Realty — website pentru agenție imobiliară
+                    </h3>
 
                     <p>
                         Concept pentru o agenție imobiliară, cu proprietăți prezentate
@@ -184,5 +186,781 @@
         </div>
     </section>
 </main>
+
+<!-- MODAL PREVIZUALIZARE IMAGINE -->
+<div id="imageModal" class="image-modal" role="dialog" aria-modal="true" aria-hidden="true"
+    aria-label="Previzualizare imagine proiect">
+    <button id="imageModalClose" class="image-modal-close" type="button" aria-label="Închide imaginea">
+        &times;
+    </button>
+
+    <div id="imageModalStage" class="image-modal-stage">
+        <div id="imageModalCanvas" class="image-modal-canvas">
+            <img id="imageModalContent" class="image-modal-content" src="" alt="">
+        </div>
+    </div>
+
+    <div class="image-modal-toolbar" aria-label="Comenzi zoom">
+        <button id="zoomOutButton" class="image-zoom-button" type="button" aria-label="Micșorează imaginea">
+            −
+        </button>
+
+        <span id="zoomLevel" class="image-zoom-level">
+            Potrivire
+        </span>
+
+        <button id="zoomInButton" class="image-zoom-button" type="button" aria-label="Mărește imaginea">
+            +
+        </button>
+
+        <button id="zoomResetButton" class="image-zoom-reset" type="button">
+            Potrivire
+        </button>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const modal = document.getElementById("imageModal");
+        const stage = document.getElementById("imageModalStage");
+        const canvas = document.getElementById("imageModalCanvas");
+        const modalImage = document.getElementById("imageModalContent");
+
+        const closeButton = document.getElementById("imageModalClose");
+        const zoomInButton = document.getElementById("zoomInButton");
+        const zoomOutButton = document.getElementById("zoomOutButton");
+        const zoomResetButton = document.getElementById("zoomResetButton");
+        const zoomLevel = document.getElementById("zoomLevel");
+
+        const triggers = document.querySelectorAll(
+            ".zoomable-image, .project-preview-button"
+        );
+
+        if (
+            !modal ||
+            !stage ||
+            !canvas ||
+            !modalImage ||
+            !closeButton ||
+            !zoomInButton ||
+            !zoomOutButton ||
+            !zoomResetButton ||
+            !zoomLevel
+        ) {
+            console.warn(
+                "Elementele modalului pentru imagini nu au fost găsite."
+            );
+
+            return;
+        }
+
+        let fitScale = 1;
+        let currentScale = 1;
+        let maximumScale = 2;
+
+        let lastFocusedElement = null;
+
+        let isDragging = false;
+        let hasDragged = false;
+
+        let dragStartX = 0;
+        let dragStartY = 0;
+        let initialScrollLeft = 0;
+        let initialScrollTop = 0;
+
+        function clamp(value, minimum, maximum) {
+            return Math.min(
+                Math.max(value, minimum),
+                maximum
+            );
+        }
+
+        function isModalOpen() {
+            return modal.classList.contains("is-open");
+        }
+
+        function getImageSource(trigger) {
+            return (
+                trigger.getAttribute("data-preview-target") ||
+                trigger.getAttribute("data-full-image") ||
+                trigger.getAttribute("src") ||
+                ""
+            );
+        }
+
+        function getImageAlt(trigger) {
+            return (
+                trigger.getAttribute("data-preview-alt") ||
+                trigger.getAttribute("alt") ||
+                "Previzualizare proiect"
+            );
+        }
+
+        function calculateFitScale() {
+            if (
+                !modalImage.naturalWidth ||
+                !modalImage.naturalHeight
+            ) {
+                return 1;
+            }
+
+            const isMobile =
+                window.innerWidth <= 768;
+
+            const horizontalSpace =
+                isMobile ? 24 : 80;
+
+            const verticalSpace =
+                isMobile ? 150 : 190;
+
+            const availableWidth = Math.max(
+                stage.clientWidth - horizontalSpace,
+                200
+            );
+
+            const availableHeight = Math.max(
+                stage.clientHeight - verticalSpace,
+                200
+            );
+
+            const widthScale =
+                availableWidth /
+                modalImage.naturalWidth;
+
+            const heightScale =
+                availableHeight /
+                modalImage.naturalHeight;
+
+            /*
+             * Întreaga imagine este încadrată în ecran.
+             */
+            return Math.min(
+                widthScale,
+                heightScale,
+                1
+            );
+        }
+
+        function calculateMaximumScale() {
+            if (fitScale < 1) {
+                return 1;
+            }
+
+            return 2;
+        }
+
+        function updateZoomLabel() {
+            const relativeZoom =
+                currentScale /
+                Math.max(fitScale, 0.001);
+
+            if (
+                Math.abs(relativeZoom - 1) < 0.02
+            ) {
+                zoomLevel.textContent = "Potrivire";
+            } else {
+                zoomLevel.textContent =
+                    Math.round(relativeZoom * 100) + "%";
+            }
+
+            zoomOutButton.disabled =
+                currentScale <= fitScale + 0.001;
+
+            zoomInButton.disabled =
+                currentScale >= maximumScale - 0.001;
+        }
+
+        function updateImageSize() {
+            if (
+                !modalImage.naturalWidth ||
+                !modalImage.naturalHeight
+            ) {
+                return;
+            }
+
+            const imageWidth = Math.max(
+                Math.round(
+                    modalImage.naturalWidth *
+                    currentScale
+                ),
+                1
+            );
+
+            const imageHeight = Math.max(
+                Math.round(
+                    modalImage.naturalHeight *
+                    currentScale
+                ),
+                1
+            );
+
+            modalImage.style.width =
+                imageWidth + "px";
+
+            modalImage.style.height =
+                imageHeight + "px";
+
+            modalImage.style.maxWidth = "none";
+            modalImage.style.maxHeight = "none";
+            modalImage.style.objectFit = "contain";
+
+            canvas.style.width =
+                Math.max(
+                    stage.clientWidth,
+                    imageWidth + 48
+                ) + "px";
+
+            canvas.style.height =
+                Math.max(
+                    stage.clientHeight,
+                    imageHeight + 48
+                ) + "px";
+
+            canvas.style.minWidth = "100%";
+            canvas.style.minHeight = "100%";
+            canvas.style.display = "flex";
+            canvas.style.alignItems = "center";
+            canvas.style.justifyContent = "center";
+
+            stage.style.overflow =
+                currentScale > fitScale + 0.01 ?
+                "auto" :
+                "hidden";
+
+            stage.classList.toggle(
+                "is-zoomed",
+                currentScale > fitScale + 0.01
+            );
+
+            updateZoomLabel();
+        }
+
+        function centerImage() {
+            stage.scrollLeft = Math.max(
+                (
+                    stage.scrollWidth -
+                    stage.clientWidth
+                ) / 2,
+                0
+            );
+
+            stage.scrollTop = Math.max(
+                (
+                    stage.scrollHeight -
+                    stage.clientHeight
+                ) / 2,
+                0
+            );
+        }
+
+        function fitImage() {
+            fitScale = calculateFitScale();
+            maximumScale =
+                calculateMaximumScale();
+
+            currentScale = fitScale;
+
+            updateImageSize();
+
+            window.requestAnimationFrame(
+                function () {
+                    centerImage();
+                }
+            );
+        }
+
+        function setScale(
+            nextScale,
+            clientX,
+            clientY
+        ) {
+            const previousScrollWidth =
+                stage.scrollWidth;
+
+            const previousScrollHeight =
+                stage.scrollHeight;
+
+            const stageRectangle =
+                stage.getBoundingClientRect();
+
+            const pointerX =
+                typeof clientX === "number" ?
+                clientX - stageRectangle.left :
+                stage.clientWidth / 2;
+
+            const pointerY =
+                typeof clientY === "number" ?
+                clientY - stageRectangle.top :
+                stage.clientHeight / 2;
+
+            const contentX =
+                stage.scrollLeft + pointerX;
+
+            const contentY =
+                stage.scrollTop + pointerY;
+
+            currentScale = clamp(
+                nextScale,
+                fitScale,
+                maximumScale
+            );
+
+            updateImageSize();
+
+            window.requestAnimationFrame(
+                function () {
+                    const widthRatio =
+                        stage.scrollWidth /
+                        Math.max(
+                            previousScrollWidth,
+                            1
+                        );
+
+                    const heightRatio =
+                        stage.scrollHeight /
+                        Math.max(
+                            previousScrollHeight,
+                            1
+                        );
+
+                    stage.scrollLeft =
+                        contentX * widthRatio -
+                        pointerX;
+
+                    stage.scrollTop =
+                        contentY * heightRatio -
+                        pointerY;
+                }
+            );
+        }
+
+        function resetModalStyles() {
+            modalImage.removeAttribute("style");
+            canvas.removeAttribute("style");
+            stage.removeAttribute("style");
+
+            stage.classList.remove(
+                "is-zoomed",
+                "is-dragging"
+            );
+
+            stage.scrollLeft = 0;
+            stage.scrollTop = 0;
+        }
+
+        function openModal(trigger) {
+            const source =
+                getImageSource(trigger);
+
+            if (!source) {
+                return;
+            }
+
+            lastFocusedElement = trigger;
+
+            resetModalStyles();
+
+            zoomLevel.textContent =
+                "Se încarcă...";
+
+            modalImage.alt =
+                getImageAlt(trigger);
+
+            modalImage.src = source;
+
+            modal.classList.add("is-open");
+
+            modal.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+            document.body.classList.add(
+                "modal-open"
+            );
+
+            closeButton.focus();
+
+            if (
+                modalImage.complete &&
+                modalImage.naturalWidth
+            ) {
+                window.requestAnimationFrame(
+                    fitImage
+                );
+            }
+        }
+
+        function closeModal() {
+            if (!isModalOpen()) {
+                return;
+            }
+
+            modal.classList.remove("is-open");
+
+            modal.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+            document.body.classList.remove(
+                "modal-open"
+            );
+
+            isDragging = false;
+            hasDragged = false;
+
+            window.setTimeout(
+                function () {
+                    modalImage.src = "";
+                    modalImage.alt = "";
+
+                    resetModalStyles();
+
+                    zoomLevel.textContent =
+                        "Potrivire";
+                },
+                200
+            );
+
+            if (
+                lastFocusedElement &&
+                typeof lastFocusedElement.focus ===
+                "function"
+            ) {
+                lastFocusedElement.focus();
+            }
+        }
+
+        modalImage.addEventListener(
+            "load",
+            function () {
+                window.requestAnimationFrame(
+                    fitImage
+                );
+            }
+        );
+
+        modalImage.addEventListener(
+            "error",
+            function () {
+                zoomLevel.textContent =
+                    "Imagine indisponibilă";
+            }
+        );
+
+        triggers.forEach(function (trigger) {
+            trigger.addEventListener(
+                "click",
+                function () {
+                    openModal(trigger);
+                }
+            );
+
+            if (
+                trigger.classList.contains(
+                    "zoomable-image"
+                )
+            ) {
+                trigger.addEventListener(
+                    "keydown",
+                    function (event) {
+                        if (
+                            event.key === "Enter" ||
+                            event.key === " "
+                        ) {
+                            event.preventDefault();
+
+                            openModal(trigger);
+                        }
+                    }
+                );
+            }
+        });
+
+        zoomInButton.addEventListener(
+            "click",
+            function () {
+                setScale(
+                    currentScale * 1.25
+                );
+            }
+        );
+
+        zoomOutButton.addEventListener(
+            "click",
+            function () {
+                setScale(
+                    currentScale / 1.25
+                );
+            }
+        );
+
+        zoomResetButton.addEventListener(
+            "click",
+            fitImage
+        );
+
+        closeButton.addEventListener(
+            "click",
+            closeModal
+        );
+
+        /*
+         * Ctrl + rotița mouse-ului face zoom.
+         */
+        stage.addEventListener(
+            "wheel",
+            function (event) {
+                if (
+                    !isModalOpen() ||
+                    !event.ctrlKey
+                ) {
+                    return;
+                }
+
+                event.preventDefault();
+
+                const multiplier =
+                    event.deltaY < 0 ?
+                    1.15 :
+                    1 / 1.15;
+
+                setScale(
+                    currentScale * multiplier,
+                    event.clientX,
+                    event.clientY
+                );
+            }, {
+                passive: false
+            }
+        );
+
+        /*
+         * Dublu-click pentru zoom maxim
+         * sau revenire la imaginea completă.
+         */
+        modalImage.addEventListener(
+            "dblclick",
+            function (event) {
+                event.preventDefault();
+
+                if (
+                    currentScale <=
+                    fitScale + 0.02
+                ) {
+                    setScale(
+                        maximumScale,
+                        event.clientX,
+                        event.clientY
+                    );
+                } else {
+                    fitImage();
+                }
+            }
+        );
+
+        /*
+         * Tragerea imaginii atunci când este mărită.
+         */
+        stage.addEventListener(
+            "pointerdown",
+            function (event) {
+                if (
+                    currentScale <=
+                    fitScale + 0.01
+                ) {
+                    return;
+                }
+
+                if (
+                    event.target.closest(
+                        ".image-modal-toolbar, .image-modal-close"
+                    )
+                ) {
+                    return;
+                }
+
+                isDragging = true;
+                hasDragged = false;
+
+                dragStartX = event.clientX;
+                dragStartY = event.clientY;
+
+                initialScrollLeft =
+                    stage.scrollLeft;
+
+                initialScrollTop =
+                    stage.scrollTop;
+
+                stage.classList.add(
+                    "is-dragging"
+                );
+
+                if (
+                    typeof stage.setPointerCapture ===
+                    "function"
+                ) {
+                    stage.setPointerCapture(
+                        event.pointerId
+                    );
+                }
+            }
+        );
+
+        stage.addEventListener(
+            "pointermove",
+            function (event) {
+                if (!isDragging) {
+                    return;
+                }
+
+                const distanceX =
+                    event.clientX -
+                    dragStartX;
+
+                const distanceY =
+                    event.clientY -
+                    dragStartY;
+
+                if (
+                    Math.abs(distanceX) > 3 ||
+                    Math.abs(distanceY) > 3
+                ) {
+                    hasDragged = true;
+                }
+
+                stage.scrollLeft =
+                    initialScrollLeft -
+                    distanceX;
+
+                stage.scrollTop =
+                    initialScrollTop -
+                    distanceY;
+            }
+        );
+
+        function stopDragging(event) {
+            if (!isDragging) {
+                return;
+            }
+
+            isDragging = false;
+
+            stage.classList.remove(
+                "is-dragging"
+            );
+
+            if (
+                event.pointerId !== undefined &&
+                typeof stage.hasPointerCapture ===
+                "function" &&
+                stage.hasPointerCapture(
+                    event.pointerId
+                )
+            ) {
+                stage.releasePointerCapture(
+                    event.pointerId
+                );
+            }
+        }
+
+        stage.addEventListener(
+            "pointerup",
+            stopDragging
+        );
+
+        stage.addEventListener(
+            "pointercancel",
+            stopDragging
+        );
+
+        modal.addEventListener(
+            "click",
+            function (event) {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            }
+        );
+
+        stage.addEventListener(
+            "click",
+            function (event) {
+                if (hasDragged) {
+                    hasDragged = false;
+                    return;
+                }
+
+                if (
+                    event.target === stage ||
+                    event.target === canvas
+                ) {
+                    closeModal();
+                }
+            }
+        );
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+                if (!isModalOpen()) {
+                    return;
+                }
+
+                if (event.key === "Escape") {
+                    closeModal();
+                    return;
+                }
+
+                if (
+                    event.key === "+" ||
+                    event.key === "="
+                ) {
+                    event.preventDefault();
+
+                    setScale(
+                        currentScale * 1.25
+                    );
+                }
+
+                if (event.key === "-") {
+                    event.preventDefault();
+
+                    setScale(
+                        currentScale / 1.25
+                    );
+                }
+
+                if (event.key === "0") {
+                    event.preventDefault();
+
+                    fitImage();
+                }
+            }
+        );
+
+        let resizeTimer = null;
+
+        window.addEventListener(
+            "resize",
+            function () {
+                window.clearTimeout(
+                    resizeTimer
+                );
+
+                resizeTimer =
+                    window.setTimeout(
+                        function () {
+                            if (isModalOpen()) {
+                                fitImage();
+                            }
+                        },
+                        120
+                    );
+            }
+        );
+    });
+</script>
 
 <%- include('partials/footer') %>
