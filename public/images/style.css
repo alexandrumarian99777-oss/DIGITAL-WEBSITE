@@ -484,14 +484,12 @@ li {
   align-items: center;
   overflow: hidden;
   background-image:
-    linear-gradient(
-      90deg,
+    linear-gradient(90deg,
       rgba(255, 255, 255, 0.94) 0%,
       rgba(255, 255, 255, 0.86) 36%,
       rgba(255, 255, 255, 0.58) 62%,
-      rgba(255, 255, 255, 0.18) 100%
-    ),
-    url("/images/hero/website-creation-hero.png");
+      rgba(255, 255, 255, 0.18) 100%),
+    url("/images/hero/hero-bg.png");
   background-size: cover;
   background-position: center right;
   background-repeat: no-repeat;
@@ -559,12 +557,10 @@ li {
     min-height: auto;
     padding: 110px 0 80px;
     background-image:
-      linear-gradient(
-        180deg,
+      linear-gradient(180deg,
         rgba(255, 255, 255, 0.94) 0%,
         rgba(255, 255, 255, 0.88) 45%,
-        rgba(255, 255, 255, 0.96) 100%
-      ),
+        rgba(255, 255, 255, 0.96) 100%),
       url("/images/hero/website-creation-hero.png");
     background-position: center;
   }

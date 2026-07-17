@@ -28,35 +28,77 @@
           <input name="website" placeholder="Site / Facebook / Instagram">
         </div>
 
-        <select name="packageInterest">
-          <option value="">Alege pachetul care te interesează</option>
+        <select name="packageInterest" required>
+          <option value="">
+            Alege serviciul care te interesează
+          </option>
 
           <optgroup label="Site-uri și sisteme web">
-            <option>Site cu o singură pagină - de la 299 €</option>
-            <option>Site de prezentare - de la 499 €</option>
-            <option>Site cu programări - de la 799 €</option>
-            <option>Sistem de creștere - de la 1.200 €</option>
-            <option>Pagină dedicată pentru reclame - de la 250 € - 500 €</option>
+            <option value="exist-online">
+              Exist Online - de la 299 €
+            </option>
+
+            <option value="castig-incredere">
+              Câștig Încredere - de la 549 €
+            </option>
+
+            <option value="aduc-clienti">
+              Aduc Clienți - de la 1.400 €
+            </option>
+
+            <option value="pagina-reclame">
+              Pagină dedicată pentru reclame - de la 250 € la 500 €
+            </option>
           </optgroup>
 
           <optgroup label="Mentenanță lunară">
-            <option>Mentenanță Simplă - 49 €/lună</option>
-            <option>Mentenanță Standard - 99 €/lună</option>
-            <option>Mentenanță Pro - 179 €/lună</option>
+            <option value="mentenanta-simpla">
+              Mentenanță Simplă - 49 €/lună
+            </option>
+
+            <option value="mentenanta-standard">
+              Mentenanță Standard - 99 €/lună
+            </option>
+
+            <option value="mentenanta-pro">
+              Mentenanță Pro - 179 €/lună
+            </option>
           </optgroup>
 
           <optgroup label="Campanii publicitare">
-            <option>Promovare de Început - de la 199 €/lună</option>
-            <option>Promovare Locală - de la 349 €/lună</option>
-            <option>Promovare pentru Creștere - de la 599 €/lună</option>
-            <option>Configurare campanie - de la 150 € - 250 €</option>
+            <option value="promovare-inceput">
+              Promovare de Început - de la 199 €/lună
+            </option>
+
+            <option value="promovare-locala">
+              Promovare Locală - de la 349 €/lună
+            </option>
+
+            <option value="promovare-crestere">
+              Promovare pentru Creștere - de la 599 €/lună
+            </option>
+
+            <option value="configurare-campanie">
+              Configurare campanie - de la 150 € la 250 €
+            </option>
           </optgroup>
 
-          <optgroup label="Altceva">
-            <option>Audit gratuit pentru site / pagină social media</option>
-            <option>Consultanță gratuită</option>
-            <option>Pachet personalizat</option>
-            <option>Nu știu încă, am nevoie de recomandare</option>
+          <optgroup label="Consultanță și alte solicitări">
+            <option value="audit-gratuit">
+              Audit gratuit pentru site sau prezența online
+            </option>
+
+            <option value="consultanta-gratuita">
+              Consultație gratuită
+            </option>
+
+            <option value="pachet-personalizat">
+              Pachet personalizat
+            </option>
+
+            <option value="recomandare">
+              Nu știu ce să aleg și am nevoie de recomandare
+            </option>
           </optgroup>
         </select>
 

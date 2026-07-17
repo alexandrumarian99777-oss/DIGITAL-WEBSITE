@@ -233,146 +233,6 @@
     </div>
   </section>
 
-  <!-- PACHETE PRINCIPALE -->
-  <section id="pachete" class="section soft-section">
-    <div class="container section-heading">
-      <p class="eyebrow">Pachete principale</p>
-
-      <h2>
-        Alege nivelul potrivit pentru etapa actuală a afacerii
-      </h2>
-
-      <p>
-        Pe homepage afișăm variantele principale. Lista completă de
-        funcționalități, limitări și servicii opționale este disponibilă
-        pe pagina de servicii.
-      </p>
-    </div>
-
-    <div class="container-bgg pricing-grid compact-pricing-grid">
-      <% content.packages.forEach((pkg) => { %>
-      <article class="pricing-card equal-card <%= pkg.featured ? 'featured' : '' %>">
-        <span class="pricing-tag">
-          <%= pkg.tag %>
-        </span>
-
-        <h3>
-          <%= pkg.name %>
-        </h3>
-
-        <div class="price">
-          <%= pkg.price %>
-        </div>
-
-        <p class="intro-price">
-          <%= pkg.introPrice %>
-        </p>
-
-        <p>
-          <%= pkg.bestFor %>
-        </p>
-
-        <p class="pages">
-          <%= pkg.pages %>
-        </p>
-
-        <h4>Include, pe scurt</h4>
-
-        <ul>
-          <% pkg.included.slice(0, 4).forEach((feature) => { %>
-          <li>
-            <%= feature %>
-          </li>
-          <% }) %>
-        </ul>
-
-        <a class="btn btn-primary full" href="/servicii">
-          Vezi detaliile pachetului
-        </a>
-      </article>
-      <% }) %>
-    </div>
-
-    <div class="container center-button">
-      <a class="btn btn-secondary" href="/servicii">
-        Compară toate serviciile și funcționalitățile
-      </a>
-    </div>
-  </section>
-
-  <!-- SOLUȚIE PERSONALIZATĂ -->
-  <section class="section">
-    <div class="container final-card">
-      <p class="eyebrow">Ai nevoie de mai mult?</p>
-
-      <h2>
-        Soluție personalizată pentru fluxuri mai complexe
-      </h2>
-
-      <p>
-        Pentru proiecte care includ programări avansate, roluri de
-        utilizator, panou de administrare, blog, recenzii, plăți sau
-        integrări externe, stabilim separat arhitectura și bugetul.
-      </p>
-
-      <a class="btn btn-primary cta-small-btn" href="/contact#formular">
-        Discută proiectul
-      </a>
-    </div>
-  </section>
-
-  <!-- SERVICII DUPĂ LANSARE -->
-  <section class="section soft-section">
-    <div class="container section-heading">
-      <p class="eyebrow">După lansare</p>
-
-      <h2>
-        Mentenanță și promovare, fără să aglomerăm pachetul inițial
-      </h2>
-
-      <p>
-        Alegi separat serviciile recurente de care afacerea are nevoie
-        după publicare.
-      </p>
-    </div>
-
-    <div class="container home-service-grid">
-      <article class="home-service-card">
-        <span class="pricing-tag">
-          De la 49 €/lună
-        </span>
-
-        <h3>Mentenanță lunară</h3>
-
-        <p>
-          Verificări, backup, suport și modificări simple pentru un
-          website actualizat și funcțional.
-        </p>
-
-        <a class="btn btn-secondary full" href="/mentenanta">
-          Vezi mentenanța
-        </a>
-      </article>
-
-      <article class="home-service-card">
-        <span class="pricing-tag">
-          De la 199 €/lună
-        </span>
-
-        <h3>Campanii publicitare</h3>
-
-        <p>
-          Administrare Facebook, Instagram și Google Ads. Bugetul efectiv
-          de publicitate se plătește separat platformelor.
-        </p>
-
-        <a class="btn btn-secondary full" href="/campanii-publicitare">
-          Vezi promovarea
-        </a>
-      </article>
-    </div>
-  </section>
-
   <!-- PROCES -->
   <section class="section">
     <div class="container section-heading">
@@ -449,6 +309,146 @@
           instrucțiuni pentru administrarea elementelor incluse.
         </p>
       </article>
+    </div>
+  </section>
+
+  <!-- PACHETE PRINCIPALE -->
+  <section id="pachete" class="section soft-section">
+    <div class="container section-heading">
+      <p class="eyebrow">Pachete principale</p>
+
+      <h2>
+        Alege nivelul potrivit pentru etapa actuală a afacerii
+      </h2>
+
+      <p>
+        Pe homepage afișăm variantele principale. Lista completă de
+        funcționalități, limitări și servicii opționale este disponibilă
+        pe pagina de servicii.
+      </p>
+    </div>
+
+    <div class="container-bgg pricing-grid compact-pricing-grid">
+      <% content.packages.forEach((pkg) => { %>
+      <article class="pricing-card equal-card <%= pkg.featured ? 'featured' : '' %>">
+        <span class="pricing-tag">
+          <%= pkg.tag %>
+        </span>
+
+        <h3>
+          <%= pkg.name %>
+        </h3>
+
+        <div class="price">
+          <%= pkg.price %>
+        </div>
+
+        <p class="intro-price">
+          <%= pkg.introPrice %>
+        </p>
+
+        <p>
+          <%= pkg.bestFor %>
+        </p>
+
+        <p class="pages">
+          <%= pkg.pages %>
+        </p>
+
+        <h4>Include, pe scurt</h4>
+
+        <ul>
+          <% pkg.included.slice(0, 4).forEach((feature) => { %>
+          <li>
+            <%= feature %>
+          </li>
+          <% }) %>
+        </ul>
+
+        <a class="btn btn-primary full" href="/servicii">
+          Vezi detaliile pachetului
+        </a>
+      </article>
+      <% }) %>
+    </div>
+
+    <div class="container center-button">
+      <a class="btn btn-secondary" href="/servicii">
+        Compară toate serviciile și funcționalitățile
+      </a>
+    </div>
+  </section>
+
+  <!-- SERVICII DUPĂ LANSARE -->
+  <section class="section soft-section">
+    <div class="container section-heading">
+      <p class="eyebrow">După lansare</p>
+
+      <h2>
+        Mentenanță și promovare, fără să aglomerăm pachetul inițial
+      </h2>
+
+      <p>
+        Alegi separat serviciile recurente de care afacerea are nevoie
+        după publicare.
+      </p>
+    </div>
+
+    <div class="container home-service-grid">
+      <article class="home-service-card">
+        <span class="pricing-tag">
+          De la 49 €/lună
+        </span>
+
+        <h3>Mentenanță lunară</h3>
+
+        <p>
+          Verificări, backup, suport și modificări simple pentru un
+          website actualizat și funcțional.
+        </p>
+
+        <a class="btn btn-secondary full" href="/mentenanta">
+          Vezi mentenanța
+        </a>
+      </article>
+
+      <article class="home-service-card">
+        <span class="pricing-tag">
+          De la 199 €/lună
+        </span>
+
+        <h3>Campanii publicitare</h3>
+
+        <p>
+          Administrare Facebook, Instagram și Google Ads. Bugetul efectiv
+          de publicitate se plătește separat platformelor.
+        </p>
+
+        <a class="btn btn-secondary full" href="/campanii-publicitare">
+          Vezi promovarea
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <!-- SOLUȚIE PERSONALIZATĂ -->
+  <section class="section">
+    <div class="container final-card">
+      <p class="eyebrow">Ai nevoie de mai mult?</p>
+
+      <h2>
+        Soluție personalizată pentru fluxuri mai complexe
+      </h2>
+
+      <p>
+        Pentru proiecte care includ programări avansate, roluri de
+        utilizator, panou de administrare, blog, recenzii, plăți sau
+        integrări externe, stabilim separat arhitectura și bugetul.
+      </p>
+
+      <a class="btn btn-primary cta-small-btn" href="/contact#formular">
+        Discută proiectul
+      </a>
     </div>
   </section>
 
